@@ -1,0 +1,214 @@
+﻿
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Custom Slideshow</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        /* Carousel Styling */
+        #imageCarousel {
+            max-width: 900px; /* Adjust width */
+            margin: auto;
+        }
+
+        /* Image Styling */
+        .carousel-item img {
+            transition: all 0.5s ease-in-out;
+            border-radius: 10px;
+        }
+
+        /* Center Image */
+        .carousel-item .present {
+            width: 50%;
+            transform: scale(1.1);
+            box-shadow: 0px 0px 15px rgba(0, 0, 0, 0.3);
+        }
+
+        /* Side Images */
+        .carousel-item .before,
+        .carousel-item .after {
+            width: 25%;
+            opacity: 0.5;
+            filter: blur(4px);
+        }
+
+        /* Add More Space Between Images */
+        .carousel-item .image-container {
+            display: flex;
+            justify-content: center;
+            gap: 20px; /* Space between images */
+        }
+
+        /* Adjust Carousel Controls */
+        .carousel-control-prev, .carousel-control-next {
+            width: 5%;
+        }
+    </style>
+</head>
+<!-- Hero Section -->
+<div class="hero-section">
+    <!-- Hero Overlay (Text & Buttons) -->
+    <div class="hero-overlay">
+        <h2>Welcome to</h2>
+        <h1 class="site-title">vista.</h1>
+        <p>A better home, a better life.</p>
+        <div class="cta-buttons d-flex flex-column align-items-center">
+            <button class="btn1 mb-2">Get started</button>
+            <p class="or-text my-2">or</p>
+            <a href="/Home/LogIn" class="btn2 btn-secondary mt-2">Login</a>
+            <hr class="custom-line" style="border: 1px solid white;">
+
+        </div>
+
+    </div>
+    <!-- Image Slider at the Bottom -->
+    <div id="imageCarousel" class="carousel slide" data-bs-ride="carousel">
+        <div class="carousel-inner">
+            <!-- Slide 1 -->
+            <div class="carousel-item active">
+                <div class="image-container">
+                    <img src="images/slideshow5.jpg" class="before" alt="Before">
+                    <img src="images/slideshow1.jpg" class="present" alt="Present">
+                    <img src="images/slideshow2.jpg" class="after" alt="After">
+                </div>
+            </div>
+
+            <!-- Slide 2 -->
+            <div class="carousel-item">
+                <div class="image-container">
+                    <img src="images/slideshow1.jpg" class="before" alt="Before">
+                    <img src="images/slideshow2.jpg" class="present" alt="Present">
+                    <img src="images/slideshow3.jpg" class="after" alt="After">
+                </div>
+            </div>
+
+            <!-- Slide 3 -->
+            <div class="carousel-item">
+                <div class="image-container">
+                    <img src="images/slideshow2.jpg" class="before" alt="Before">
+                    <img src="images/slideshow3.jpg" class="present" alt="Present">
+                    <img src="images/slideshow4.jpg" class="after" alt="After">
+                </div>
+            </div>
+
+            <!-- Slide 4 -->
+            <div class="carousel-item">
+                <div class="image-container">
+                    <img src="images/slideshow3.jpg" class="before" alt="Before">
+                    <img src="images/slideshow4.jpg" class="present" alt="Present">
+                    <img src="images/slideshow5.jpg" class="after" alt="After">
+                </div>
+            </div>
+
+            <!-- Slide 5 -->
+            <div class="carousel-item">
+                <div class="image-container">
+                    <img src="images/slideshow4.jpg" class="before" alt="Before">
+                    <img src="images/slideshow5.jpg" class="present" alt="Present">
+                    <img src="images/slideshow1.jpg" class="after" alt="After">
+                </div>
+            </div>
+        </div>
+
+        <!-- Previous Button -->
+        <button class="carousel-control-prev" type="button" data-bs-target="#imageCarousel" data-bs-slide="prev">
+            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+            <span class="visually-hidden">Previous</span>
+        </button>
+
+        <!-- Next Button -->
+        <button class="carousel-control-next" type="button" data-bs-target="#imageCarousel" data-bs-slide="next">
+            <span class="carousel-control-next-icon" aria-hidden="true"></span>
+            <span class="visually-hidden">Next</span>
+        </button>
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+</div>
+     <!--another section-->
+<div class="bottom-section">
+    <!-- Right Content at the End -->
+    <div class="content">
+        <h2 class="h2-1">We make our <span class="highlight">neighborhood</span> a better place for living.</h2>
+        <p style="font-size: 25px;margin-top: 10px;">Whether you're seeking new possibilities, chasing ambitious goals, or simply looking for a fresh start, Vista is here to illuminate the way forward.</p>
+
+        <hr class="custom-line">
+
+        <div class="features">
+            <div class="feature-item">
+                <h3 style="font-size: 24px;">Resident & Property Management</h3>
+                <p style="font-size: 20px;">Easily track homeowners, tenants, and property details. Keep all resident information organized and accessible.</p>
+                <hr class="custom-line">
+            </div>
+            <div class="feature-item">
+                <h3 style="font-size: 24px;">Announcement & Communication Hub</h3>
+                <p style="font-size: 20px;">Let residents pay association fees and bills online. Automate reminders and generate financial reports with ease.</p>
+                <hr class="custom-line">
+            </div>
+            <div class="feature-item">
+                <h3 style="font-size: 24px;">Online Payments & Tracking</h3>
+                <p style="font-size: 20px;">Send real-time updates, announcements, and community news via email or SMS.</p>
+            </div>
+        </div>
+
+        <a href="#" class="read-more">Read more</a>
+    </div>
+</div>
+<!-----Last Section------>
+<div class="testimonial-section">
+    <h2 class="h2-2">Stories from our Thriving Community</h2>
+    <p class="subheading">Discover what our residents have to say about their experience. From seamless property management to hassle-free transactions, see how our platform is making subdivision living easier and more connected.</p>
+          <div class="testimonials">
+        <!-- Testimonial 1 -->
+        <div class="testimonial">
+            <div class="testimonial-header">
+                <img src="images/aiden pierce.jpg" alt="Aiden Pierce">
+                <div class="testimonial-info">
+                    <h3>Aiden Pierce</h3>
+                    <p><i>Working professional, Homeowner</i></p>
+                    <div class="stars">⭐⭐⭐⭐⭐</div>
+                </div>
+            </div>
+            <p class="testimonial-text">"I used to struggle with reporting maintenance issues, but now it's effortless. The platform ensures that concerns are addressed quickly, making our neighborhood a better place to live."</p>
+        </div>
+
+        <!-- Testimonial 2 -->
+        <div class="testimonial">
+            <div class="testimonial-header">
+                <img src="images/anne gilchrist.jpg" alt="Anne Gilchrist">
+                <div class="testimonial-info">
+                    <h3>Anne Gilchrist</h3>
+                    <p><i>3-year resident, Homeowner</i></p>
+                    <div class="stars">⭐⭐⭐⭐⭐</div>
+                </div>
+            </div>
+            <p class="testimonial-text">"Living in this subdivision has never been easier! The platform makes it simple to pay dues, submit requests, and stay updated on community events. I love how everything is just a click away!"</p>
+        </div>
+
+        <!-- Testimonial 3 -->
+        <div class="testimonial">
+            <div class="testimonial-header">
+                <img src="images/raymond kennedy.jpg" alt="Raymond Kennedy">
+                <div class="testimonial-info">
+                    <h3>Raymond Kennedy</h3>
+                    <p><i>5-year resident, Homeowner</i></p>
+                    <div class="stars">⭐⭐⭐⭐⭐</div>
+                </div>
+            </div>
+            <p class="testimonial-text">"This management system has completely changed the way our community operates. No more paperwork, delayed responses, or confusion. Just smooth and efficient communication!"</p>
+        </div>
+
+        <!-- Testimonial 4 -->
+        <div class="testimonial">
+            <div class="testimonial-header">
+                <img src="images/sophia marks.jpg" alt="Sophia Marks">
+                <div class="testimonial-info">
+                    <h3>Sophia Marks</h3>
+                    <p><i>Working professional, Homeowner</i></p>
+                    <div class="stars">⭐⭐⭐⭐⭐</div>
+                </div>
+            </div>
+            <p class="testimonial-text">"I used to struggle with reporting maintenance issues, but now it's effortless. The platform ensures that concerns are addressed quickly, making our neighborhood a better place to live."</p>
+        </div>
+    </div>
+
+</div>

@@ -1,0 +1,89 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>@ViewData["Title"] - Vista_Subdivision</title>
+
+    <!-- Stylesheets -->
+    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
+    <link rel="stylesheet" href="~/Vista_Subdivision.styles.css" asp-append-version="true" />
+</head>
+<body>
+
+    <!-- Header and Navigation -->
+    <header>
+        <nav class="navbar navbar-expand-lg navbar-light bg-white border-bottom box-shadow">
+            <div class="container d-flex justify-content-between align-items-center position-relative">
+
+                <!-- Left Links -->
+                <ul class="navbar-nav d-flex justify-content-between">
+                    <li class="nav-item">
+                        <a class="nav-link active text-#D7BF9" asp-area="" asp-controller="Home" asp-action="Index">Home</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="About">About</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Gallery">Gallery</a>
+                    </li>
+                </ul>
+
+                <!-- Centered Logo -->
+                <a class="navbar-brand">
+                    <img src="~/images/logo.png" alt="Vista Logo" class="nav-logo">
+                    <span class="nav-title ms-1">vista.</span>
+                </a>
+
+
+                <!-- Right Links -->
+                <ul class="navbar-nav d-flex justify-content-between">
+                    <li class="nav-item">
+                        <a class="nav-link text-dark fw-bold" asp-area="" asp-controller="Home" asp-action="Contact">Contact</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Help">Help</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Others">Others</a>
+                    </li>
+                </ul>
+
+            </div>
+        </nav>
+    </header>
+
+
+
+    <!-- Main Content -->
+    <main role="main" class="content-container">
+        @RenderBody()
+    </main>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="footer-container">
+            <div class="footer-left">
+                <img src="images/logo.png" alt="Vista Logo" class="footer-logo">
+                <span class="footer-brand">vista.</span>
+            </div>
+            <div class="footer-links">
+                <a href="#">Support</a>
+                <a href="#">Privacy Policy</a>
+                <a href="#">Terms of Service</a>
+            </div>
+        </div>
+        <hr class="footer-divider">
+        <p class="footer-text">&copy; 2025 vista. All Rights Reserved.</p>
+    </footer>
+
+
+    <!-- Scripts -->
+    <script src="~/lib/jquery/dist/jquery.min.js"></script>
+    <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="~/js/site.js" asp-append-version="true"></script>
+    @await RenderSectionAsync("Scripts", required: false)
+
+</body>
+</html>

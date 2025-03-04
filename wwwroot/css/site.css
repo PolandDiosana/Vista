@@ -1,0 +1,581 @@
+﻿/* Ensure full height for body and main content */
+.custom-line {
+    border: none;
+    height: 5px;
+    background-color: white;
+    width: 100%;
+}
+.site-title {
+    font-size: 100px;
+    color: black;
+    font-family: besley;
+}
+html, body {
+    height: 100%;
+    margin: 0;
+    padding: 0;
+    overflow-x: hidden;
+    color:black;
+    font-family: besley;
+}
+
+/* Full-page layout */
+.content-container {
+    width: 100%;
+    min-height: calc(100vh - 80px); 
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+}
+.btn1 {
+    background-color: #CCB38B;
+    padding: 5% 35% 5% 35%;
+    border-radius: 10px;
+    border-color: #CCB38B;
+    color: white;
+    margin-top: 10px;
+    font-size: 20px;
+}
+
+.btn2 {
+    background-color: #273B4A;
+    padding: 5% 41% 5% 41%;
+    border-radius: 10px;
+    border-color: transparent;
+    color: white;
+    margin-top: 10px;
+    font-size: 20px;
+}
+/* Hero Section */
+.hero-section {
+    position: relative;
+    width: 100%;
+    height: 100vh;
+    background: url('/images/bed.jpg') no-repeat center center;
+    background-size: cover;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    color: black;
+    padding: 20px;
+    font-size: 30px;
+}
+
+    /* Dark overlay for better text visibility */
+    .hero-section::before {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: rgba(0, 0, 0, 0.3);
+        z-index: 1;
+    }
+
+/* Ensure text & buttons appear above overlay */
+.hero-overlay {
+    position: relative;
+    z-index: 2;
+    font-family: besley;
+    margin-top: 5%;
+}
+
+/* CTA Buttons */
+.cta-buttons {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 15px;
+}
+
+.or-text {
+    margin: 0 15px;
+}
+
+/* Image Slider */
+.carousel-item {
+    padding: 0% 5% 0% 5%;
+}
+.carousel-inner {
+    position: relative;
+    bottom: 0;
+    width: 20%;
+    margin: auto;
+    padding-top: 20px;
+    border-radius: 10px;
+}
+/* Navbar Main Container */
+.navbar {
+    border-bottom: 2px solid #D7BF98;
+    padding: 12px 0;
+
+}
+
+/* Navigation Items - Add Space Between */
+.navbar-nav {
+    margin-right: 20%;
+    justify-content: space-between;
+    gap: 70%; /* Adjust spacing as needed */
+}
+
+/* Active Link Styling */
+.nav-item a.active {
+    color: #D7BF98 !important;
+    font-weight: bold;
+}
+
+/* Hover Effect */
+.nav-item a:hover {
+    color: #D7BF98 !important;
+    background-color: transparent !important;
+}
+
+/* Center Logo and Name */
+.navbar-brand {
+    display: flex;
+    align-items: center; 
+    text-align: center;
+    gap: 8px; 
+}
+
+/* Logo Image Styling */
+.nav-logo {
+    width: 60px;
+    height: auto;
+}
+
+/* Logo Text Styling */
+.nav-title {
+    font-size: 20px;
+    font-weight: bold;
+    color: black;
+}
+
+/* Ensure navbar is spaced properly */
+.container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    position: sticky;
+}
+
+
+/* Footer fixed at the bottom */
+.footer {
+    width: 100%;
+    background: #f8f9fa;
+    padding: 15px 0;
+    text-align: center;
+    margin-top: auto; 
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .hero-section {
+        height: 80vh;
+        padding: 10px;
+    }
+
+    .cta-buttons {
+        flex-direction: column;
+        gap: 10px;
+    }
+
+    .carousel {
+        width: 90%;
+    }
+
+    .navbar {
+        padding: 5px 0;
+    }
+}
+/* about css*/
+.h2-1 {
+    font-size: 40px;
+    text-align: justify; 
+}
+
+.bottom-section {
+    display: flex;
+    align-items: center;
+    justify-content: flex-end; 
+    height: 100vh;
+    width: 100%;
+    background: url('/images/about.jpg') no-repeat center center;
+    background-size: cover;
+    padding-right: 5%;
+    font-family: besley;
+}
+
+.content {
+    width: 45%;
+    background: rgba(255, 255, 255, 0.9);
+    padding: 40px;
+    border-radius: 10px;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start; 
+}
+
+p {
+    text-align: justify; 
+    opacity: 0.65; 
+}
+
+.highlight {
+    color: #c1a46d;
+    font-weight: bold;
+}
+
+.features .feature-item {
+    margin-bottom: 20px;
+    text-align: left; 
+}
+
+.custom-line {
+    border: 1px solid black;
+    width: 100%;
+    margin: 10px 0;
+}
+
+.read-more {
+    background: #c1a46d;
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    cursor: pointer;
+    border-radius: 5px;
+    display: inline-block;
+    text-decoration: none;
+    margin-top: 20px;
+    text-align: left;
+}
+/********************Testimonial****************/
+.testimonial-section {
+    position: relative;
+    background: url('/images/reviews3.jpg') no-repeat;
+    background-size: cover;
+    flex-direction: column;
+    justify-content: center;
+    display: flex;
+    width: 100%;
+    height: 100vh;
+    padding: 8% 10%;
+    text-align: center;
+    color: white;
+    font-family: Besley;
+}
+
+.h2-2 {
+    font-size: 50px;
+    font-weight: bold;
+    text-align: center;
+}
+
+.subheading {
+    font-size: 20px;
+    max-width: 70%;
+    margin: 0 auto;
+    opacity: 0.8;
+}
+
+.testimonials {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr); 
+    grid-template-rows: repeat(2, 1fr); 
+    gap: 60px; 
+    margin-top: 50px;
+    width: 100%;
+    max-width: 1000px; 
+    height: 1000px; 
+    margin-left: auto;
+    margin-right: auto;
+    justify-content: center;
+    align-items: center;
+}
+
+.testimonial {
+    background: white;
+    color: black;
+    padding: 25px;
+    border-radius: 15px;
+    box-shadow: 5px 5px 20px rgba(0, 0, 0, 0.2);
+    text-align: left;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%; 
+    height: 100%; 
+}
+
+
+.testimonial-header {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+}
+
+    .testimonial-header img {
+        border-radius: 50%;
+        width: 100px;
+        height: 100px;
+        object-fit: cover;
+    }
+
+.testimonial-info h3 {
+    font-size: 22px;
+    font-weight: 700;
+    margin: 0;
+}
+
+.testimonial-info p {
+    font-size: 16px;
+    color: gray;
+    margin: 5px 0;
+}
+
+.stars {
+    font-size: 20px;
+    color: gold;
+}
+
+.testimonial-text {
+    margin-top: 15px;
+    font-size: 18px;
+    opacity: 0.8;
+    text-align: justify;
+}
+
+/*************************Footer*****************/
+.footer {
+    background: white;
+    padding: 20px 0;
+    text-align: center;
+    font-family: 'Arial', sans-serif;
+    color: #B69D75; 
+    font-size: 25px;
+}
+
+.footer-container {
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    margin: 0 auto;
+    padding: 10px 20px;
+    font-family: besley;
+    gap: 40vh;
+}
+
+.footer-left {
+    display: flex;
+    align-items: center;
+    
+}
+
+.footer-logo {
+    width: 100px; 
+}
+
+.footer-brand {
+    font-size: 25px;
+    font-weight: bold;
+    color: #333;
+}
+
+.footer-links {
+    display: flex;
+    gap: 30vh;
+}
+
+    .footer-links a {
+        text-decoration: none;
+        color: #A88E69;
+        font-weight: bold;
+        transition: 0.3s;
+    }
+
+        .footer-links a:hover {
+            text-decoration: underline;
+        }
+
+.footer-divider {
+    width: 90%;
+    border: 0.5px solid #E0C9A6; 
+    margin: 15px auto;
+}
+
+.footer-text {
+    font-size: 12px;
+    color: #AAA;
+    text-align: center;
+    margin-left: 5%;
+
+}
+/* Login Page */
+
+/* Full-screen Background */
+.login-body {
+    background: url('/images/login.jpg') no-repeat center center fixed;
+    background-size: cover;
+    height: 100vh;
+    display: flex;
+    justify-content: center; /* Centers content horizontally */
+    align-items: center; /* Centers content vertically */
+    position: relative;
+}
+
+    /* Background Blur Effect */
+    .login-body::before {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: inherit;
+        filter: blur(8px);
+        z-index: -1;
+    }
+
+/* Centering the login form container */
+.login-container {
+    display: flex;
+    justify-content: center; /* Horizontally center */
+    align-items: center; /* Vertically center */
+    height: 100vh; /* Full height of the viewport */
+    width: 100%; /* Full width */
+    position: relative;
+}
+
+/* Login Card Styling */
+.login-card {
+    background: rgba(255, 255, 255, 0.9);
+    padding: 40px 30px;
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.2);
+    max-width: 500px; /* Controls form width */
+    width: 90%; /* Responsive */
+    text-align: left;
+    z-index: 1; /* Ensures it's above the blur effect */
+    margin-block:auto;
+    gap: 5%;
+}
+
+/* Button Styling */
+.btn-custom {
+    background-color: #c4a37a;
+    border: none;
+    color: white;
+    width: 100%;
+    padding: 12px;
+    border-radius: 8px;
+    font-size: 16px;
+    cursor: pointer;
+}
+
+    .btn-custom:hover {
+        background-color: #b28c66;
+    }
+
+/* Adjust Input Fields */
+input[type="text"],
+input[type="password"] {
+    width: 100%;
+    padding: 10px;
+    margin-top: 8px;
+    border-radius: 6px;
+    border: 1px solid #ccc;
+}
+
+/* Mobile Responsive Fix */
+@media (max-width: 480px) {
+    .login-card {
+        width: 90%;
+        padding: 30px 20px;
+    }
+}
+.forgot-pass {
+    display: flex;
+    justify-content: flex-start; /* Aligns the content to the left */
+    font-size: 15px; /* Set font size */
+    color: black; /* Black color with 77% opacity */
+    font-family: besley;
+    opacity: 77%; /* Set overall opacity */
+    align-items: flex-start; /* Align to the left */
+}
+
+    .forgot-pass a {
+        color: inherit; /* Inherits the color from the parent */
+        
+    }
+
+.footer-login {
+    display: flex;
+    justify-content: space-between;
+    font-size: 15px; /* Set font size */
+    color: black; /* Set text color */
+    margin-top: 50px; /* Add spacing above */
+    width: 100%; /* Ensure full width */
+    font-family: besley;
+    opacity: 77%;
+}
+
+    /* Style links with underline */
+    .footer-login a {
+        text-decoration: none;
+        color: black;
+        border-bottom: 1px solid black; /* Adds a bottom line */
+        padding-bottom: 2px; /* Space between text and line */
+    }
+.login-card .button-container {
+    text-align: right;
+}
+
+.btn-custom {
+    display: inline-block; /* Make the button inline */
+    padding: 12px 24px; /* Add padding for box effect */
+    border: 2px solid #000; /* Add border for the box effect */
+    background-color: #f0f0f0; /* Light background for the button */
+    border-radius: 4px; /* Optional: rounded corners */
+    text-align: center;
+    font-size: 16px;
+}
+
+.w-100 {
+    width: auto !important; /* Override the 100% width from the 'w-100' class */
+}
+
+.btn-custom:hover {
+    background-color: #ddd; /* Change on hover */
+}
+
+.login-body .button-container {
+    display: flex;
+    justify-content: flex-end;
+    font-size: 25px;
+    margin-top: 20px;
+    color: white;
+
+    border-radius: 8px; /* Optional: Adds rounded corners to the box */
+}
+
+    .login-body .button-container button {
+        background-color: #CCB38B; /* Customize this as you like for the button's background */
+        border: none;
+        color: white;
+        padding: 5px 62px 5px 62px;
+        font-family: besley;
+        font-size: 30px;
+        cursor: pointer;
+        border-radius: 10px; /* Optional: Adds rounded corners to the button */
+        box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.1); /* Optional: Adds a shadow effect */
+    }
+
+        .login-body .button-container button:hover {
+            background-color: #45a049; /* Hover effect */
+        }
