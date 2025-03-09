@@ -22,23 +22,24 @@
         .container-wrapper {
             display: flex;
             flex-direction: column;
-            width: 90%;
-            max-width: 1100px;
+            width: 100vh;
+            max-width: 1200px;
             background: #fff;
             border-radius: 10px;
             box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
-            padding: 20px;
+            padding: 30px;
             overflow: hidden;
-            margin: auto;
+            margin-top: 5%;
         }
 
         .content-wrapper {
             display: flex;
+            width: 100%;
         }
 
         .left-column {
-            width: 50%;
-            padding: 40px;
+            width: 55%;
+            padding: 50px;
         }
 
         .right-column {
@@ -103,6 +104,10 @@
             margin-top: 20px;
         }
 
+        .file-preview {
+            font-size: 10px;
+        }
+
         .button-container {
             display: flex;
             justify-content: space-between;
@@ -134,56 +139,79 @@
     </style>
 </head>
 <body>
-    <div class="container-wrapper">    
-        <!-- Content -->
-        <div class="content-wrapper">
-            <!-- Left Column (Form) -->
-            <div class="left-column">
-                <h3 class="mb-4">Upload your valid documents</h3>
-                <div class="upload-section">
-                    <div class="upload-item">
-                        <span>Proof of Ownership</span>
-                        <button class="btn btn-upload">Upload file(s)</button>
+    <form action="" method="post" >
+        <div class="container-wrapper">
+            <!-- Content -->
+            <div class="content-wrapper">
+                <!-- Left Column (Form) -->
+                <div class="left-column">
+                    <h3 class="mb-4">Upload your valid documents</h3>
+                    <div class="upload-section">
+                        <div class="upload-item">
+                            <span>Proof of Ownership</span>
+                            <p id="proofPreview" class="file-preview"></p>
+                            <input type="file" id="proofOfOwnership" class="file-input" hidden onchange="previewFile(event, 'proofPreview')" required>
+                            <button type="button" class="btn btn-upload" onclick="document.getElementById('proofOfOwnership').click();">Upload file(s)</button>
+                        </div>
+                        <div class="upload-item">
+                            <span>Valid ID(s)</span>
+                            <p id="validIdPreview" class="file-preview"></p>
+                            <input type="file" id="validId" class="file-input" hidden onchange="previewFile(event, 'validIdPreview')" required>
+                            <button type="button" class="btn btn-upload" onclick="document.getElementById('validId').click();">Upload file(s)</button>
+                        </div>
+                        <div class="upload-item">
+                            <span>Utility Bill <em>(Optional)</em></span>
+                            <p id="utilityBillPreview" class="file-preview"></p>
+                            <input type="file" id="utilityBill" class="file-input" hidden onchange="previewFile(event, 'utilityBillPreview')">
+                            <button type="button" class="btn btn-upload" onclick="document.getElementById('utilityBill').click();">Upload file(s)</button>
+                        </div>
                     </div>
-                    <div class="upload-item">
-                        <span>Valid ID(s)</span>
-                        <button class="btn btn-upload">Upload file(s)</button>
+
+                    <h4 class="mt-4">Emergency Contact Information</h4>
+                    <div class="mb-3">
+                        <label class="form-label">Emergency Contact Name</label>
+                        <input type="text" class="form-control" required>
                     </div>
-                    <div class="upload-item">
-                        <span>Utility Bill <em>(Optional)</em></span>
-                        <button class="btn btn-upload">Upload file(s)</button>
+                    <div class="mb-3">
+                        <label class="form-label">Relationship</label>
+                        <input type="text" class="form-control" required>
+                    </div>
+                    <div class="mb-3">
+                        <label class="form-label">Phone Number</label>
+                        <input type="text" class="form-control" required>
                     </div>
                 </div>
-                <h4 class="mt-4">Emergency Contact Information</h4>
-                <div class="mb-3">
-                    <label class="form-label">Emergency Contact Name</label>
-                    <input type="text" class="form-control">
-                </div>
-                <div class="mb-3">
-                    <label class="form-label">Relationship</label>
-                    <input type="text" class="form-control">
-                </div>
-                <div class="mb-3">
-                    <label class="form-label">Phone Number</label>
-                    <input type="text" class="form-control">
+                <!-- Right Column (Image) -->
+                <div class="right-column"></div>
+            </div>
+            <!-- Progress Bar -->
+            <div class="progress-container">
+                <div class="progress">
+                    <div class="progress-bar"></div>
                 </div>
             </div>
-            <!-- Right Column (Image) -->
-            <div class="right-column"></div>
-        </div>
-        <!-- Progress Bar -->
-        <div class="progress-container">
-            <div class="progress">
-                <div class="progress-bar"></div>
+            <!-- Bottom Navigation -->
+            <div class="bottom-nav">
+                <div class="button-container">
+                    <a class="btn back-btn" href="/home/register2">Next</a>
+                    <button type="submit" class="btn btn-register">Register</button>
+                </div>
             </div>
         </div>
-        <!-- Bottom Navigation -->
-        <div class="bottom-nav">
-            <div class="button-container">
-                <a class="btn back-btn" href="/home/register2">Back</a>
-                <button class="btn btn-register">Register</button>
-            </div>
-        </div>
-    </div>
+    </form>
+
+    <script>
+        function previewFile(event, previewId) {
+            const input = event.target;
+            const preview = document.getElementById(previewId);
+
+            if (input.files.length > 0) {
+                preview.textContent = "Selected file: " + input.files[0].name;
+            } else {
+                preview.textContent = "";
+            }
+        }
+    </script>
+
 </body>
 </html>

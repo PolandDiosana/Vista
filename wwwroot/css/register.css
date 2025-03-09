@@ -11,14 +11,13 @@ body {
 
 .container-wrapper {
     max-width: 1100px;
-    margin: auto;
+    margin-top: 5%;
     padding-top: 30px;
 }
 
 .custom-container {
     display: flex;
     border-radius: 10px;
-    padding: 40px;
     align-items: center;
 }
 
@@ -244,8 +243,6 @@ body {
 
 .right-column {
     width: 60%;
-    background: url('/Images/neighborhood3.jpg') no-repeat center center;
-    background-size: cover;
 }
 
 .progress-wrapper {
