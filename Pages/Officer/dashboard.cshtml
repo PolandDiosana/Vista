@@ -1,0 +1,310 @@
+@page
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Officer Dashboard - Vista</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="~/css/officerdashboard.css">
+</head>
+<body>
+    <div class="dashboard-wrapper">
+        <!-- Sidebar -->
+        <aside class="sidebar">
+            <div class="logo">
+                <img src="~/Images/logo.png" alt="Vista Logo">
+                <span>vista.</span>
+            </div>
+
+            <nav class="nav-menu">
+                <ul>
+                    <li class="active">
+                        <a href="/Officer/dashboard">
+                            <i class="fas fa-th-large"></i>
+                            <span>Dashboard</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="/Officer/Announcements">
+                            <i class="fas fa-bullhorn"></i>
+                            <span>Announcements</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="/Officer/BillingPayments">
+                            <i class="fas fa-file-invoice-dollar"></i>
+                            <span>Billing & Payments</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="/Officer/FacilityReservation">
+                            <i class="fas fa-calendar-check"></i>
+                            <span>Facility Reservation</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="/Officer/ServiceRequest">
+                            <i class="fas fa-hands-helping"></i>
+                            <span>Service Request</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="/Officer/Documents">
+                            <i class="fas fa-file-alt"></i>
+                            <span>Documents</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="/Officer/EventsScheduled">
+                            <i class="fas fa-calendar-alt"></i>
+                            <span>Events Scheduled</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="/Officer/EditProfile">
+                            <i class="fas fa-user-circle"></i>
+                            <span>Edit Profile</span>
+                        </a>
+                    </li>
+                </ul>
+            </nav>
+        </aside>
+
+        <!-- Main Content -->
+        <main class="main-content">
+            <!-- Top Bar -->
+            <!-- Dashboard Content -->
+            <div class="content">
+                <div class="dashboard-container">
+                    <!-- Officer Profile Card -->
+                    <h2 style="margin-left:50px; font-size: 32px;font:poppins; font-weight: bold;">Officer Dashboard</h2>
+                    <div class="officer-profile-card">
+                        <div class="profile-content">
+                            <div class="profile-avatar">
+                                <img src="~/Images/profile.png" alt="Hunter De Bois">
+                            </div>
+                            <div class="profile-info">
+                                <h3>Hunter De Bois</h3>
+                                <p>Officer</p>
+
+                                <div class="contact-details">
+                                    <div class="contact-item">
+                                        <h4>Phone</h4>
+                                        <a href="tel:+15550123">
+                                            <i class="fas fa-phone"></i>
+                                            +1 555-0123
+                                        </a>
+                                    </div>
+                                    <div class="contact-item">
+                                        <h4>Email</h4>
+                                        <a href="mailto:hunter@vista.mail.com">
+                                            <i class="fas fa-envelope"></i>
+                                            hunter@vista.mail.com
+                                        </a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Dashboard Content Grid -->
+                    <div class="dashboard-content">
+                        <!-- Contacts Section -->
+                        <div class="contacts-section">
+                            <div class="section-header">
+                                <h3 style =" font-size: 25px;font:poppins; font-weight: bold";>Contacts</h3>
+                                <p>You have <span class="highlight">140</span> contacts</p>
+                            </div>
+
+                            <div class="search-bar">
+                                <input type="text" placeholder="Search here">
+                                <i class="fas fa-search"></i>
+                            </div>
+
+                            <div class="contacts-list">
+                                <div class="contact-item">
+                                    <div class="contact-avatar">
+                                        
+                                    </div>
+                                    <div class="contact-name">Tyler Harrison</div>
+                                    <button class="message-btn">
+                                        <i class="fas fa-comment"></i>
+                                    </button>
+                                </div>
+
+                                <div class="contact-item">
+                                    <div class="contact-avatar">
+                                        
+                                    </div>
+                                    <div class="contact-name">Veronica Powers</div>
+                                    <button class="message-btn">
+                                        <i class="fas fa-comment"></i>
+                                    </button>
+                                </div>
+
+                                <div class="contact-item">
+                                    <div class="contact-avatar">
+                                        
+                                    </div>
+                                    <div class="contact-name">James</div>
+                                    <button class="message-btn">
+                                        <i class="fas fa-comment"></i>
+                                    </button>
+                                </div>
+                            </div>
+
+                            <div class="view-all">
+                                <button class="view-all-btn">View All</button>
+                            </div>
+                        </div>
+
+                        <!-- Messages Section -->
+                        <div class="messages-section">
+                            <div class="section-header">
+                                <h3 style=" font-size: 25px;font:poppins; font-weight: bold">Messages</h3>
+                            </div>
+
+                            <div class="search-bar">
+                                <input type="text" placeholder="Search here">
+                                <i class="fas fa-search"></i>
+                            </div>
+
+                            <div class="messages-list">
+                                <div class="message-item">
+                                    <div class="message-avatar">
+                                       
+                                    </div>
+                                    <div class="message-content">
+                                        <div class="message-sender">Tyler Harrison</div>
+                                        <div class="message-text">Hey, how's it going?</div>
+                                    </div>
+                                    <div class="message-time">10:30 AM</div>
+                                </div>
+
+                                <div class="message-item">
+                                    <div class="message-avatar">
+                                       
+                                    </div>
+                                    <div class="message-content">
+                                        <div class="message-sender">Veronica Powers</div>
+                                        <div class="message-text">Don't forget the email doc.</div>
+                                    </div>
+                                    <div class="message-time">11:45 AM</div>
+                                    <div class="unread-indicator"></div>
+                                </div>
+
+                                <div class="message-item">
+                                    <div class="message-avatar">
+                                        
+                                    </div>
+                                    <div class="message-content">
+                                        <div class="message-sender">James</div>
+                                        <div class="message-text">When should we meet?</div>
+                                    </div>
+                                    <div class="message-time">12:15 PM</div>
+                                </div>
+
+                                <div class="message-item">
+                                    <div class="message-avatar">
+                                       
+                                    </div>
+                                    <div class="message-content">
+                                        <div class="message-sender">Ken Piao</div>
+                                        <div class="message-text">Here's another message...</div>
+                                    </div>
+                                    <div class="message-time">1:30 PM</div>
+                                    <div class="unread-indicator"></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </main>
+
+        <!-- Right Sidebar -->
+        <aside class="right-sidebar">
+            <!-- Activity Section -->
+            <div class="actions">
+                <div class="notifications">
+                    <i class="far fa-bell"></i>
+                    <span class="badge">3</span>
+                    <img src="https://via.placeholder.com/40" alt="Admin Profile">
+                </div>
+                
+                
+                   
+            </div>
+                <div class="section-header">
+                    <h3>Latest Activity</h3>
+                </div>
+
+                <div class="activity-list">
+                    <div class="activity-item">
+                        <div class="activity-avatar">
+                            <img src="https://via.placeholder.com/40" alt="Walter Pinkman">
+                        </div>
+                        <div class="activity-content">
+                            <span class="activity-user">Walter Pinkman</span> has created a new case file
+                            <div class="activity-time">1:45 PM</div>
+                        </div>
+                    </div>
+
+                    <div class="activity-item">
+                        <div class="activity-avatar">
+                            <img src="https://via.placeholder.com/40" alt="Max Hernandez">
+                        </div>
+                        <div class="activity-content">
+                            <span class="activity-user">Max Hernandez</span> updated an incident documentation
+                            <div class="activity-time">2:30 PM</div>
+                        </div>
+                    </div>
+
+                    <div class="activity-item">
+                        <div class="activity-avatar">
+                            <img src="https://via.placeholder.com/40" alt="Joan Arquette">
+                        </div>
+                        <div class="activity-content">
+                            <span class="activity-user">Joan Arquette</span> shared a file with you and others
+                            <div class="activity-time">3:15 PM</div>
+                        </div>
+                    </div>
+                </div>
+            
+        </aside>
+    </div>
+
+    <script>
+        // Simple JavaScript for interactivity
+        document.addEventListener('DOMContentLoaded', function() {
+            // Toggle active class on sidebar menu items
+            const menuItems = document.querySelectorAll('.nav-menu li');
+
+            menuItems.forEach(item => {
+                item.addEventListener('click', function() {
+                    menuItems.forEach(i => i.classList.remove('active'));
+                    this.classList.add('active');
+                });
+            });
+
+            // Contact message buttons
+            const messageButtons = document.querySelectorAll('.message-btn');
+
+            messageButtons.forEach(button => {
+                button.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    alert('Opening message window');
+                });
+            });
+
+            // View all button
+            const viewAllButton = document.querySelector('.view-all-btn');
+
+            viewAllButton.addEventListener('click', function() {
+                alert('Loading all contacts');
+            });
+        });
+    </script>
+</body>
+</html>
