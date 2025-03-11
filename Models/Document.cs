@@ -1,9 +1,12 @@
-public class Document
+namespace Vista_Subdivision
 {
-    public int Id { get; set; }
-    public int UserId { get; set; }
-    public User User { get; set; } // Navigation Property
-    public string ProofOfOwnership { get; set; }
-    public string ValidID { get; set; }
-    public string UtilityBill { get; set; }
+    public class Document
+    {
+        public int Id { get; set; }
+        public int UserId { get; set; }
+        public User User { get; set; } = null!; // Navigation Property
+        public string ProofOfOwnership { get; set; } = null!;
+        public string ValidID { get; set; } = null!;
+        public string UtilityBill { get; set; } = null!;
+    }
 }

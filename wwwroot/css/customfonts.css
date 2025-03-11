@@ -1,0 +1,69 @@
+﻿@font-face {
+    font-family: 'Besley-Regular';
+    src: url('/fonts/Besley-Regular.ttf') format('truetype');
+}
+@font-face {
+    font-family: 'Besley-Medium';
+    src: url('/fonts/Besley-Medium.ttf') format('truetype');
+}
+@font-face {
+    font-family: 'Besley-Bold';
+    src: url('/fonts/Besley-Bold.ttf') format('truetype');
+}
+@font-face {
+    font-family: 'Besley-ExtraBold';
+    src: url('/fonts/Besley-ExtraBold.ttf') format('truetype');
+}
+@font-face {
+    font-family: 'Besley-Italic';
+    src: url('/fonts/Besley-Italic.ttf') format('truetype');
+}
+@font-face {
+    font-family: 'Besley-SemiBold';
+    src: url('/fonts/Besley-SemiBold.ttf') format('truetype');
+}
+@font-face {
+    font-family: 'Besley-Black';
+    src: url('/fonts/Besley-Black.ttf') format('truetype');
+}
+@font-face {
+    font-family: 'Poppins-Black';
+    src: url('/fonts/Poppins-Black.ttf') format('truetype');
+}
+@font-face {
+    font-family: 'Poppins-Bold';
+    src: url('/fonts/Poppins-Bold.ttf') format('truetype');
+}
+@font-face {
+    font-family: 'Poppins-ExtraBold';
+    src: url('/fonts/Poppins-ExtraBold.ttf') format('truetype');
+}
+@font-face {
+    font-family: 'Poppins-ExtraLight';
+    src: url('/fonts/Poppins-ExtraLight.ttf') format('truetype');
+}
+@font-face {
+    font-family: 'Poppins-Italic';
+    src: url('/fonts/Poppins-Italic.ttf') format('truetype');
+}
+@font-face {
+    font-family: 'Poppins-Light';
+    src: url('/fonts/Poppins-Light.ttf') format('truetype');
+}
+@font-face {
+    font-family: 'Poppins-Medium';
+    src: url('/fonts/Poppins-Medium.ttf') format('truetype');
+}
+@font-face {
+    font-family: 'Poppins-Regular';
+    src: url('/fonts/Poppins-Regular.ttf') format('truetype');
+}
+@font-face {
+    font-family: 'Poppins-SemiBold';
+    src: url('/fonts/Poppins-SemiBold.ttf') format('truetype');
+}
+@font-face {
+    font-family: 'Poppins-Thin';
+    src: url('/fonts/Poppins-Thin.ttf') format('truetype');
+
+}

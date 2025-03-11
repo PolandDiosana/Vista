@@ -1,4 +1,6 @@
-﻿<!DOCTYPE html>
+﻿@page
+@model Vista_Subdivision.Pages.Register2Model
+<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -64,7 +66,7 @@
 
         .field-divider {
             border: 10px;
-            height: 10px;
+            height: 1px;
             background-color: #c6a57c;
             margin: 20px 0;
         }
@@ -110,26 +112,28 @@
     </style>
 </head>
 <body>
-<form action="/home/register3" method="post">
+
     <div class="container-wrapper">
         <!-- Content -->
-        <div class="content-wrapper">
-            <!-- Left Column (Form) -->
-            <div class="left-column">
-                <h2 class="text-center mb-4"><img src="/Images/logo.png" alt="Logo" width="50"> vista.</h2>
+        <form method="post">
+            @Html.AntiForgeryToken()
+            <div class="content-wrapper">
+                <!-- Left Column (Form) -->
+                <div class="left-column">
+                    <h2 class="text-center mb-4"><img src="/Images/logo.png" alt="Logo" width="50"> vista.</h2>
                     <div class="row mb-3">
                         <div class="col-md-6">
                             <label class="form-label">Lot Number</label>
-                            <input type="text" class="form-control" required>
+                            <input asp-for="Input.LotNumber" name="Input.LotNumber" type="text" class="form-control" required>
                         </div>
                         <div class="col-md-6">
                             <label class="form-label">Block Number</label>
-                            <input type="text" class="form-control" required>
+                            <input asp-for="Input.BlockNumber" name="Input.BlockNumber" type="text" class="form-control" required>
                         </div>
                     </div>
                     <div class="mb-3">
                         <label class="form-label">House Type</label>
-                        <select class="form-select">
+                        <select asp-for="Input.HouseType" name="Input.HouseType" class="form-select">
                             <option>Town House</option>
                             <option>Single Detached</option>
                             <option>Duplex</option>
@@ -140,46 +144,46 @@
                     <div class="row mb-3">
                         <div class="col-md-6">
                             <label class="form-label">Subdivision Name</label>
-                            <input type="text" class="form-control" required>
+                            <input asp-for="Input.SubdivisionName" name="Input.SubdivisionName" type="text" class="form-control" required>
                         </div>
                         <div class="col-md-6">
                             <label class="form-label">City / Municipality</label>
-                            <input type="text" class="form-control" required>
+                            <input asp-for="Input.CityMunicipality" name="Input.CityMunicipality" type="text" class="form-control" required>
                         </div>
                     </div>
                     <div class="row mb-3">
                         <div class="col-md-6">
                             <label class="form-label">Street Name</label>
-                            <input type="text" class="form-control" required>
+                            <input asp-for="Input.StreetName" name="Input.StreetName" type="text" class="form-control" required>
                         </div>
                         <div class="col-md-6">
                             <label class="form-label">Province</label>
-                            <input type="text" class="form-control" required>
+                            <input asp-for="Input.Province" name="Input.Province" type="text" class="form-control" required>
                         </div>
                     </div>
                     <div class="mb-3">
                         <label class="form-label">Phase (if applicable)</label>
-                        <input type="text" class="form-control" required>
+                        <input asp-for="Input.Phase" name="Input.Phase" type="text" class="form-control" required>
                     </div>
+                </div>
+
+                <!-- Right Column (Image) -->
+                <div class="right-column"></div>
             </div>
 
-            <!-- Right Column (Image) -->
-            <div class="right-column"></div>
-        </div>
-
-        <!-- Progress Bar & Buttons -->
-        <div class="progress-container">
-            <div class="progress">
-                <div class="progress-bar" style="width: 66%;"></div>
+            <!-- Progress Bar & Buttons -->
+            <div class="progress-container">
+                <div class="progress">
+                    <div class="progress-bar" style="width: 100%;"></div>
+                </div>
             </div>
-        </div>
 
-        <!-- Bottom Navigation -->
+            <!-- Bottom Navigation -->
             <div class="bottom-nav">
-                <a class="btn back-btn" href="/home/register">Next</a>
-                <button type="submit" class="btn next-btn">Next</button>
+                <a class="btn back-btn" href="/Register">Back</a>
+                <button type="submit" class="btn next-btn">Register</button>
             </div>
+        </form>
     </div>
- </form>
 </body>
 </html>

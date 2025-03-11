@@ -1,23 +1,22 @@
-using Microsoft.EntityFrameworkCore;
+﻿using Microsoft.EntityFrameworkCore;
+using Vista_Subdivision.Data;
 
 var builder = WebApplication.CreateBuilder(args);
 
-// Add services to the container.
-builder.Services.AddControllersWithViews();
-
-// Add services to the container.
-builder.Services.AddControllersWithViews();
-
-try
+builder.Services.AddDistributedMemoryCache();
+builder.Services.AddSession(options =>
 {
-    builder.Services.AddDbContext<ApplicationDbContext>(options =>
+    options.IdleTimeout = TimeSpan.FromMinutes(30); // Keep session alive for 30 minutes
+    options.Cookie.HttpOnly = true;
+    options.Cookie.IsEssential = true;
+});
+
+// Add services to the container.
+builder.Services.AddControllersWithViews();
+builder.Services.AddRazorPages();
+
+builder.Services.AddDbContext<ApplicationDbContext>(options =>
         options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection")));
-}
-catch (Exception ex)
-{
-    Console.WriteLine($"Database connection error: {ex.Message}");
-    throw; // Re-throw to stop application if DB connection fails
-}
 
 var app = builder.Build();
 
@@ -28,19 +27,21 @@ if (!app.Environment.IsDevelopment())
     app.UseExceptionHandler("/Home/Error");
     // The default HSTS value is 30 days. You may want to change this for production scenarios, see https://aka.ms/aspnetcore-hsts.
     app.UseHsts();
+    app.UseDeveloperExceptionPage();
 }
+
+app.UseSession();
 
 app.UseHttpsRedirection();
 app.UseStaticFiles();
 
 app.UseRouting();
-
 app.UseAuthorization();
 
 app.MapControllerRoute(
     name: "default",
     pattern: "{controller=Home}/{action=Index}/{id?}");
 
+app.MapRazorPages();
+
 app.Run();
-
-
