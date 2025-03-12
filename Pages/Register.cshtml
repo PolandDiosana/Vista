@@ -25,6 +25,7 @@
                                 <p>Only PNG, JPG & JPEG format allowed</p>
                                 <p>500 x 500 pixels are recommended</p>
                             </div>
+                            <img id="preview" src="#" alt="Preview Image">
                         </div>
                     </div>
                     <input type="file" name="ProfileFile" id="profileImage" accept="image/png, image/jpeg" style="display: none;" onchange="previewImage(event)" required>
@@ -83,12 +84,12 @@
                         </div>
                     </div>
                     <div class="form-check mb-2">
-                        <input type="checkbox" class="form-check-input" id="updates">
-                        <label class="form-check-label" style="font-family: 'Poppins-Regular';">Send me important updates about community events and maintenance schedules.</label>
+                        <input type="checkbox" id="updates" class="form-check-input" id="updates">
+                        <label class="form-check-label" onclick="SendImportant()" style="font-family: 'Poppins-Regular';">Send me important updates about community events and maintenance schedules.</label>
                     </div>
                     <div class="form-check mb-3">
-                        <input type="checkbox" class="form-check-input">
-                        <label class="form-check-label" style="font-family: 'Poppins-Regular';">Yes, I understand and agree to the Terms of Service, including the User Agreement and Privacy Policy.</label>
+                        <input type="checkbox" id="terms" class="form-check-input">
+                        <label class="form-check-label" onclick="TermsOfService()" style="font-family: 'Poppins-Regular';">Yes, I understand and agree to the Terms of Service, including the User Agreement and Privacy Policy.</label>
                     </div>
                 </div>
             </div>
@@ -107,9 +108,13 @@
             </div>
         </form>
     </div>
-    
-
     <script>
+        function SendImportant() {
+            document.getElementById('updates').click();
+        }
+        function TermsOfService() {
+            document.getElementById("terms").click();
+        }
         function previewImage(event) {
             var reader = new FileReader();
             reader.onload = function () {
@@ -125,7 +130,5 @@
             }
         }
     </script>
-
-
 </body>
 </html>

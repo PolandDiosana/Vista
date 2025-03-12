@@ -38,9 +38,11 @@ app.UseStaticFiles();
 app.UseRouting();
 app.UseAuthorization();
 
-app.MapControllerRoute(
-    name: "default",
-    pattern: "{controller=Home}/{action=Index}/{id?}");
+app.MapGet("/", context =>
+{
+    context.Response.Redirect("/Index");
+    return Task.CompletedTask;
+});
 
 app.MapRazorPages();
 

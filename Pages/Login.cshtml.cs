@@ -69,7 +69,7 @@ namespace Vista_Subdivision.Pages
         {
             return role switch
             {
-                "Admin" => "/admin/dashboard", // REGISTER LANG SA KAY WAPAY DASHBOARD
+                "Admin" => "/Admin/dashboard", // REGISTER LANG SA KAY WAPAY DASHBOARD
                 "Staff" => "/Officer/dashboard",
                 _ => "/homeOwner/dashboard",
             };
