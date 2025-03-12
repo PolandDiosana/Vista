@@ -3,7 +3,7 @@ using Microsoft.AspNetCore.Mvc.RazorPages;
 
 namespace Vista_Subdivision.Pages
 {
-    public class IndexModel : PageModel
+    public class adminDash : PageModel
     {
         public void OnGet()
         {

@@ -7,6 +7,7 @@ namespace Vista_Subdivision.Pages
     {
         public void OnGet()
         {
+
         }
     }
 }
