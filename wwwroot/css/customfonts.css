@@ -67,3 +67,16 @@
     src: url('/fonts/Poppins-Thin.ttf') format('truetype');
 
 }
+@font-face {
+    font-family: 'DMSans-Regular';
+    src: url('/fonts/DMSans-Regular.ttf') format('truetype');
+}
+@font-face {
+    font-family: 'DMSans-Medium';
+    src: url('/fonts/DMSans-Medium.ttf') format('truetype');
+}
+@font-face {
+    font-family: 'DMSans-Bold';
+    src: url('/fonts/DMSans-Bold.ttf') format('truetype');
+}
+

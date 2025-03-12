@@ -1,0 +1,470 @@
+﻿@page
+@model Vista_Subdivision.Pages.IndexModel
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="./css/adminDash.css" rel="stylesheet" />
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/js/all.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/3.8.0/chart.min.js"></script>
+</head>
+<body>
+    <div class="app-container">
+        <!-- Sidebar -->
+        <div class="sidebar">
+            <div class="logo" >
+                <div class="logo-image"></div>
+                <img src="/Images/logo.png" alt="Vista Logo" class="logo-image">
+                <span class="logo-text">vista.</span>
+            </div>
+            <ul class="nav-list">
+                <li class="nav-item active">
+                    <i class="fas fa-th-large"></i>
+                    <span>Dashboard</span>
+                </li>
+                <li class="nav-item">
+                    <i class="fas fa-bullhorn"></i>
+                    <span>Announcements</span>
+                </li>
+                <li class="nav-item">
+                    <i class="fas fa-chart-bar"></i>
+                    <span>Reports</span>
+                </li>
+                <li class="nav-item">
+                    <i class="fas fa-user-plus"></i>
+                    <span>Account Requests</span>
+                </li>
+                <li class="nav-item">
+                    <i class="fas fa-concierge-bell"></i>
+                    <span>Service Request</span>
+                </li>
+                <li class="nav-item">
+                    <i class="fas fa-file-alt"></i>
+                    <span>Documents</span>
+                </li>
+                <li class="nav-item">
+                    <i class="fas fa-calendar"></i>
+                    <span>Events Calendar</span>
+                </li>
+                <li class="nav-item">
+                    <i class="fas fa-user-edit"></i>
+                    <span>Edit Profile</span>
+                </li>
+            </ul>
+        </div>
+
+        <!-- Main Content -->
+        <div class="main-content">
+            <div class="header">
+                <h1 class="page-title">Admin Dashboard</h1>
+                <div class="user-menu">
+                    <div class="user-info">
+                        <div class="user-name">Du Bois H.</div>
+                        <div class="user-role">Administrator</div>
+                    </div>
+                    <div class="avatar">
+                        <img src="/images/bois.png" alt="User Avatar">
+                    </div>
+                </div>
+            </div>
+
+            <div class="content">
+                <!-- Stats Grid -->
+                <div class="stats-grid">
+                    <div class="stat-card">
+                        <div class="stat-icon purple">
+                            <i class="fas fa-clock"></i>
+                        </div>
+                        <div class="stat-info">
+                            <h3>Average User Activity</h3>
+                            <p>45.5 minutes</p>
+                        </div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-icon blue">
+                            <i class="fas fa-users"></i>
+                        </div>
+                        <div class="stat-info">
+                            <h3>Total No. of Users</h3>
+                            <p>28</p>
+                        </div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-icon green">
+                            <i class="fas fa-dollar-sign"></i>
+                        </div>
+                        <div class="stat-info">
+                            <h3>Spend this month</h3>
+                            <p>$642.39</p>
+                        </div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-icon orange">
+                            <i class="fas fa-tasks"></i>
+                        </div>
+                        <div class="stat-info">
+                            <h3>Pending Requests</h3>
+                            <p>45/80</p>
+                        </div>
+                    </div>
+                </div>
+                <!-- Dashboard Grid -->
+                <div class="dashboard-grid">
+                    <!-- Total Spent -->
+                    <div class="dashboard-grid-item">
+                        <div class="chart-header">
+                            <div>
+                                <h3 class="chart-title">Total Spent</h3>
+                                <div style="display: flex; align-items: center; margin-top: 4px;">
+                                    <span style="font-size: 1.5rem; font-weight: 600; margin-right: 12px;">$37.5K</span>
+                                    <span style="color: var(--secondary-color); font-size: 0.8rem; display: flex; align-items: center;">
+                                        <i class="fas fa-arrow-up" style="margin-right: 4px;"></i> +2.45%
+                                    </span>
+                                </div>
+                            </div>
+                            <div class="chart-actions">
+                                <div class="chart-toggle active">This month</div>
+                            </div>
+                        </div>
+                        <div class="chart-container">
+                            <canvas id="spendingChart"></canvas>
+                        </div>
+                    </div>
+
+                    <!-- Activity Chart -->
+                    <div class="dashboard-grid-item grid-span-2">
+                        <div class="chart-header">
+                            <h3 class="chart-title">Activity</h3>
+                            <div class="chart-actions">
+                                <div class="chart-toggle active">Month</div>
+                            </div>
+                        </div>
+                        <div class="chart-container">
+                            <canvas id="activityChart"></canvas>
+                        </div>
+                    </div>
+
+                    <!-- Most Requested Services -->
+                    <div class="dashboard-grid-item">
+                        <div class="chart-header">
+                            <h3 class="chart-title">Most Requested Services</h3>
+                            <div class="chart-actions">
+                                <div class="chart-toggle active">Monthly</div>
+                            </div>
+                        </div>
+                        <div class="donut-chart-container">
+                            <div class="donut-chart">
+                                <canvas id="servicesChart"></canvas>
+                            </div>
+                            <div class="donut-legend">
+                                <div class="legend-item">
+                                    <div class="legend-color" style="background-color: #6366f1;"></div>
+                                    <span class="legend-text">Garbage Collection</span>
+                                    <span class="legend-percentage">63%</span>
+                                </div>
+                                <div class="legend-item">
+                                    <div class="legend-color" style="background-color: #38bdf8;"></div>
+                                    <span class="legend-text">Visitor Entry</span>
+                                    <span class="legend-percentage">25%</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Calendar -->
+                    <div class="dashboard-grid-item">
+                        <div class="calendar-header">
+                            <div class="month-nav">
+                                <i class="fas fa-chevron-left" style="cursor: pointer; color: var(--gray-500);"></i>
+                                <span class="month-title">March</span>
+                                <i class="fas fa-chevron-right" style="cursor: pointer; color: var(--gray-500);"></i>
+                            </div>
+                            <div class="year-nav">
+                                <span class="year-title">2025</span>
+                                <i class="fas fa-chevron-down" style="cursor: pointer; color: var(--gray-500); margin-left: 4px;"></i>
+                            </div>
+                        </div>
+                        <div class="calendar-days">
+                            <div class="day-name">Mo</div>
+                            <div class="day-name">Tu</div>
+                            <div class="day-name">We</div>
+                            <div class="day-name">Th</div>
+                            <div class="day-name">Fr</div>
+                            <div class="day-name">Sa</div>
+                            <div class="day-name">Su</div>
+
+                            <div class="day inactive">29</div>
+                            <div class="day inactive">30</div>
+                            <div class="day inactive">31</div>
+                            <div class="day">1</div>
+                            <div class="day">2</div>
+                            <div class="day">3</div>
+                            <div class="day">4</div>
+
+                            <div class="day">5</div>
+                            <div class="day">6</div>
+                            <div class="day">7</div>
+                            <div class="day">8</div>
+                            <div class="day">9</div>
+                            <div class="day">10</div>
+                            <div class="day">11</div>
+
+                            <div class="day today">12</div>
+                            <div class="day">13</div>
+                            <div class="day">14</div>
+                            <div class="day">15</div>
+                            <div class="day">16</div>
+                            <div class="day">17</div>
+                            <div class="day">18</div>
+
+                            <div class="day">19</div>
+                            <div class="day">20</div>
+                            <div class="day">21</div>
+                            <div class="day">22</div>
+                            <div class="day">23</div>
+                            <div class="day">24</div>
+                            <div class="day">25</div>
+
+                            <div class="day">26</div>
+                            <div class="day">27</div>
+                            <div class="day">28</div>
+                            <div class="day">29</div>
+                            <div class="day">30</div>
+                            <div class="day">31</div>
+                            <div class="day inactive">1</div>
+                        </div>
+                    </div>
+
+                    <!-- Tasks -->
+                    <div class="dashboard-grid-item">
+                        <div class="chart-header">
+                            <h3 class="chart-title">Tasks</h3>
+                            <div class="chart-actions">
+                                <i class="fas fa-ellipsis-h" style="color: var(--gray-500);"></i>
+                            </div>
+                        </div>
+                        <ul class="task-list">
+                            <li class="task-item">
+                                <div style="display: flex; align-items: center;">
+                                    <input type="checkbox" class="task-checkbox">
+                                    <span class="task-name">Landing Page Design</span>
+                                </div>
+                                <div class="task-actions">
+                                    <div class="task-action"><i class="fas fa-pencil-alt"></i></div>
+                                    <div class="task-action"><i class="fas fa-trash"></i></div>
+                                </div>
+                            </li>
+                            <li class="task-item">
+                                <div style="display: flex; align-items: center;">
+                                    <input type="checkbox" class="task-checkbox" checked>
+                                    <span class="task-name">Dashboard Builder</span>
+                                </div>
+                                <div class="task-actions">
+                                    <div class="task-action"><i class="fas fa-pencil-alt"></i></div>
+                                    <div class="task-action"><i class="fas fa-trash"></i></div>
+                                </div>
+                            </li>
+                            <li class="task-item">
+                                <div style="display: flex; align-items: center;">
+                                    <input type="checkbox" class="task-checkbox" checked>
+                                    <span class="task-name">Mobile App Design</span>
+                                </div>
+                                <div class="task-actions">
+                                    <div class="task-action"><i class="fas fa-pencil-alt"></i></div>
+                                    <div class="task-action"><i class="fas fa-trash"></i></div>
+                                </div>
+                            </li>
+                            <li class="task-item">
+                                <div style="display: flex; align-items: center;">
+                                    <input type="checkbox" class="task-checkbox">
+                                    <span class="task-name">Illustrations</span>
+                                </div>
+                                <div class="task-actions">
+                                    <div class="task-action"><i class="fas fa-pencil-alt"></i></div>
+                                    <div class="task-action"><i class="fas fa-trash"></i></div>
+                                </div>
+                            </li>
+                            <li class="task-item">
+                                <div style="display: flex; align-items: center;">
+                                    <input type="checkbox" class="task-checkbox">
+                                    <span class="task-name">Promotional LP</span>
+                                </div>
+                                <div class="task-actions">
+                                    <div class="task-action"><i class="fas fa-pencil-alt"></i></div>
+                                    <div class="task-action"><i class="fas fa-trash"></i></div>
+                                </div>
+                            </li>
+                        </ul>
+                    </div>
+
+                    <!-- People Activity -->
+                    <div class="dashboard-grid-item">
+                        <div class="chart-header">
+                            <h3 class="chart-title">Team Activity</h3>
+                            <div class="chart-actions">
+                                <div class="chart-toggle active">Recent</div>
+                            </div>
+                        </div>
+                        <div class="people-list">
+                            <div class="people-item">
+                                <div class="people-avatar">
+                                    <img src="/images/girl.png" alt="User Avatar">
+                                </div>
+                                <div class="people-info">
+                                    <div class="people-name">Jennifer L.</div>
+                                    <div class="people-role">Added a new document</div>
+                                </div>
+                                <div class="people-actions">
+                                    <button class="btn btn-secondary">View</button>
+                                </div>
+                            </div>
+                            <div class="people-item">
+                                <div class="people-avatar">
+                                    <img src="/images/boy.png" alt="User Avatar">
+                                </div>
+                                <div class="people-info">
+                                    <div class="people-name">Robert K.</div>
+                                    <div class="people-role">Updated profile info</div>
+                                </div>
+                                <div class="people-actions">
+                                    <button class="btn btn-secondary">View</button>
+                                </div>
+                            </div>
+                            <div class="people-item">
+                                <div class="people-avatar">
+                                    <img src="/images/rocknroll.png" alt="User Avatar">
+                                </div>
+                                <div class="people-info">
+                                    <div class="people-name">Emma S.</div>
+                                    <div class="people-role">Created a new event</div>
+                                </div>
+                                <div class="people-actions">
+                                    <button class="btn btn-secondary">View</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Initialize charts when DOM is loaded
+        document.addEventListener('DOMContentLoaded', function() {
+            // Activity Chart
+            const activityChart = new Chart(
+                document.getElementById('activityChart'),
+                {
+                    type: 'bar',
+                    data: {
+                        labels: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'],
+                        datasets: [{
+                            label: 'User Activity',
+                            data: [65, 59, 80, 81, 56, 55, 40, 42, 60, 70, 75, 80],
+                            backgroundColor: 'rgba(99, 102, 241, 0.1)',
+                            borderColor: 'rgba(99, 102, 241, 1)',
+                            borderWidth: 2,
+                            tension: 0.4,
+                            fill: true
+                        }]
+                    },
+                    options: {
+                        responsive: true,
+                        maintainAspectRatio: false,
+                        plugins: {
+                            legend: {
+                                display: false
+                            }
+                        },
+                        scales: {
+                            y: {
+                                beginAtZero: true,
+                                grid: {
+                                    borderDash: [2, 4],
+                                    color: 'rgba(0, 0, 0, 0.05)'
+                                }
+                            },
+                            x: {
+                                grid: {
+                                    display: false
+                                }
+                            }
+                        }
+                    }
+                }
+            );
+
+            // Spending Chart
+            const spendingChart = new Chart(
+                document.getElementById('spendingChart'),
+                {
+                    type: 'line',
+                    data: {
+                        labels: ['Sep', 'Oct', 'Nov', 'Dec'],
+                        datasets: [{
+                            label: 'Spending',
+                            data: [2000, 9800, 2500, 9200],
+                            backgroundColor: 'rgba(16, 185, 129, 0.2)',
+                            borderColor: '#4318FF',
+                            borderWidth: 2,
+                            borderRadius: 5,
+                            barThickness: 20
+                        }]
+                    },
+                    options: {
+                        responsive: true,
+                        maintainAspectRatio: false,
+                        plugins: {
+                            legend: {
+                                display: false
+                            }
+                        },
+                        scales: {
+                            y: {
+                                beginAtZero: true,
+                                grid: {
+                                    borderDash: [2, 4],
+                                    color: 'rgba(0, 0, 0, 0.05)'
+                                }
+                            },
+                            x: {
+                                grid: {
+                                    display: false
+                                }
+                            }
+                        }
+                    }
+                }
+            );
+
+            // Services Chart
+            const servicesChart = new Chart(
+                document.getElementById('servicesChart'),
+                {
+                    type: 'pie',
+                    data: {
+                        labels: ['Garbage Collection', 'Visitor Entry', 'Other'],
+                        datasets: [{
+                            data: [63, 25, 12],
+                            backgroundColor: ['#6366f1', '#38bdf8', '#e5e7eb'],
+                            borderWidth: 0
+                        }]
+                    },
+                    options: {
+                        responsive: true,
+                        maintainAspectRatio: false,
+                        cutout: '75%',
+                        plugins: {
+                            legend: {
+                                display: false
+                            }
+                        }
+                    }
+                }
+            );
+        });
+    </script>
+</body>
+</html>
