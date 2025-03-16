@@ -1,0 +1,404 @@
+﻿/* Root variables for theme colors and common styles */
+:root {
+    --primary-color: #f0a500;
+    --sidebar-bg: #FFFFFF;
+    --header-bg: #ffffff;
+    --card-bg: #ffffff;
+    --text-color: #696969;
+    --light-text: #888888;
+    --border-color: #e6e6e6;
+    --hover-bg: #CCB38B;
+    --unread-color: #f0a500;
+    --body-bg: #f5f7fa;
+}
+
+/* Reset margin and padding for all elements */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* Body styles */
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background-color: var(--body-bg);
+    color: var(--text-color);
+}
+
+/* Wrapper for the entire dashboard layout */
+.dashboard-wrapper {
+    display: flex;
+    min-height: 100vh;
+}
+
+/* Sidebar styles */
+.sidebar {
+    width: 339px;
+    background-color: var(--sidebar-bg);
+    padding: 20px 0;
+    color: #696969;
+    display: flex;
+    flex-direction: column;
+}
+
+/* Logo styles */
+.logo {
+    display: flex;
+    align-items: center;
+    margin-bottom: 10px;
+    padding: 20px 20px;
+}
+
+    .logo img {
+        height: 150px;
+        width: 150px;
+        margin-right: 10px;
+    }
+
+    .logo span {
+        font-size: 22px;
+        font-weight: 700;
+    }
+
+/* Navigation menu styles */
+.nav-menu {
+    flex-grow: 1;
+}
+
+    .nav-menu ul {
+        list-style: none;
+        padding: 0;
+        margin: 0;
+    }
+
+    .nav-menu li {
+        margin-bottom: 10px;
+        width: 286.1px;
+        height: 49px;
+        margin-left: 20px;
+    }
+
+    .nav-menu a {
+        display: flex;
+        align-items: center;
+        padding: 12px 20px;
+        color: #696969;
+        text-decoration: none;
+        transition: background-color 0.3s;
+        border-radius: 15px;
+    }
+
+        .nav-menu a:hover, .nav-menu li.active a {
+            background-color: #CCB38B;
+            border-radius: 15px;
+            width: 286.1px;
+            height: 49px;
+        }
+
+    .nav-menu i {
+        width: 20px;
+        margin-right: 10px;
+    }
+
+/* Main content styles */
+.main-content {
+    flex-grow: 1;
+    display: flex;
+    flex-direction: column;
+}
+
+.content {
+    padding: 30px;
+    flex-grow: 1;
+}
+
+/* Facility reservation container styles */
+.facility-reservation-container {
+    display: flex;
+    gap: 30px;
+}
+
+/* Facility selection styles */
+.facility-selection {
+    flex: 1;
+}
+
+    .facility-selection h3 {
+        margin-bottom: 20px;
+    }
+
+.facility-list {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+/* Facility item styles */
+.facility-item {
+    display: flex;
+    align-items: center;
+    padding: 10px;
+    border: 1px solid var(--border-color);
+    border-radius: 8px;
+    transition: background-color 0.3s;
+    font-family: 'Poppins', sans-serif;
+    font-size: 15px;
+}
+
+    .facility-item:hover {
+        background-color: var(--hover-bg);
+    }
+
+    .facility-item img {
+        width: 80px;
+        height: 80px;
+        border-radius: 8px;
+        margin-right: 20px;
+    }
+
+.facility-info h4 {
+    margin: 0;
+    font-size: 18px;
+    font-weight: 600;
+}
+
+.facility-info p {
+    margin: 5px 0 0;
+    color: var(--light-text);
+}
+
+/* Reservation details styles */
+.reservation-details {
+    flex: 1;
+    padding: 1px;
+    font-family: poppins;
+    font-weight: medium;
+    font-size: 20px;
+}
+
+    .reservation-details h3 {
+        margin-bottom: 5px;
+        margin-top: 1px;
+    }
+
+#reservation-date {
+    width: 100%;
+    padding: 5px;
+    border: 1px solid var(--border-color);
+    border-radius: 4px;
+    margin-bottom: 20px;
+}
+
+/* Time slots styles */
+.time-slots {
+    display: flex;
+    gap: 10px;
+    margin-bottom: 20px;
+}
+
+.time-slot {
+    flex: 1;
+    padding: 10px;
+    border: 1px solid var(--border-color);
+    border-radius: 4px;
+    background-color: var(--card-bg);
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+    .time-slot:hover {
+        background-color: var(--hover-bg);
+    }
+
+/* Reservation summary styles */
+.reservation-summary {
+    padding: 20px;
+    border: 1px solid var(--border-color);
+    border-radius: 8px;
+    background-color: var(--card-bg);
+    margin-bottom: 20px;
+}
+
+    .reservation-summary p {
+        margin: 10px 0;
+    }
+
+/* Reservation actions styles */
+.reservation-actions {
+    display: flex;
+    gap: 10px;
+}
+
+.cancel-btn, .confirm-btn {
+    flex: 1;
+    padding: 10px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.cancel-btn {
+    background-color: #888888;
+    color: #ffffff;
+}
+
+    .cancel-btn:hover {
+        background-color: #666666;
+    }
+
+.confirm-btn {
+    background-color: var(--primary-color);
+    color: #ffffff;
+}
+
+    .confirm-btn:hover {
+        background-color: #cc8a00;
+    }
+
+/* Facility reservation container styles */
+.facility-reservation-container {
+    display: flex;
+    flex-direction: column;
+    gap: 30px;
+}
+
+/* Facility selection styles */
+.facility-selection {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 20px;
+}
+
+    .facility-selection h3 {
+        grid-column: span 2;
+        margin-bottom: 20px;
+    }
+
+/* Facility item styles */
+.facility-item {
+    display: flex;
+    align-items: center;
+    padding: 5px;
+    border: 1px solid var(--border-color);
+    border-radius: 8px;
+    transition: background-color 0.3s;
+    width: 614px;
+    height: 82px;
+}
+
+    .facility-item:hover {
+        background-color: var(--hover-bg);
+    }
+
+    .facility-item img {
+        width: 101.89px;
+        height: 59px;
+        border-radius: 8px;
+        margin-right: 20px;
+    }
+
+.facility-info h4 {
+    margin: 0;
+    font-size: 18px;
+    font-weight: 600;
+}
+
+.facility-info p {
+    margin: 5px 0 0;
+    color: var(--light-text);
+}
+
+/* Reservation details styles */
+.reservation-details {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+    .reservation-details h3 {
+        margin-bottom: 10px;
+    }
+
+#reservation-date {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid var(--border-color);
+    border-radius: 4px;
+}
+
+/* Time slots styles */
+.time-slots {
+    display: flex;
+    gap: 10px;
+}
+
+.time-slot {
+    flex: 1;
+    padding: 10px;
+    border: 1px solid var(--border-color);
+    border-radius: 4px;
+    background-color: var(--card-bg);
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+    .time-slot:hover {
+        background-color: var(--hover-bg);
+    }
+
+/* Reservation summary styles */
+.reservation-summary {
+    padding: 20px;
+    border: 1px solid var(--border-color);
+    border-radius: 8px;
+    background-color: var(--card-bg);
+}
+
+    .reservation-summary p {
+        margin: 10px 0;
+    }
+
+/* Reservation actions styles */
+.reservation-actions {
+    display: flex;
+    gap: 10px;
+}
+
+.cancel-btn, .confirm-btn {
+    flex: 1;
+    padding: 10px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.cancel-btn {
+    background-color: #888888;
+    color: #ffffff;
+}
+
+    .cancel-btn:hover {
+        background-color: #666666;
+    }
+
+.confirm-btn {
+    background-color: var(--primary-color);
+    color: #ffffff;
+}
+
+    .confirm-btn:hover {
+        background-color: #cc8a00;
+    }
+
+/* Container styles */
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 20px;
+    background-color: var(--card-bg);
+    border-radius: 8px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+}

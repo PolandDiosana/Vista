@@ -1,6 +1,4 @@
 @page
-
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -8,7 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Reservation - Vista</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <link rel="stylesheet" href="~/css/officerdashboard.css">
+    <link rel="stylesheet" href="~/css/facilityReservation.css">
 </head>
 <body>
     <div class="dashboard-wrapper">
@@ -28,15 +26,15 @@
                         </a>
                     </li>
                     <li>
-                        <a href="/homeOwner/Announcements">
-                            <i class="fas fa-bullhorn"></i>
-                            <span>Announcements</span>
-                        </a>
-                    </li>
-                    <li>
                         <a href="/homeOwner/BillingPayments">
                             <i class="fas fa-file-invoice-dollar"></i>
                             <span>Billing & Payments</span>
+                        </a>
+                    </li>
+                    <li class="active">
+                        <a href="/homeOwner/Announcements">
+                            <i class="fas fa-bullhorn"></i>
+                            <span>Announcements</span>
                         </a>
                     </li>
                     <li class="active">
@@ -72,39 +70,81 @@
                 </ul>
             </nav>
         </aside>
- 
-            <!-- Main Content -->
-        <main class="main-content">
-            <!-- Top Bar -->
-            <!-- Dashboard Content -->
-            <div class="content">
-                <div class="dashboard-container">
-                    <!-- Officer Profile Card -->
-                    <h2 style="margin-left:50px; font-size: 32px;font:poppins; font-weight: bold;">FACILITIES RESERVATION</h2>
-                    <div class="officer-profile-card">
-                        <div class="profile-content">
-                            <div class="profile-avatar">
-                                
-                            </div>
-                            <div class="profile-info">
-                                
 
-                                <div class="contact-details">
-                                    <div class="contact-item">
-                                        
+        <!-- Main Content -->
+            <main class="main-content">
+                <div class="content">
+                        <h2>Facility Reservation</h2>
+                        <div class="facility-reservation-container">
+                            <div class="facility-selection">
+                                <h3>Select a facility</h3>
+                                <div class="facility-item">
+                                    <img src="~/Images/swimming pool.png" alt="Swimming Pool">
+                                    <div class="facility-info">
+                                        <h4>Swimming Pool</h4>
+                                        <p>Max Capacity: 30</p>
                                     </div>
-                                    <div class="contact-item">
-                                        
-                                        
+                                </div>
+                                <div class="facility-item">
+                                    <img src="~/Images/tennis court.png" alt="Tennis Court">
+                                    <div class="facility-info">
+                                        <h4>Tennis Court</h4>
+                                        <p>Max Capacity: 8</p>
+                                    </div>
+                                </div>
+                                <div class="facility-item">
+                                    <img src="~/Images/basketball court.png" alt="Basketball Court">
+                                    <div class="facility-info">
+                                        <h4>Basketball Court</h4>
+                                        <p>Max Capacity: 20</p>
+                                    </div>
+                                </div>
+                                <div class="facility-item">
+                                    <img src="~/Images/function hall.png" alt="Function Hall">
+                                    <div class="facility-info">
+                                        <h4>Function Hall</h4>
+                                        <p>Max Capacity: 50</p>
+                                    </div>
+                                </div>
+                                <div class="facility-item">
+                                    <img src="~/Images/roomA.png" alt="Room A">
+                                    <div class="facility-info">
+                                        <h4>Room A</h4>
+                                        <p>Max Capacity: 2</p>
+                                    </div>
+                                </div>
+                                <div class="facility-item">
+                                    <img src="~/Images/roomB.png" alt="Room B">
+                                    <div class="facility-info">
+                                        <h4>Room B</h4>
+                                        <p>Max Capacity: 2</p>
                                     </div>
                                 </div>
                             </div>
+                            <div class="reservation-details">
+                                <h3>Select Date</h3>
+                                <input type="date" id="reservation-date" name="reservation-date">
+                                <h3>Available Time Slots</h3>
+                                <div class="time-slots">
+                                    <button class="time-slot">06:00 - 08:00</button>
+                                    <button class="time-slot">16:00 - 18:00</button>
+                                    <button class="time-slot">18:00 - 20:00</button>
+                                </div>
+                                <h3>Reservation Summary</h3>
+                                <div class="reservation-summary">
+                                    <p>Facility: <span id="summary-facility">Swimming Pool</span></p>
+                                    <p>Date: <span id="summary-date">03/12/2025</span></p>
+                                    <p>Time: <span id="summary-time">06:00 - 08:00</span></p>
+                                </div>
+                                <div class="reservation-actions">
+                                    <button class="cancel-btn">Cancel</button>
+                                    <button class="confirm-btn">Confirm Reservation</button>
+                                </div>
+
+                            </div>
                         </div>
-                    </div>
                 </div>
-            </div> 
-        </main>
+            </main>
     </div>
 </body>
-</html>   
-
+</html>

@@ -1,8 +1,5 @@
 @page
-@model Vista_Subdivision.Pages.homeOwner.DashboardModel
-@{
-    ViewData["Title"] = "HomeOwner Dashboard - Vista";
-}
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -30,19 +27,19 @@
                         </a>
                     </li>
                     <li>
-                        <a asp-page="/homeOwner/Announcements">
+                        <a href="/homeOwner/Announcements">
                             <i class="fas fa-bullhorn"></i>
                             <span>Announcements</span>
                         </a>
                     </li>
                     <li>
-                        <a asp-page="/homeOwner/BillingPayments">
+                        <a href="/homeOwner/BillingPayments">
                             <i class="fas fa-file-invoice-dollar"></i>
                             <span>Billing & Payments</span>
                         </a>
                     </li>
                     <li>
-                        <a asp-page="/homeOwner/FacilityReservation">
+                        <a href="~/homeOwner/FacilityReservation">
                             <i class="fas fa-calendar-check"></i>
                             <span>Facility Reservation</span>
                         </a>

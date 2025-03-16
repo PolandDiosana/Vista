@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Officer Dashboard - Vista</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <link rel="stylesheet" href="~/css/officerdashboard.css">
+    <link rel="stylesheet" href="~/css/announcement.css">
 </head>
 <body>
     <div class="dashboard-wrapper">
@@ -73,35 +73,94 @@
 
         <!-- Main Content -->
         <main class="main-content">
-            <!-- Top Bar -->
-            <!-- Dashboard Content -->
             <div class="content">
-                <div class="dashboard-container">
-                    <!-- Officer Profile Card -->
-                    <h2 style="margin-left:50px; font-size: 32px;font:poppins; font-weight: bold;">Announcement</h2>
-                    <div class="officer-profile-card">
-                        <div class="profile-content">
-                            <div class="profile-avatar">
-                                
+                <h2>Announcements</h2>
+                <div class="announcement-container">
+                    <div class="announcement-header">
+                        <button class="active">All Announcements</button>
+                        <button>Facility</button>
+                        <button>Events</button>
+                        <button>Security</button>
+                        <button>Maintenance</button>
+                    </div>
+                   
+                    <div class="announcement-list">
+                        <div class="announcement-item">
+                            <div class="announcement-avatar">
+                                <img src="~/Images/girl.png" alt="User Avatar">
                             </div>
-                            <div class="profile-info">
-                                
-
-                                <div class="contact-details">
-                                    <div class="contact-item">
-                                        
-                                    </div>
-                                    <div class="contact-item">
-                                        
-                                        
-                                    </div>
+                            <div class="announcement-content">
+                                <h3>Community Pool Maintenance</h3>
+                                <p>March 15, 2025 - Maintenance - Facility</p>
+                                <p>The community swimming pool will be closed for maintenance from March 10 - 11. We are placing the filtration system and repairing some tiles.</p>
+                                <p>Attachments: <a href="#">pool_maintenance_schedule.pdf</a></p>
+                                <div class="announcement-actions">
+                                    <button>Read More</button>
+                                    <button>Reply</button>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="announcement-item">
+                            <div class="announcement-avatar">
+                                <img src="~/Images/bois.png" alt="User Avatar">
+                            </div>
+                            <div class="announcement-content">
+                                <h3>Annual Homeowners Meeting</h3>
+                                <p>March 15, 2025 - Homeowners - Meeting</p>
+                                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi.</p>
+                                <p>Attachments: <a href="#">homeowners_meeting.pdf</a></p>
+                                <div class="announcement-actions">
+                                    <button>Read More</button>
+                                    <button>Reply</button>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="announcement-item">
+                            <div class="announcement-avatar">
+                                <img src="~/Images/kim.png" alt="User Avatar">
+                            </div>
+                            <div class="announcement-content">
+                                <h3>Spring Cleaning 2025</h3>
+                                <p>March 15, 2025 - Homeowners - Meeting</p>
+                                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi.</p>
+                                <p>Attachments: <a href="#">homeowners_meeting.pdf</a></p>
+                                <div class="announcement-actions">
+                                    <button>Read More</button>
+                                    <button>Reply</button>
                                 </div>
                             </div>
                         </div>
                     </div>
                 </div>
-            </div> 
+            </div>
         </main>
+
+        <!-- Right Sidebar -->
+        <aside class="right-sidebar">
+            <div class="user-profile">
+                <img src="~/Images/bois.png" alt="User Avatar">
+                <h4>Du Bois H.</h4>
+                <p>Officer</p>
+            </div>
+            <div class="latest-activity">
+                <h3>Latest Activity</h3>
+                <div class="activity-item">
+                    <img src="~/Images/aiden.png" alt="User Avatar">
+                    <p>Aiden Pierce recently created a new task for Homeowners</p>
+                    <span>2 February 2025, 13:45 PM</span>
+                </div>
+                <div class="activity-item">
+                    <img src="~/Images/kim.png" alt="User Avatar">
+                    <p>Kim Kitsuragi posted an update on Basketball Court Renovation</p>
+                    <span>2 February 2025, 13:45 PM</span>
+                </div>
+                <div class="activity-item">
+                    <img src="~/Images/jean.png" alt="User Avatar">
+                    <p>Jean Vicquemare created a new community event for Homeowners and Officers</p>
+                    <span>2 February 2025, 13:45 PM</span>
+                </div>
+            </div>
+        </aside>
     </div>
 </body>
-</html>   
+</html>
