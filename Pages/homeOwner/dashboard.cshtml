@@ -1,10 +1,14 @@
 @page
+@model Vista_Subdivision.Pages.homeOwner.DashboardModel
+@{
+    ViewData["Title"] = "HomeOwner Dashboard - Vista";
+}
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>HomeOwner Dashboard - Vista</title>
+    <title>@ViewData["Title"]</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link rel="stylesheet" href="~/css/homeownerdashboard.css">
 </head>
@@ -20,49 +24,49 @@
             <nav class="nav-menu">
                 <ul>
                     <li class="active">
-                        <a href="/homeOwner/dashboard">
+                        <a asp-page="/homeOwner/dashboard">
                             <i class="fas fa-th-large"></i>
                             <span>Dashboard</span>
                         </a>
                     </li>
                     <li>
-                        <a href="/homeOwner/Announcements">
+                        <a asp-page="/homeOwner/Announcements">
                             <i class="fas fa-bullhorn"></i>
                             <span>Announcements</span>
                         </a>
                     </li>
                     <li>
-                        <a href="/homeOwner/BillingPayments">
+                        <a asp-page="/homeOwner/BillingPayments">
                             <i class="fas fa-file-invoice-dollar"></i>
                             <span>Billing & Payments</span>
                         </a>
                     </li>
                     <li>
-                        <a href="/homeOwner/FacilityReservation">
+                        <a asp-page="/homeOwner/FacilityReservation">
                             <i class="fas fa-calendar-check"></i>
                             <span>Facility Reservation</span>
                         </a>
                     </li>
                     <li>
-                        <a href="/homeOwner/ServiceRequest">
+                        <a asp-page="/homeOwner/ServiceRequest">
                             <i class="fas fa-hands-helping"></i>
                             <span>Service Request</span>
                         </a>
                     </li>
                     <li>
-                        <a href="/homeOwner/Documents">
+                        <a asp-page="/homeOwner/Documents">
                             <i class="fas fa-file-alt"></i>
                             <span>Documents</span>
                         </a>
                     </li>
                     <li>
-                        <a href="/homeOwner/EventsScheduled">
+                        <a asp-page="/homeOwner/EventsScheduled">
                             <i class="fas fa-calendar-alt"></i>
                             <span>Events Scheduled</span>
                         </a>
                     </li>
                     <li>
-                        <a href="/homeOwner/EditProfile">
+                        <a asp-page="/homeOwner/EditProfile">
                             <i class="fas fa-user-circle"></i>
                             <span>Edit Profile</span>
                         </a>
@@ -86,7 +90,8 @@
                             </div>
                             <div class="profile-info">
                                 <h3>Hunter De Bois</h3>
-                                
+                                <p>Officer</p>
+                                <p>Le Caillou, Revachol</p>
 
                                 <div class="contact-details">
                                     <div class="contact-item">
@@ -113,7 +118,7 @@
                         <!-- Contacts Section -->
                         <div class="contacts-section">
                             <div class="section-header">
-                                <h3 style =" font-size: 25px;font:poppins; font-weight: bold";>Contacts</h3>
+                                <h3 style="font-size: 25px;font:poppins; font-weight: bold;">Contacts</h3>
                                 <p>You have <span class="highlight">140</span> contacts</p>
                             </div>
 
@@ -125,7 +130,7 @@
                             <div class="contacts-list">
                                 <div class="contact-item">
                                     <div class="contact-avatar">
-                                        <img src="~/Images/tom.png" alt="Walter Pinkman">
+                                        <img src="~/Images/tom.png" alt="Tom Hansen">
                                     </div>
                                     <div class="contact-name">Tom Hansen</div>
                                     <button class="message-btn">
@@ -135,7 +140,7 @@
 
                                 <div class="contact-item">
                                     <div class="contact-avatar">
-                                        <img src="~/Images/ramona.png" alt="Walter Pinkman">
+                                        <img src="~/Images/ramona.png" alt="Ramona Flowers">
                                     </div>
                                     <div class="contact-name">Ramona Flowers</div>
                                     <button class="message-btn">
@@ -145,7 +150,7 @@
 
                                 <div class="contact-item">
                                     <div class="contact-avatar">
-                                        <img src="~/Images/james.png" alt="Walter Pinkman">
+                                        <img src="~/Images/james.png" alt="James">
                                     </div>
                                     <div class="contact-name">James</div>
                                     <button class="message-btn">
@@ -162,7 +167,7 @@
                         <!-- Messages Section -->
                         <div class="messages-section">
                             <div class="section-header">
-                                <h3 style=" font-size: 25px;font:poppins; font-weight: bold">Messages</h3>
+                                <h3 style="font-size: 25px;font:poppins; font-weight: bold;">Messages</h3>
                             </div>
 
                             <div class="search-bar">
@@ -173,7 +178,7 @@
                             <div class="messages-list">
                                 <div class="message-item">
                                     <div class="message-avatar">
-                                        <img src="~/Images/tom.png" alt="Walter Pinkman">
+                                        <img src="~/Images/tom.png" alt="Tyler Harrison">
                                     </div>
                                     <div class="message-content">
                                         <div class="message-sender">Tyler Harrison</div>
@@ -184,7 +189,7 @@
 
                                 <div class="message-item">
                                     <div class="message-avatar">
-                                        <img src="~/Images/ramona.png" alt="Walter Pinkman">
+                                        <img src="~/Images/ramona.png" alt="Ramona Flowers">
                                     </div>
                                     <div class="message-content">
                                         <div class="message-sender">Ramona Flowers</div>
@@ -196,7 +201,7 @@
 
                                 <div class="message-item">
                                     <div class="message-avatar">
-                                        <img src="~/Images/james.png" alt="Walter Pinkman">
+                                        <img src="~/Images/james.png" alt="James">
                                     </div>
                                     <div class="message-content">
                                         <div class="message-sender">James</div>
@@ -207,7 +212,7 @@
 
                                 <div class="message-item">
                                     <div class="message-avatar">
-                                        <img src="~/Images/kim.png" alt="Walter Pinkman">
+                                        <img src="~/Images/kim.png" alt="Ken Piao">
                                     </div>
                                     <div class="message-content">
                                         <div class="message-sender">Ken Piao</div>
@@ -232,46 +237,99 @@
                     <span class="badge">3</span>
                     <img src="~/Images/profile.png" alt="Admin Profile">
                 </div>
-                
-                
-                   
             </div>
+            <div class="section-header">
+                <h3>Latest Activity</h3>
+            </div>
+
+            <div class="activity-list">
+                <div class="activity-item">
+                    <div class="activity-avatar">
+                        <img src="~/Images/aiden.png" alt="Aiden Pierce">
+                    </div>
+                    <div class="activity-content">
+                        <span class="activity-user">Aiden Pierce</span> recently created a new task for Homeowners
+                        <div class="activity-time">2 February 2025, 13:46 PM</div>
+                    </div>
+                </div>
+
+                <div class="activity-item">
+                    <div class="activity-avatar">
+                        <img src="~/Images/kitsuragi.png" alt="Kim Kitsuragi">
+                    </div>
+                    <div class="activity-content">
+                        <span class="activity-user">Kim Kitsuragi</span> posted an update on Basketball Court Renovation
+                        <div class="activity-time">2 February 2025, 13:46 PM</div>
+                    </div>
+                </div>
+
+                <div class="activity-item">
+                    <div class="activity-avatar">
+                        <img src="~/Images/jean.png" alt="Jean Vicquemare">
+                    </div>
+                    <div class="activity-content">
+                        <span class="activity-user">Jean Vicquemare</span> created a new community event for Homeowners and Officers
+                        <div class="activity-time">2 February 2025, 13:46 PM</div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- History Section -->
+            <div class="history-section">
                 <div class="section-header">
-                    <h3>Latest Activity</h3>
+                    <h3>History</h3>
                 </div>
 
-                <div class="activity-list">
-                    <div class="activity-item">
-                        <div class="activity-avatar">
-                            <img src="~/Images/aiden.png" alt="Walter Pinkman">
+                <div class="history-list">
+                    <div class="history-item">
+                        <div class="history-avatar">
+                            <img src="~/Images/colorful_heaven.png" alt="Colorful Heaven">
                         </div>
-                        <div class="activity-content">
-                            <span class="activity-user">Aiden Pierce</span> recently created a new task for Homeowners
-                            <div class="activity-time">2 February 2025, 13.46 PM</div>
-                        </div>
-                    </div>
-
-                    <div class="activity-item">
-                        <div class="activity-avatar">
-                            <img src="~/Images/kitsuragi.png" alt="Max Hernandez">
-                        </div>
-                        <div class="activity-content">
-                            <span class="activity-user">Kim Kitsuragi</span> posted an update on Basketball Court Renovation
-                        <div class="activity-time">2 February 2025, 13.46 PM</div>
+                        <div class="history-content">
+                            <span class="history-title">Colorful Heaven</span>
+                            <span class="history-subtitle">By Mark Benjamin</span>
+                            <span class="history-amount">1.30 ETH</span>
+                            <div class="history-time">30s ago</div>
                         </div>
                     </div>
 
-                    <div class="activity-item">
-                        <div class="activity-avatar">
-                            <img src="~/Images/jean.png" alt="Joan Arquette">
+                    <div class="history-item">
+                        <div class="history-avatar">
+                            <img src="~/Images/abstract_colors.png" alt="Abstract Colors">
                         </div>
-                        <div class="activity-content">
-                            <span class="activity-user">Jean Vicquemare</span> shared a file with you and others
-                        <div class="activity-time">2 February 2025, 13.46 PM</div>
+                        <div class="history-content">
+                            <span class="history-title">Abstract Colors</span>
+                            <span class="history-subtitle">By Esthera Jackson</span>
+                            <span class="history-amount">0.91 ETH</span>
+                            <div class="history-time">58s ago</div>
+                        </div>
+                    </div>
+
+                    <div class="history-item">
+                        <div class="history-avatar">
+                            <img src="~/Images/eth_ai_brain.png" alt="ETH AI Brain">
+                        </div>
+                        <div class="history-content">
+                            <span class="history-title">ETH AI Brain</span>
+                            <span class="history-subtitle">By Nick Wilson</span>
+                            <span class="history-amount">2.82 ETH</span>
+                            <div class="history-time">1m ago</div>
+                        </div>
+                    </div>
+
+                    <div class="history-item">
+                        <div class="history-avatar">
+                            <img src="~/Images/swipe_circle.png" alt="Swipe Circle">
+                        </div>
+                        <div class="history-content">
+                            <span class="history-title">Swipe Circle</span>
+                            <span class="history-subtitle">By Peter Williams</span>
+                            <span class="history-amount">2.30 ETH</span>
+                            <div class="history-time">1m ago</div>
                         </div>
                     </div>
                 </div>
-            
+            </div>
         </aside>
     </div>
 
