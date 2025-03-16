@@ -5,454 +5,95 @@
     <head>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>Custom Slideshow</title>
+        <title>Vista Subdivision</title>
         <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
-        <link href="~/css/site.css" rel="stylesheet"/>
+        <!--<link href="~/css/site.css" rel="stylesheet"/>-->
+        <link href="~/css/index.css" rel="stylesheet" />
         <link href="~/css/customfonts.css" rel="stylesheet" />
-        <style>
-        /* Navigation Items - Add Space Between */
-        nav {
-            width: 100%;
-            background-color: #fff;
-            display: flex;
-            flex-direction: row;
-            align-items: center;
-            justify-content: center;
-            gap: 24%;
-            padding: 25px 0px;
-        }
-        .navbar-nav {
-            margin-left: -15%;
-            display: flex;
-            flex-direction: row;
-            justify-content: space-between;
-            gap: 70%; /* Adjust spacing as needed */
-        }
-        .navbar-nav .nav-item a {
-            font-family: 'Besley-SemiBold';
-            font-size: 20px;
-            color: rgba(0, 0, 0, 0.77);
-            cursor: pointer;
-        }
-        .navbar-nav .nav-item .active {
-            color: #D7BF98;
-        }
-        .navbar-nav .nav-item a:hover {
-            color: #D7BF98;
-        }
-
-        /* Logo Image Styling */
-        .nav-logo {
-            width: 50px;
-        }
-
-        /* Logo Text Styling */
-        .nav-title {
-            font-size: 24px;
-            font-weight: bold;
-            font-family: 'Besley-ExtraBold';
-            color: black;
-        }
-
-        /* Footer fixed at the bottom */
-        .footer {
-            width: 100%;
-            background: #f8f9fa;
-            padding: 15px 0;
-            text-align: center;
-            margin-top: auto;
-        }
-            /* Hero Section */
-            .hero-section {
-                position: relative;
-                width: 100%;
-                height: 100vh;
-                background: url('/images/bed.jpg') no-repeat center center;
-                background-size: cover;
-                display: flex;
-                flex-direction: column;
-                justify-content: center;
-                align-items: center;
-                text-align: center;
-                color: black;
-                padding: 20px;
-                font-size: 30px;
-            }
-
-            /* Dark overlay for better text visibility */
-            .hero-section::before {
-                content: "";
-                position: absolute;
-                top: 0;
-                left: 0;
-                width: 100%;
-                height: 100%;
-                background: rgba(0, 0, 0, 0.3);
-                z-index: 1;
-            }
-            /* Ensure text & buttons appear above overlay */
-            .hero-overlay {
-                position: relative;
-                z-index: 2;
-                font-family: besley;
-                margin-top: 5%;
-            }
-
-            .hero-overlay h2 {
-                font-family: 'Besley-Medium';
-                font-size: 24px;
-                color: rgba(0, 0, 0, 0.85);
-            }
-
-            .hero-overlay h1 {
-                font-family: 'Besley-Regular';
-                font-size: 96px;
-                font-weight: 755;
-                color: rgba(0, 0, 0, 0.85);
-            }
-
-            .hero-overlay p {
-                font-family: 'Besley-Medium';
-                font-size: 20px;
-                color: rgba(0, 0, 0, 0.85)
-            }
-
-            .btn1 {
-                background-color: #CCB38B;
-                border: none;
-                font-family: 'Besley-Bold';
-                font-size: 16px;
-                cursor: pointer;
-                padding: 15px 90px;
-            }
-            .cta-buttons .or-text {
-                color: #ffffff;
-                font-family: 'Besley-Bold';
-                font-size: 16px;
-            }
-            .btn2 {
-                background-color: #273B4A;
-                border: none;
-                font-family: 'Besley-Bold';
-                font-size: 16px;
-                cursor: pointer;
-                padding: 15px 110px;
-            }
-
-            .custom-line {
-                height: 1px;
-                border: 0px solid #FBF0E0;
-            }
-
-            /* Image Slider */
-            .carousel-item {
-                padding: 0% 5% 0% 5%;
-            }
-
-            .carousel-inner {
-                position: relative;
-                bottom: 0;
-                width: 100%;
-                height: 40vh;
-                margin: auto;
-                padding-top: 20px;
-                border-radius: 10px;
-            }
-            /* Carousel Styling */
-            #imageCarousel {
-                max-width: 900px; /* Adjust width */
-                margin: auto;
-            }
-
-            /* Image Styling */
-            .carousel-item img {
-                transition: all 0.5s ease-in-out;
-                border-radius: 10px;
-            }
-
-            /* Center Image */
-            .carousel-item .present {
-                width: 50%;
-                transform: scale(1.1);
-                box-shadow: 0px 0px 15px rgba(0, 0, 0, 0.3);
-            }
-
-            /* Side Images */
-            .carousel-item .before,
-            .carousel-item .after {
-                width: 25%;
-                opacity: 0.5;
-                filter: blur(4px);
-            }
-
-            /* Add More Space Between Images */
-            .carousel-item .image-container {
-                display: flex;
-                justify-content: center;
-                gap: 20px; /* Space between images */
-            }
-
-            /* Adjust Carousel Controls */
-            .carousel-control-prev, .carousel-control-next {
-                width: 5%;
-            }
-            /* Bottom Section */
-            .bottom-section {
-                display: flex;
-                align-items: center;
-                justify-content: flex-end;
-                height: 100vh;
-                width: 100%;
-                background: url('/images/about.jpg') no-repeat center center;
-                background-size: cover;
-                padding-right: 5%;
-                font-family: besley;
-            }
-
-            .content {
-                width: 55%;
-                background: rgba(255, 255, 255, 0.9);
-                padding: 40px;
-                border-radius: 10px;
-                text-align: center;
-                display: flex;
-                flex-direction: column;
-                align-items: flex-start;
-            }
-
-            .bottom-section .content h2 {
-                font-family: 'Besley-Bold';
-                font-size: 40px;
-                text-align:left;
-            }
-
-            .bottom-section .content p {
-                font-family: 'Poppins-Medium';
-                font-size: 26px;
-                width: 90%;
-            }
-
-            .bottom-section .content .features .feature-item h3 {
-                font-family: 'Besley-SemiBold';
-                font-size: 24px;
-            }
-        /********************Testimonial****************/
-        .testimonial-section {
-            position: relative;
-            background: url('/images/reviews3.jpg') no-repeat;
-            background-size: cover;
-            flex-direction: column;
-            justify-content: center;
-            display: flex;
-            width: 100%;
-            height: 100vh;
-            padding: 8% 10%;
-            text-align: center;
-            color: white;
-            font-family: Besley;
-        }
-
-        .h2-2 {
-            font-size: 50px;
-            font-weight: bold;
-            text-align: center;
-        }
-
-        .subheading {
-            font-size: 20px;
-            max-width: 70%;
-            margin: 0 auto;
-            opacity: 0.8;
-        }
-
-        .testimonials {
-            display: grid;
-            grid-template-columns: repeat(2, 1fr);
-            grid-template-rows: repeat(2, 1fr);
-            gap: 60px;
-            margin-top: 50px;
-            width: 100%;
-            max-width: 1000px;
-            height: 1000px;
-            margin-left: auto;
-            margin-right: auto;
-            justify-content: center;
-            align-items: center;
-        }
-
-        .testimonial {
-            background: white;
-            color: black;
-            padding: 25px;
-            border-radius: 15px;
-            box-shadow: 5px 5px 20px rgba(0, 0, 0, 0.2);
-            text-align: left;
-            display: flex;
-            flex-direction: column;
-            justify-content: space-between;
-            align-items: center;
-            width: 100%;
-            height: 100%;
-        }
-
-
-        .testimonial-header {
-            display: flex;
-            align-items: center;
-            gap: 20px;
-        }
-
-            .testimonial-header img {
-                border-radius: 50%;
-                width: 100px;
-                height: 100px;
-                object-fit: cover;
-            }
-
-        .testimonial-info h3 {
-            font-size: 22px;
-            font-weight: 700;
-            margin: 0;
-        }
-
-        .testimonial-info p {
-            font-size: 16px;
-            color: gray;
-            margin: 5px 0;
-        }
-
-        .stars {
-            font-size: 20px;
-            color: gold;
-        }
-
-        .testimonial-text {
-            margin-top: 15px;
-            font-size: 18px;
-            opacity: 0.8;
-            text-align: justify;
-        }
-
-        /*************************Footer*****************/
-        .footer {
-            background: white;
-            padding: 20px 0;
-            text-align: center;
-            font-family: 'Arial', sans-serif;
-            color: #B69D75;
-            font-size: 25px;
-        }
-
-        .footer-container {
-            display: flex;
-            justify-content: flex-start;
-            align-items: center;
-            margin: 0 auto;
-            padding: 10px 20px;
-            font-family: besley;
-            gap: 40vh;
-        }
-
-        .footer-left {
-            display: flex;
-            align-items: center;
-        }
-
-        .footer-logo {
-            width: 100px;
-        }
-
-        .footer-brand {
-            font-size: 25px;
-            font-weight: bold;
-            color: #333;
-        }
-
-        .footer-links {
-            display: flex;
-            gap: 30vh;
-        }
-
-            .footer-links a {
-                text-decoration: none;
-                color: #A88E69;
-                font-weight: bold;
-                transition: 0.3s;
-            }
-
-        .footer-links a:hover {
-            text-decoration: underline;
-        }
-
-        .footer-divider {
-            width: 90%;
-            border: 0.5px solid #E0C9A6;
-            margin: 15px auto;
-        }
-
-        .footer-text {
-            font-size: 12px;
-            color: #AAA;
-            text-align: center;
-            margin-left: 5%;
-        }
-        </style>
     </head>
     <body>
-        <!--Navbar-->
-        <header>
-            <nav>
-                <!-- Left Links -->
-                <ul class="navbar-nav">
-                    <li class="nav-item">
-                        <a class="nav-link active">Home</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link">About</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link">Gallery</a>
-                    </li>
-                </ul>
-                <!-- Centered Logo -->
-                <a class="navbar-brand">
-                    <img src="~/images/logo.png" alt="Vista Logo" class="nav-logo">
-                    <span class="nav-title mb-2">vista.</span>
-                </a>
-                <!-- Right Links -->
-                <ul class="navbar-nav">
-                    <li class="nav-item">
-                        <a class="nav-link">Contact</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link">Help</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link">Others</a>
-                    </li>
-                </ul>
-            </nav>
-        </header>
+        <script>
+        document.addEventListener("DOMContentLoaded", function () {
+            const sections = document.querySelectorAll("section, div[id], footer");
+            const navLinks = document.querySelectorAll(".nav-item a");
 
+            function changeActiveNav() {
+                let scrollPosition = window.scrollY + window.innerHeight / 2; // Adjust offset dynamically
+
+                let activeSection = null;
+
+                sections.forEach((section) => {
+                    let sectionTop = section.offsetTop;
+                    let sectionBottom = sectionTop + section.offsetHeight;
+
+                    if (scrollPosition >= sectionTop && scrollPosition < sectionBottom) {
+                        activeSection = section.id;
+                    }
+                });
+
+                // If near the bottom, force "Contact" to be active
+                if (window.innerHeight + window.scrollY >= document.body.scrollHeight - 50) {
+                    activeSection = "footer-section";
+                }
+
+                // Update active class
+                navLinks.forEach((link) => {
+                    link.classList.remove("active");
+                    if (link.getAttribute("href") === `#${activeSection}`) {
+                        link.classList.add("active");
+                    }
+                });
+            }
+
+            window.addEventListener("scroll", changeActiveNav);
+            changeActiveNav(); // Run on load
+        });
+    </script>
+
+        <!--Navbar-->
+        <nav>
+            <!-- Left Links -->
+            <ul class="navbar-nav">
+                <li class="nav-item">
+                    <a href="#hero-section" class="nav-link">Home</a>
+                </li>
+                <li class="nav-item">
+                    <a href="#about-section" class="nav-link">About</a>
+                </li>
+            </ul>
+            <!-- Centered Logo -->
+            <a class="navbar-brand" href="#hero-section">
+                <img src="~/Images/logoa.png" alt="Vista Logo" class="nav-logo">
+                <span class="nav-title">vista.</span>
+            </a>
+            <!-- Right Links -->
+            <ul class="navbar-nav">
+                <li class="nav-item">
+                    <a href="#reviews-section" class="nav-link">Reviews</a>
+                </li>
+                <li class="nav-item">
+                    <a href="#footer-section" class="nav-link">Contact</a>
+                </li>
+            </ul>
+        </nav>
         <!-- Hero Section -->
-        <div class="hero-section">
+        <div class="hero-section" id="hero-section">
             <!-- Hero Overlay (Text & Buttons) -->
             <div class="hero-overlay">
                 <h2>Welcome to</h2>
                 <h1 class="site-title">vista.</h1>
                 <p>A better home, a better life.</p>
-                <div class="cta-buttons d-flex flex-column align-items-center">
-                    <a href="/Register" class="btn1 btn-primary mb-2" style="text-decoration: none;">Get started</a>
+                <div class="action-buttons">
+                    <a href="/Register" class="register-btn">Get started</a>
                     <p class="or-text">or</p>
-                    <a href="/Login" class="btn2 btn-secondary mt-2 mb-4" style="text-decoration: none;">Login</a>
-                    <hr class="custom-line" style="width: 300px;">
+                    <a href="/Login" class="login-btn">Login</a>
                 </div>
-
+                <hr class="custom-line">
             </div>
             <!-- Image Slider at the Bottom -->
             <div id="imageCarousel" class="carousel slide" data-bs-ride="carousel">
                 <div class="carousel-inner">
-                    <!-- Slide 2 -->
+                    <!-- Slide 1 -->
                     <div class="carousel-item">
                         <div class="image-container">
                             <img src="images/slideshow1.jpg" class="before" alt="Before">
@@ -461,7 +102,7 @@
                         </div>
                     </div>
 
-                    <!-- Slide 3 -->
+                    <!-- Slide 2 -->
                     <div class="carousel-item">
                         <div class="image-container">
                             <img src="images/slideshow2.jpg" class="before" alt="Before">
@@ -470,7 +111,7 @@
                         </div>
                     </div>
 
-                    <!-- Slide 4 -->
+                    <!-- Slide 3 -->
                     <div class="carousel-item">
                         <div class="image-container">
                             <img src="images/slideshow3.jpg" class="before" alt="Before">
@@ -479,7 +120,7 @@
                         </div>
                     </div>
 
-                    <!-- Slide 5 -->
+                    <!-- Slide 4 -->
                     <div class="carousel-item">
                         <div class="image-container">
                             <img src="images/slideshow4.jpg" class="before" alt="Before">
@@ -488,7 +129,7 @@
                         </div>
                     </div>
 
-                    <!-- Slide 1 -->
+                    <!-- Slide 5 -->
                     <div class="carousel-item active">
                         <div class="image-container">
                             <img src="images/slideshow5.jpg" class="before" alt="Before">
@@ -512,98 +153,111 @@
             </div>
             <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
         </div>
+
         <!--another section-->
-        <div class="bottom-section">
+        <div class="bottom-section" id="about-section">
             <!-- Right Content at the End -->
             <div class="content">
-                <h2>We make our <span class="highlight">neighborhood</span> a better place for living.</h2>
+                <h2>We make our <span>neighborhood</span> a better place for living.</h2>
                 <p>Whether you're seeking new possibilities, chasing ambitious goals, or simply looking for a fresh start, Vista is here to illuminate the way forward.</p>
-
-                <hr class="custom-line">
 
                 <div class="features">
                     <div class="feature-item">
-                        <h3>Resident & Property Management</h3>
-                        <p style="font-size: 20px;">Easily track homeowners, tenants, and property details. Keep all resident information organized and accessible.</p>
-                        <hr class="custom-line">
+                        <img src="~/Images/Group_fill.png" alt="Group_fill" />
+                        <div class="respro">
+                            <h3>Resident & Property Management</h3>
+                            <p>Easily track homeowners, tenants, and property details. Keep all resident information organized and accessible.</p>
+                        </div>
                     </div>
                     <div class="feature-item">
-                        <h3>Announcement & Communication Hub</h3>
-                        <p style="font-size: 20px;">Let residents pay association fees and bills online. Automate reminders and generate financial reports with ease.</p>
-                        <hr class="custom-line">
+                        <img src="~/Images/Chat_alt_fill.png" alt="Chat_alt_fill" />
+                        <div class="anncom">
+                            <h3>Announcement & Communication Hub</h3>
+                            <p>Let residents pay association fees and bills online. Automate reminders and generate financial reports with ease.</p>
+                        </div>
                     </div>
                     <div class="feature-item">
-                        <h3>Online Payments & Tracking</h3>
-                        <p style="font-size: 20px;">Send real-time updates, announcements, and community news via email or SMS.</p>
+                        <img src="~/Images/Wallet_alt_fill.png" alt="Wallet_alt_fill" />
+                        <div class="onpaytrack">
+                            <h3>Online Payments & Tracking</h3>
+                        <p>Send real-time updates, announcements, and community news via email or SMS to keep everyone informed.</p>
+                        </div>
                     </div>
                 </div>
 
-                <a href="#" class="read-more">Read more</a>
+                <a href="#" class="read-more-btn">Read more</a>
             </div>
         </div>
+
         <!-----Last Section------>
-        <div class="testimonial-section">
-            <h2 class="h2-2">Stories from our Thriving Community</h2>
-            <p class="subheading">Discover what our residents have to say about their experience. From seamless property management to hassle-free transactions, see how our platform is making subdivision living easier and more connected.</p>
-            <div class="testimonials">
-                <!-- Testimonial 1 -->
-                <div class="testimonial">
-                    <div class="testimonial-header">
-                        <img src="images/aiden pierce.jpg" alt="Aiden Pierce">
-                        <div class="testimonial-info">
-                            <h3>Aiden Pierce</h3>
-                            <p><i>Working professional, Homeowner</i></p>
-                            <div class="stars">⭐⭐⭐⭐⭐</div>
+        <div class="testimonial-section" id="reviews-section">
+            <div class="testimonial-quote">
+                <h2 class="testi-heading">Stories from our Thriving Community</h2>
+                <p class="testi-subheading">Discover what our residents have to say about their experience. From seamless property management to hassle-free transactions, see how our platform is making subdivision living easier and more connected.</p>
+            </div>
+            <div class="testimonial-container">
+               <div class="testi-1and2">
+                    <!-- Testimonial 1 -->
+                    <div class="testimonial">
+                        <div class="testimonial-header">
+                            <img src="images/aiden pierce.jpg" alt="Aiden Pierce">
+                            <div class="testimonial-info">
+                                <h3>Aiden Pierce</h3>
+                                <p>Working professional, Homeowner</p>
+                            <div class="stars">&#11088;&#11088;&#11088;&#11088;&#11088;</div>
+                            </div>
                         </div>
+                        <p class="testimonial-text">"I used to struggle with reporting maintenance issues, but now it's effortless. The platform ensures that concerns are addressed quickly, making our neighborhood a better place to live."</p>
                     </div>
-                    <p class="testimonial-text">"I used to struggle with reporting maintenance issues, but now it's effortless. The platform ensures that concerns are addressed quickly, making our neighborhood a better place to live."</p>
-                </div>
 
-                <!-- Testimonial 2 -->
-                <div class="testimonial">
-                    <div class="testimonial-header">
-                        <img src="images/anne gilchrist.jpg" alt="Anne Gilchrist">
-                        <div class="testimonial-info">
-                            <h3>Anne Gilchrist</h3>
-                            <p><i>3-year resident, Homeowner</i></p>
-                            <div class="stars">⭐⭐⭐⭐⭐</div>
+                    <!-- Testimonial 2 -->
+                    <div class="testimonial">
+                        <div class="testimonial-header">
+                            <img src="images/anne gilchrist.jpg" alt="Anne Gilchrist">
+                            <div class="testimonial-info">
+                                <h3>Anne Gilchrist</h3>
+                                <p>3-year resident, Homeowner</p>
+                                <div class="stars">&#11088;&#11088;&#11088;&#11088;&#11088;</div>
+                            </div>
                         </div>
+                        <p class="testimonial-text">"Living in this subdivision has never been easier! The platform makes it simple to pay dues, submit requests, and stay updated on community events. I love how everything is just a click away!"</p>
                     </div>
-                    <p class="testimonial-text">"Living in this subdivision has never been easier! The platform makes it simple to pay dues, submit requests, and stay updated on community events. I love how everything is just a click away!"</p>
-                </div>
+               </div>
+                <div class="testi-3and4">
+                    <!-- Testimonial 3 -->
+                    <div class="testimonial">
+                        <div class="testimonial-header">
+                            <img src="images/raymond kennedy.jpg" alt="Raymond Kennedy">
+                            <div class="testimonial-info">
+                                <h3>Raymond Kennedy</h3>
+                                <p>5-year resident, Homeowner</p>
+                                <div class="stars">&#11088;&#11088;&#11088;&#11088;&#11088;</div>
+                            </div>
+                        </div>
+                        <p class="testimonial-text">"This management system has completely changed the way our community operates. No more paperwork, delayed responses, or confusion. Just smooth and efficient communication!"</p>
+                    </div>
 
-                <!-- Testimonial 3 -->
-                <div class="testimonial">
-                    <div class="testimonial-header">
-                        <img src="images/raymond kennedy.jpg" alt="Raymond Kennedy">
-                        <div class="testimonial-info">
-                            <h3>Raymond Kennedy</h3>
-                            <p><i>5-year resident, Homeowner</i></p>
-                            <div class="stars">⭐⭐⭐⭐⭐</div>
+                    <!-- Testimonial 4 -->
+                    <div class="testimonial">
+                        <div class="testimonial-header">
+                            <img src="images/sophia marks.jpg" alt="Sophia Marks">
+                            <div class="testimonial-info">
+                                <h3>Sophia Marks</h3>
+                                <p>Working professional, Homeowner</p>
+                                <div class="stars">&#11088;&#11088;&#11088;&#11088;&#11088;</div>
+                            </div>
                         </div>
+                        <p class="testimonial-text">"I used to struggle with reporting maintenance issues, but now it's effortless. The platform ensures that concerns are addressed quickly, making our neighborhood a better place to live."</p>
                     </div>
-                    <p class="testimonial-text">"This management system has completely changed the way our community operates. No more paperwork, delayed responses, or confusion. Just smooth and efficient communication!"</p>
-                </div>
-
-                <!-- Testimonial 4 -->
-                <div class="testimonial">
-                    <div class="testimonial-header">
-                        <img src="images/sophia marks.jpg" alt="Sophia Marks">
-                        <div class="testimonial-info">
-                            <h3>Sophia Marks</h3>
-                            <p><i>Working professional, Homeowner</i></p>
-                            <div class="stars">⭐⭐⭐⭐⭐</div>
-                        </div>
-                    </div>
-                    <p class="testimonial-text">"I used to struggle with reporting maintenance issues, but now it's effortless. The platform ensures that concerns are addressed quickly, making our neighborhood a better place to live."</p>
                 </div>
             </div>
         </div>
+
         <!--Footer-->
-        <footer class="footer">
+        <footer id="footer-section">
             <div class="footer-container">
                 <div class="footer-left">
-                    <img src="images/logoo.png" alt="Vista Logo" class="footer-logo">
+                    <img src="~/Images/logo 1.png" alt="Vista Logo" class="footer-logo">
                     <span class="footer-brand">vista.</span>
                 </div>
                 <div class="footer-links">
@@ -615,7 +269,6 @@
             <hr class="footer-divider">
             <p class="footer-text">&copy; 2025 vista. All Rights Reserved.</p>
         </footer>
-
 </body>
 </html>
 

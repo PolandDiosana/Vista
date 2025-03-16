@@ -1,0 +1,562 @@
+﻿@import url('/css/customfonts.css');
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    overflow-y: scroll;
+    scrollbar-width: none;
+    scroll-behavior: smooth;
+    scroll-padding: var(--scroll-padding, 5rem);
+}
+
+html::-webkit-scrollbar {
+    display: none;
+}
+
+/* Navigation Bar */
+nav {
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+    width: 100%;
+    background-color: #fff;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    gap: 10%;
+    padding: 10px 0px;
+}
+
+nav .navbar-brand {
+    height: 70px;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 10px;
+    cursor: pointer;
+}
+
+nav .navbar-brand .nav-title:hover {
+    transition: .3s ease;
+    color: #D7BF98;
+}
+
+nav .navbar-brand .nav-logo {
+    width: 55px;
+    height: 31px;   
+    cursor: pointer;
+}
+
+nav .navbar-brand .nav-title {
+    font-family: 'Besley-ExtraBold';
+    font-size: 24px;
+    cursor: pointer;
+}
+
+nav .navbar-nav {
+    width: 20%;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    gap: 40%;
+}
+
+.navbar-nav .nav-item a {
+    font-family: 'Besley-SemiBold';
+    font-size: 20px;
+    color: rgba(0, 0, 0, 0.77);
+    cursor: pointer;
+}
+
+.navbar-nav .nav-item a.active {
+    color: #D7BF98;
+}
+
+.navbar-nav .nav-item a:hover {
+    color: #D7BF98;
+}
+/* Navigation Bar End */
+
+/* Hero Section */
+.hero-section {
+    position: relative;
+    width: 100%;
+    height: 100vh;
+    background: url('/images/bed.png') no-repeat center center;
+    background-size: cover;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    color: black;
+    padding: 20px;
+    font-size: 30px;
+}
+
+/* Dark overlay for better text visibility */
+.hero-section::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.3);
+    z-index: 1;
+}
+/* Ensure text & buttons appear above overlay */
+.hero-overlay {
+    width: 400px;
+    display: flex;
+    flex-direction:column;
+    align-items: center;
+    justify-content: center;
+    z-index: 1;
+    margin-top: 5%;
+}
+
+.hero-overlay h2 {
+    font-family: 'Besley-Medium';
+    font-size: 24px;
+    color: rgba(0, 0, 0, 0.85);
+}
+
+.hero-overlay h1 {
+    font-family: 'Besley-Regular';
+    font-size: 96px;
+    font-weight: 755;
+    color: rgba(0, 0, 0, 0.85);
+}
+
+.hero-overlay p {
+    font-family: 'Besley-Medium';
+    font-size: 20px;
+    color: rgba(0, 0, 0, 0.85)
+}
+
+.hero-overlay .action-buttons {
+    width: 300px;
+    margin-top: 25px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.hero-overlay .action-buttons .register-btn {
+    text-decoration: none;
+    background-color: #CCB38B;
+    border-radius: 10px;
+    padding: 15px 10px;
+    font-size: 16px;
+    font-family: 'Besley-Bold';
+    color: #fff;
+}
+
+.hero-overlay .action-buttons .register-btn:hover {
+    transition: 0.8s ease-in-out;
+    background-color: rgba(204, 179, 139, 0.8);
+}
+
+.hero-overlay .action-buttons .or-text {
+    margin-top: 10px;
+    color: #fff;
+    font-size: 16px;
+    font-family: 'Besley-Bold';
+}
+
+.hero-overlay .action-buttons .login-btn {
+    text-decoration: none;
+    background-color: #273B4A;
+    border-radius: 10px;
+    padding: 15px 10px;
+    font-size: 16px;
+    font-family: 'Besley-Bold';
+    color: #fff;
+}
+
+.hero-overlay .action-buttons .login-btn:hover {
+    transition: 0.8s ease-in-out;
+    background-color: rgba(39, 59, 74, 0.8);
+}
+
+.hero-overlay .custom-line {
+    margin-top: 35px;
+    margin-bottom: -55px;
+    height: 1px;
+    width: 400px;
+    border: 1px solid #FBF0E0;
+}
+
+/* Carousel Styling */
+#imageCarousel {
+    max-width: 1100px; /* Adjust width */
+    height: 300px;
+    margin: auto;
+}
+
+.carousel-inner {
+    width: 1100px;
+    height: 300px;
+    display: flex;
+    align-items: center;
+}
+
+/* Image Styling */
+.carousel-item .image-container img {
+    transition: all 0.5s ease-in-out;
+    display: flex;
+    align-items: center;
+    margin: auto;
+}
+
+/* Center Image */
+.carousel-item .image-container .present {
+    width: 450px;
+    transform: scale(1.1);
+}
+
+/* Side Images */
+.carousel-item .image-container .before,
+.carousel-item .image-container .after {
+    width: 300px;
+    opacity: 0.9;
+    filter: blur(1px);
+}
+
+/* Add More Space Between Images */
+.carousel-item .image-container {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+}
+
+/* Adjust Carousel Controls */
+.carousel-control-prev, .carousel-control-next {
+    width: 5%;
+    height: 20%;
+    margin: auto -5%;
+}
+/* End of Hero-Section */
+
+
+/* Bottom Section */
+.bottom-section {
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    height: 100vh;
+    width: 100%;
+    background: url('/images/about.jpg') no-repeat center center;
+    background-size: cover;
+}
+
+.bottom-section .content {
+    width: 50%;
+    height: 100%;
+    padding: 55px 0px;
+    background: transparent;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+}
+
+.bottom-section .content h2 {
+    font-family: 'Besley-SemiBold';
+    width: 95%;
+    padding-bottom: 20px;
+    font-size: 40px;
+    text-align: left;
+}
+
+.bottom-section .content h2 span {
+    font-family: 'Besley-SemiBold';
+    font-size: 40px;
+    text-align: left;
+    color: #D7BF98;
+}
+
+.bottom-section .content p {
+    font-family: 'Benne-Regular';
+    font-size: 32px;
+    width: 85%;
+}
+
+.bottom-section .content .features {
+    display: flex;
+    flex-direction: column;
+    margin-top: 2%;
+}
+
+.bottom-section .content .features .feature-item {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 10px;
+    margin-top: 2%;
+}
+
+.bottom-section .content .features .feature-item .respro {
+    display: flex;
+    flex-direction: column;
+}
+
+.bottom-section .content .features .feature-item .respro h3 {
+    font-family: 'Besley-SemiBold';
+    font-size: 24px;
+    color: rgba(0, 0, 0, 0.77);
+}
+
+.bottom-section .content .features .feature-item .respro p {
+    font-family: 'Benne-Regular';
+    font-size: 20px;
+    color: rgba(0, 0, 0, 0.65);
+}
+
+.bottom-section .content .features .feature-item .anncom {
+    display: flex;
+    flex-direction: column;
+}
+
+.bottom-section .content .features .feature-item .anncom h3 {
+    font-family: 'Besley-SemiBold';
+    font-size: 24px;
+    color: rgba(0, 0, 0, 0.77);
+}
+
+.bottom-section .content .features .feature-item .anncom p {
+    font-family: 'Benne-Regular';
+    font-size: 20px;
+    color: rgba(0, 0, 0, 0.65);
+}
+
+.bottom-section .content .features .feature-item .onpaytrack {
+    display: flex;
+    flex-direction: column;
+}
+
+.bottom-section .content .features .feature-item .onpaytrack h3 {
+    font-family: 'Besley-SemiBold';
+    font-size: 24px;
+    color: rgba(0, 0, 0, 0.77);
+}
+
+.bottom-section .content .features .feature-item .onpaytrack p {
+    font-family: 'Benne-Regular';
+    font-size: 20px;
+    color: rgba(0, 0, 0, 0.65);
+    width: 80%;
+}
+
+.bottom-section .content .read-more-btn {
+    font-family: 'Besley-Bold';
+    text-decoration: none;
+    margin-top: 8%;
+    font-size: 22px;
+    border: 1px solid #CCB38B;
+    border-radius: 10px;
+    color: #fff;
+    background-color: #CCB38B;
+    padding: 10px 43px;
+}
+
+.bottom-section .content .read-more-btn:hover {
+    background-color: #fff;
+    color: #CCB38B;
+    transition: .5s ease;
+}
+/* End of Bottom Section */
+/* Start of Testimonial Section */
+.testimonial-section {
+    position: relative;
+    background: url('/images/reviews3.jpg') no-repeat center center;
+    background-size: cover;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    width: 100%;
+    height: 100vh;
+    padding: 8% 10%;
+}
+
+.testimonial-section .testimonial-quote {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.testimonial-section .testimonial-quote .testi-heading {
+    font-size: 64px;
+    font-family: 'Besley-Bold';
+    text-align: center;
+    color: #fff;
+}
+
+.testimonial-section .testimonial-quote .testi-subheading {
+    width: 88%;
+    font-size: 20px;
+    font-family: 'Besley-Regular';
+    text-align: center;
+    color: #fff;
+}
+
+.testimonial-section .testimonial-container {
+    margin: auto;
+    width: 90%;
+    display: flex;
+    flex-direction: column;
+    padding: 2% 2%;
+}
+
+.testimonial-container .testi-1and2,
+.testimonial-container .testi-3and4 {
+    width: 90%;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    margin: 2.5% auto;
+}
+
+.testimonial-container .testi-1and2 .testimonial,
+.testimonial-container .testi-3and4 .testimonial {
+    background: white;
+    color: black;
+    padding: 25px;
+    border-radius: 15px;
+    box-shadow: 5px 5px 20px rgba(0, 0, 0, 0.2);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 40%;
+    cursor: default;
+}
+
+.testimonial-container .testi-1and2 .testimonial .testimonial-header,
+.testimonial-container .testi-3and4 .testimonial .testimonial-header {
+    width: 100%;
+    height: auto;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 20px;
+    margin: 0;
+}
+
+.testimonial-container .testi-1and2 .testimonial .testimonial-text,
+.testimonial-container .testi-3and4 .testimonial .testimonial-text {
+    margin-top: 15px;
+    font-size: 14px;
+    opacity: 0.8;
+    text-align: justify;
+    color: black;
+    font-family: 'Besley-Regular';
+    cursor: default;
+}
+
+.testimonial-container .testi-1and2 .testimonial-header img,
+.testimonial-container .testi-3and4 .testimonial-header img {
+    border-radius: 50%;
+    width: 100px;
+    height: 100px;
+    object-fit: cover;
+}
+
+.testimonial-container .testi-1and2 .testimonial-header .testimonial-info h3,
+.testimonial-container .testi-3and4 .testimonial-header .testimonial-info h3 {
+    font-family: 'Besley-Bold';
+    font-size: 24px;
+    color: rgba(0, 0, 0, 0.77);
+}
+
+.testimonial-container .testi-1and2 .testimonial-header .testimonial-info p,
+.testimonial-container .testi-3and4 .testimonial-header .testimonial-info p {
+    font-family: 'Besley-Italic';
+    font-size: 14px;
+    color: rgba(0, 0, 0, 0.65);
+    margin: 5px 0;
+}
+
+.stars {
+    font-size: 20px;
+    color: gold;
+}
+/* End of Testimonial Section */
+
+/* Start of Footer Sexction */
+/*************************Footer*****************/
+footer {
+    background: white;
+    text-align: center;
+    font-family: 'Arial', sans-serif;
+    color: #B69D75;
+    font-size: 25px;
+}
+
+.footer-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 0 auto;
+    padding: 35px 0px;
+    font-family: besley;
+}
+
+.footer-container .footer-left {
+    position: absolute;
+    left: 1%;
+    gap: 10px;
+    display: flex;
+    align-items: center;
+    float: left;
+}
+
+.footer-container .footer-left .footer-logo {
+    width: 106px;
+    height: 60px
+}
+
+.footer-brand {
+    font-family: 'Besley-ExtraBold';
+    font-size: 25px;
+    color: rgba(0, 0, 0, 0.77);
+}
+
+.footer-links {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    gap: 20vh;
+    margin-left: 9%;
+}
+
+.footer-links a {
+    font-family: 'Besley-SemiBold';
+    font-size: 24px;
+    text-decoration: none;
+    color: #B69D75;
+}
+
+.footer-links a:hover {
+    text-decoration: underline;
+}
+
+footer .footer-divider {
+    width: 90%;
+    border: 1px solid #E0C9A6;
+    margin: 15px auto;
+}
+
+footer .footer-text {
+    font-family: 'Besley-Regular';
+    font-size: 16px;
+    color: rgba(38, 38, 38, 0.5);
+    text-align: center;
+}
+/* End of Footer Secton*/

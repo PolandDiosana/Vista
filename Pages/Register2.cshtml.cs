@@ -126,7 +126,7 @@ namespace Vista_Subdivision.Pages
                     Username = sessionData.Username,
                     PasswordHash = sessionData.Password,
                     ProfileImage = sessionData.Profile,
-                    Role = "Staff"
+                    Role = "Homeowner"
                 };
                 _dbContext.Users.Add(newUser);
                 _dbContext.SaveChanges();

@@ -320,6 +320,17 @@ body {
     flex-direction: column;
 }
 
+.right-sidebar .actions .notifications{
+    display: flex;
+    flex-direction: column;
+}
+
+.right-sidebar .actions .notifications .profilepic {
+    border-radius: 50%;
+    width: 200px;
+    height: 190px;
+}
+
 .activity-section {
     background-color: var(--card-bg);
     border-radius: 12px;

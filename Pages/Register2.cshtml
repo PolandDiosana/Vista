@@ -77,8 +77,9 @@
 
         /* Progress Bar */
         .progress-container {
-            width: 100%;
-            margin: 20px 0;
+            width: 110%;
+            margin-left: -5%;
+            padding: 20px 0;
         }
 
         .progress {
@@ -122,6 +123,14 @@
             padding: 8px 60px;
             font-size: 16px;
             border-radius: 10px;
+            text-decoration: none;
+        }
+
+        .back-btn:hover {
+            transition: .3s ease;
+            background-color: #273B4A;
+            color: #fff;
+            border: 1px solid transparent;
         }
 
         .next-btn {
@@ -129,15 +138,20 @@
             font-size: 20px;
             background-color: #c5a47e;
             color: white;
-            border: none;
+            border: 1px solid #c5a47e;
             padding: 8px 60px;
             font-size: 16px;
             border-radius: 10px;
+            text-decoration: none;
         }
 
         .next-btn:hover {
-            background-color: #b2926d;
+            transition: .3s ease;
+            border: 1px solid #c5a47e;
+            background-color: transparent;
+            color: #c5a47e;
         }
+
         h5{
             text-align: center;
             padding-bottom: 15px;
@@ -156,7 +170,7 @@
             <div class="content-wrapper">
                 <!-- Left Column (Form) -->
                 <div class="left-column">
-                    <h2 class="text-center mb-4 title" style="margin-bottom: 50px;"><img src="/Images/logo.png" alt="Logo" width="50"> vista.</h2>
+                    <h2 class="text-center mb-4 title" style="margin-bottom: 50px;"><img src="~/Images/logo 1.png" alt="Logo" width="50"> vista.</h2>
                     <div class="row mb-3 mt-4">
                         <div class="col-md-6">
                             <label class="form-label">Lot Number</label>
@@ -216,8 +230,8 @@
 
             <!-- Bottom Navigation -->
             <div class="bottom-nav">
-                <a type="button" class="btn back-btn" href="/Register">Back</a>
-                <button type="submit" class="btn next-btn">Register</button>
+                <a type="button" class="back-btn" href="/Register">Back</a>
+                <button type="submit" class="next-btn">Register</button>
             </div>
         </form>
     </div>

@@ -153,6 +153,7 @@ body {
 }
 
 .form-control {
+    font-family: 'Poppins-Regular';
     border-radius: 15px;
     padding: 10px;
     border: 1px solid rgba(112, 112, 112, 1);
@@ -181,7 +182,7 @@ body {
     padding: 10px;
 }
 
-.bottom-nav a {
+.bottom-nav .back-btn {
     font-family: 'Poppins-Bold';
     font-size: 16px;
     background-color: #fff;
@@ -189,16 +190,30 @@ body {
     color: rgba(39, 59, 74, 1);
     padding: 10px 80px;
     border-radius: 10px;
+    text-decoration: none;
 }
 
-.bottom-nav button {
+.bottom-nav .back-btn:hover {
+    transition: .5s ease;
+    background-color: rgba(39, 59, 74, 1);
+    color: #fff;
+}
+
+.bottom-nav .next-btn {
     font-family: 'Poppins-Bold';
     font-size: 16px;
     background-color: #CCB38B;
     color: #ffffff;
-    border: none;
+    border: 1px solid #CCB38B;
     padding: 10px 80px;
     border-radius: 5px;
+}
+
+.bottom-nav .next-btn:hover {
+    transition: .5s ease;
+    background-color: #fff;
+    border: 1px solid #CCB38B;
+    color: #CCB38B;
 }
 
 .progress-container {
