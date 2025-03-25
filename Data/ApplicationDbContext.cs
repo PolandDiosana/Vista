@@ -10,5 +10,6 @@ namespace Vista_Subdivision.Data
         public DbSet<Property> Properties { get; set; }
         public DbSet<Document> Documents { get; set; }
         public DbSet<EmergencyContact> EmergencyContacts { get; set; }
+        public DbSet<EventCalendar> EventCalendars { get; set; }
     }
 }

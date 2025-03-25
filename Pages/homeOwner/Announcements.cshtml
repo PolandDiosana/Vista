@@ -1,4 +1,5 @@
-@page
+﻿@page
+@model Vista_Subdivision.Pages.homeOwner.AnnouncementsModel
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -13,10 +14,10 @@
         <!-- Sidebar -->
         <aside class="sidebar">
             <div class="logo">
-                <img src="~/Images/logo.png" alt="Vista Logo">
+                <img src="~/Images/logo 1.png" alt="Vista Logo" class="logo-img">
                 <span>vista.</span>
             </div>
-
+            <hr class="custom-line" />
             <nav class="nav-menu">
                 <ul>
                     <li>
@@ -138,9 +139,9 @@
         <!-- Right Sidebar -->
         <aside class="right-sidebar">
             <div class="user-profile">
-                <img src="~/Images/bois.png" alt="User Avatar">
-                <h4>Du Bois H.</h4>
-                <p>Officer</p>
+                <img src="@Model.LoggedInUser.ProfileImage" alt="User Avatar">
+                <h4>@Model.LoggedInUser.FirstName @Model.LoggedInUser.LastName</h4>
+                <p>Homeowner</p>
             </div>
             <div class="latest-activity">
                 <h3>Latest Activity</h3>

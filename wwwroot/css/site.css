@@ -118,24 +118,19 @@ html, body {
 .subdiv-title {
     display: flex;
     justify-content: center;
-    align-content: center;
     align-items: center;
     width: 60%;
-    margin-left: -60px;
+    margin-bottom: 50px;
 }
-    .subdiv-title .icon-logo {
-        width: 105px;
-        height: 105px;
-    }
-    .vista-title {
-        position: absolute;
-        top: 28%;
-        right: 48%;
-        font-family: 'Besley-ExtraBold';
-        font-size: 18px;
-        margin-right: -20px;
-        color: rgba(0, 0, 0, 0.77);
-    }
+.subdiv-title .icon-logo {
+    width: 60px;
+    height: auto;
+}
+.subdiv-title .vista-title {
+    font-family: 'Besley-ExtraBold';
+    font-size: 19px;
+    color: rgba(0, 0, 0, 0.77);
+}
 .login-title {
     font-family: 'Poppins-ExtraBold';
     font-size: 32px;

@@ -1,3 +1,5 @@
+@import url('/css/customfonts.css');
+
 :root {
     --primary-color: #f0a500;
     --sidebar-bg: #FFFFFF;
@@ -42,13 +44,13 @@ body {
     display: flex;
     align-items: center;
     margin-bottom: 10px;
-    padding:20px 20px;
+    padding: 20px 20px;
 }
 
     .logo img {
         height: 150px;
-        width:150px;
-        margin-right:10px;
+        width: 150px;
+        margin-right: 10px;
     }
 
     .logo span {
@@ -60,40 +62,40 @@ body {
     flex-grow: 1;
 }
 
-    .nav-menu ul {
-        list-style: none;
-        padding: 0;
-        margin: 0;
-    }
+.nav-menu ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
 
-    .nav-menu li {
-        margin-bottom: 10px;
-        width: 286.1px;
-        height:49px;
-        margin-left:20px;
-    }
+.nav-menu li {
+    margin-bottom: 10px;
+    width: 286.1px;
+    height: 49px;
+    margin-left: 20px;
+}
 
-    .nav-menu a {
-        display: flex;
-        align-items: center;
-        padding: 12px 20px;
-        color: #696969;
-        text-decoration: none;
-        transition: background-color 0.3s;
-        border-radius: 15px;
-    }
+.nav-menu a {
+    display: flex;
+    align-items: center;
+    padding: 12px 20px;
+    color: #696969;
+    text-decoration: none;
+    transition: background-color 0.3s;
+    border-radius: 15px;
+}
 
-        .nav-menu a:hover, .nav-menu li.active a {
-            background-color: #CCB38B;
-            border-radius: 15px;
-            width: 286.1px;
-            height: 49px;
-        }
+.nav-menu a:hover, .nav-menu li.active a {
+    background-color: #CCB38B;
+    border-radius: 15px;
+    width: 286.1px;
+    height: 49px;
+}
 
-    .nav-menu i {
-        width: 20px;
-        margin-right: 10px;
-    }
+.nav-menu i {
+    width: 20px;
+    margin-right: 10px;
+}
 
 /* Main Content Styles */
 .main-content {
@@ -101,8 +103,6 @@ body {
     display: flex;
     flex-direction: column;
 }
-
-
 
 .content {
     padding: 30px;
@@ -120,8 +120,8 @@ body {
     border-radius: 20px;
     box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
     overflow: hidden;
-    margin:40px;
-    margin-bottom:5px;
+    margin: 40px;
+    margin-bottom: 5px;
     margin-top: 10px;
 }
 
@@ -129,9 +129,8 @@ body {
     padding: 50px;
     display: flex;
     align-items: center;
-    width:889px;
-    height:332px;
-   
+    width: 889px;
+    height: 332px;
 }
 
 .profile-avatar img {
@@ -189,11 +188,11 @@ body {
     box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
     padding: 50px;
     height: 571px;
-    width:419px;
+    width: 419px;
     display: flex;
     flex-direction: column;
-    margin:40px;
-    margin-top:5px;
+    margin: 40px;
+    margin-top: 5px;
 }
 
 .section-header h3 {
@@ -218,23 +217,23 @@ body {
     position: relative;
 }
 
-    .search-bar input {
-        width: 100%;
-        padding: 10px 15px;
-        padding-right: 35px;
-        border: 1px solid var(--border-color);
-        border-radius: 4px;
-        outline: none;
-        font-size: 14px;
-    }
+.search-bar input {
+    width: 100%;
+    padding: 10px 15px;
+    padding-right: 35px;
+    border: 1px solid var(--border-color);
+    border-radius: 4px;
+    outline: none;
+    font-size: 14px;
+}
 
-    .search-bar i {
-        position: absolute;
-        right: 12px;
-        top: 50%;
-        transform: translateY(-50%);
-        color: var(--light-text);
-    }
+.search-bar i {
+    position: absolute;
+    right: 12px;
+    top: 50%;
+    transform: translateY(-50%);
+    color: var(--light-text);
+}
 
 .contacts-list, .messages-list {
     display: flex;
@@ -252,9 +251,9 @@ body {
     transition: background-color 0.3s;
 }
 
-    .contact-item:hover, .message-item:hover {
-        background-color: var(--hover-bg);
-    }
+.contact-item:hover, .message-item:hover {
+    background-color: var(--hover-bg);
+}
 
 .contact-avatar img, .message-avatar img {
     width: 40px;
@@ -299,11 +298,120 @@ body {
     font-size: 14px;
 }
 
-    .view-all-btn:hover {
-        background-color: var(--primary-color);
-        color: white;
-        border-color: var(--primary-color);
-    }
+.view-all-btn:hover {
+    background-color: var(--primary-color);
+    color: white;
+    border-color: var(--primary-color);
+}
+
+/* EVENT CALENDAR STYLESHEET */
+.dashboard-container #calendar {
+    margin-left: 50px;
+    max-width: 987px;
+    height: 698px;
+    overflow-y: none;
+    overflow-x: none;
+}
+
+.fc-col-header-cell {
+    background-color: #D9D9D9 !important;
+    color: black !important;
+    font-family: 'Poppins-Medium' !important;
+    font-size: 16px !important;
+    text-transform: capitalize;
+    line-height: 40px;
+    height: 40px !important;
+}
+
+.fc-day-other {
+    background-color: #E9E9E9 !important;
+}
+
+.fc-button {
+    background-color: #F4F4F4 !important;
+    border: 1px solid rgba(0, 0, 0, 0.2) !important;
+    color: #5c5c5c !important;
+    padding: 10px 40px !important;
+    text-transform: capitalize !important;
+    font-family: 'Poppins-Regular' !important;
+    font-size: 16px !important;
+}
+
+/* Ensure title is not pushed away */
+.fc-toolbar-title {
+    font-size: 18px !important;
+    text-transform: capitalize !important;
+    font-family: 'Poppins-Bold' !important;
+    font-size: 20px !important;
+    color: black;
+}
+
+.fc-event {
+    font-family: 'Poppins-Regular' !important; /* Change to your preferred font */
+    font-size: 12px !important; /* Adjust font size */
+    text-align: center !important; /* Center text */
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    border-radius: 5px !important; /* Optional: Add rounded corners */
+    padding: 1px 5px !important; /* Adjust spacing inside the event */
+    color: white !important; /* Text color */
+    border: none !important;
+    width: 120px !important;
+    margin-right: auto !important;
+    margin-left: auto !important;
+    margin-bottom: 3px !important;
+}
+
+/* Navigation Buttons (Previous & Next) */
+.fc-prev-button, .fc-next-button {
+    border: none !important;
+    background: #fff !important;
+    color: black !important;
+    padding: 8px 10px !important;
+}
+
+.fc-prev-button-active, fc-next-button-active {
+    background: transparent !important;
+    color: black !important;
+    border: none !important;
+    outline: none !important;
+}
+
+.fc-button-group .fc-button.fc-button-active {
+    background: #5984F2 !important;
+    color: #fff !important;
+}
+
+/* Calendar Grid */
+.fc-daygrid-day {
+    border: 1px solid rgba(0, 0, 0, 0.2) !important;
+    color: black !important;
+}
+
+.fc-day-today {
+    background-color: #C0D1FA !important;
+    color: #5F3CF9 !important;
+}
+
+.fc-list-table td {
+    white-space: nowrap !important; /* Prevents text from breaking */
+    padding: 10px !important; /* Adds spacing */
+    font-size: 14px !important; /* Adjust text size */
+}
+
+.fc-list-event {
+    background-color: #f9f9f9 !important;
+    border-left: 4px solid #628EFF !important;
+    padding: 8px 0 !important;
+}
+
+.fc-list-event-time {
+    font-weight: bold !important;
+    color: #333 !important;
+    margin-right: 100px !important;
+}
+/* END OF EVENT CALENDAR */
 
 /* Right Sidebar Styles */
 .right-sidebar {

@@ -1,7 +1,4 @@
 @page
-
-
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -9,7 +6,63 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Officer Dashboard - Vista</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <script src='https://cdn.jsdelivr.net/npm/fullcalendar@6.1.15/index.global.min.js'></script>
     <link rel="stylesheet" href="~/css/officerdashboard.css">
+    <script>
+
+        document.addEventListener('DOMContentLoaded', function() {
+          var calendarEl = document.getElementById('calendar');
+          var calendar = new FullCalendar.Calendar(calendarEl, {
+            initialView: 'dayGridMonth',
+            headerToolbar: {
+                left: 'prev',
+                center: 'title',
+                right: 'next'
+            },
+            editable: true,
+            events: [
+                { title: 'Board Meeting', start: '2025-03-20' },
+                { title: 'Officers Meeting', start: '2025-03-22' },
+                { title: 'Homeowners Meeting', start: '2025-03-25' },
+                { title: 'Yard Sale', start: '2025-03-27' },
+                { title: 'Event', start: '2025-03-28' },
+                { title: 'Maintenance', start: '2025-03-29' },
+                { title: 'Board Meeting', start: '2025-03-30' },
+                { title: 'Pool Inspection', start: '2025-03-31' }
+            ],
+            eventDidMount: function (info) {
+                let allEvents = calendar.getEvents();
+                let today = new Date();
+                today.setHours(0, 0, 0, 0); // Remove time for accurate comparison
+
+                let pastEvents = allEvents.filter(event => new Date(event.startStr) < today);
+                let futureEvents = allEvents.filter(event => new Date(event.startStr) >= today);
+
+                // Apply color to past events
+                if (new Date(info.event.startStr) < today) {
+                    info.el.style.backgroundColor = "#E43434"; // Red for past events
+                } else {
+                    // Sort only future events by date
+                    futureEvents.sort((a, b) => new Date(a.startStr) - new Date(b.startStr));
+
+                    // Find index in upcoming events
+                    let index = futureEvents.findIndex(e => e.startStr === info.event.startStr);
+
+                    // Assign colors based on upcoming order
+                    if (index === 0) {
+                        info.el.style.backgroundColor = "#628EFF"; // First upcoming event (Blue)
+                    } else if (index === 1) {
+                        info.el.style.backgroundColor = "#D89300"; // Second upcoming event (Orange)
+                    } else {
+                        info.el.style.backgroundColor = "#14B13E"; // Third and later upcoming events (Green)
+                    }
+                }
+            }
+          });
+          calendar.render();
+        });
+
+    </script>
 </head>
 <body>
     <div class="dashboard-wrapper">
@@ -81,27 +134,8 @@
             <div class="content">
                 <div class="dashboard-container">
                     <!-- Officer Profile Card -->
-                    <h2 style="margin-left:50px; font-size: 32px;font:poppins; font-weight: bold;">EVENTS</h2>
-                    <div class="officer-profile-card">
-                        <div class="profile-content">
-                            <div class="profile-avatar">
-                              
-                            </div>
-                            <div class="profile-info">
-                                
-
-                                <div class="contact-details">
-                                    <div class="contact-item">
-                                        
-                                    </div>
-                                    <div class="contact-item">
-                                        
-                                        
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
+                    <h2>Event Calendar</h2>
+                    <div id="calendar"></div>
                 </div>
             </div> 
         </main>

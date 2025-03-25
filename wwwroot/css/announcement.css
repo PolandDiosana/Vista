@@ -43,22 +43,28 @@ body {
 }
 
 /* Logo styles */
-.logo {
+.sidebar .logo {
     display: flex;
     align-items: center;
     margin-bottom: 10px;
     padding: 20px 20px;
 }
 
-.logo img {
-    height: 150px;
-    width: 150px;
+.sidebar .logo .logo-img {
+    height: 70px;
+    width: 100px;
     margin-right: 10px;
 }
 
 .logo span {
     font-size: 22px;
     font-weight: 700;
+}
+
+.sidebar .custom-line {
+    width: 100%;
+    border: 0.5px solid rgba(0, 0, 0, 0.15);
+    margin: 1.5% 0;
 }
 
 /* Navigation menu styles */
