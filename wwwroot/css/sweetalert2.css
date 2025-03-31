@@ -1,0 +1,10 @@
+﻿@import url('/css/customfonts.css');
+
+.custom-swal-title {
+    font-family: 'Poppins-SemiBold' !important;
+    font-size: 24px !important;
+}
+.custom-swal-text {
+    font-family: 'Poppins-Medium' !important;
+    font-size: 18px !important;
+}

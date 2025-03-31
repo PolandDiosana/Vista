@@ -11,13 +11,14 @@
     <title>@ViewData["Title"]</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link rel="stylesheet" href="~/css/homeownerdashboard.css">
+    <link rel="stylesheet" href="~/css/sidebar.css">
 </head>
 <body>
     <div class="dashboard-wrapper">
         <!-- Sidebar -->
         <aside class="sidebar">
             <div class="logo">
-                <img src="~/Images/logo.png" alt="Vista Logo">
+                <img src="~/Images/logo 1.png" alt="Vista Logo">
                 <span>vista.</span>
             </div>
 
@@ -228,61 +229,57 @@
 
         <!-- Right Sidebar -->
         <aside class="right-sidebar">
-            <!-- Activity Section -->
             <div class="actions">
-                <div class="notifications">
-                    <i class="far fa-bell"></i>
-                    <span class="badge">3</span>
-                    <img src="@Model.LoggedInUser.ProfileImage" alt="Admin Profile" class="profilepic">
+                <i class="fas fa-bell"></i>
+                <i class="fas fa-gear"></i>
+                <div class="name">
+                    <h5 class="fullname">@Model.LoggedInUser.LastName @Model.LoggedInUser.FirstName</h5>
+                    <h6 class="role">Homeowner</h6>
                 </div>
+                <img src="@Model.LoggedInUser.ProfileImage" alt="Admin Profile" class="profilepic">
             </div>
-            <div class="section-header">
+            <div class="activity-section">
                 <h3>Latest Activity</h3>
-            </div>
-            <div class="activity-list">
-                <!--
-                <div class="activity-item">
-                    <div class="activity-avatar">
-                        <img src="~/Images/aiden.png" alt="Aiden Pierce">
+                <div class="activity-list">
+                    <div class="activity-item">
+                        <div class="activity-avatar">
+                            <img src="~/Images/aiden.png" alt="Aiden Pierce">
+                        </div>
+                        <div class="activity-content">
+                            <span class="activity-user">Aiden Pierce</span> recently created a new task for Homeowners
+                            <div class="activity-time">2 February 2025, 13:46 PM</div>
+                        </div>
                     </div>
-                    <div class="activity-content">
-                        <span class="activity-user">Aiden Pierce</span> recently created a new task for Homeowners
-                        <div class="activity-time">2 February 2025, 13:46 PM</div>
-                    </div>
-                </div>
 
-                <div class="activity-item">
-                    <div class="activity-avatar">
-                        <img src="~/Images/kitsuragi.png" alt="Kim Kitsuragi">
+                    <div class="activity-item">
+                        <div class="activity-avatar">
+                            <img src="~/Images/kitsuragi.png" alt="Kim Kitsuragi">
+                        </div>
+                        <div class="activity-content">
+                            <span class="activity-user">Kim Kitsuragi</span> posted an update on Basketball Court Renovation
+                            <div class="activity-time">2 February 2025, 13:46 PM</div>
+                        </div>
                     </div>
-                    <div class="activity-content">
-                        <span class="activity-user">Kim Kitsuragi</span> posted an update on Basketball Court Renovation
-                        <div class="activity-time">2 February 2025, 13:46 PM</div>
-                    </div>
-                </div>
 
-                <div class="activity-item">
-                    <div class="activity-avatar">
-                        <img src="~/Images/jean.png" alt="Jean Vicquemare">
-                    </div>
-                    <div class="activity-content">
-                        <span class="activity-user">Jean Vicquemare</span> created a new community event for Homeowners and Officers
-                        <div class="activity-time">2 February 2025, 13:46 PM</div>
+                    <div class="activity-item">
+                        <div class="activity-avatar">
+                            <img src="~/Images/jean.png" alt="Jean Vicquemare">
+                        </div>
+                        <div class="activity-content">
+                            <span class="activity-user">Jean Vicquemare</span> created a new community event for Homeowners and Officers
+                            <div class="activity-time">2 February 2025, 13:46 PM</div>
+                        </div>
                     </div>
                 </div>
-                -->
             </div>
 
             <!-- History Section -->
             <div class="history-section">
-                <div class="section-header">
-                    <h3>History</h3>
-                </div>
-
+                <h3>History</h3>
                 <div class="history-list">
                     <div class="history-item">
                         <div class="history-avatar">
-                            <img src="~/Images/colorful_heaven.png" alt="Colorful Heaven">
+                            <img src="~/css/Images/colorful_heaven.png" alt="Colorful Heaven">
                         </div>
                         <div class="history-content">
                             <span class="history-title">Colorful Heaven</span>
@@ -294,7 +291,7 @@
 
                     <div class="history-item">
                         <div class="history-avatar">
-                            <img src="~/Images/abstract_colors.png" alt="Abstract Colors">
+                            <img src="~/css/Images/abstract_colors.png" alt="Abstract Colors">
                         </div>
                         <div class="history-content">
                             <span class="history-title">Abstract Colors</span>
@@ -306,7 +303,7 @@
 
                     <div class="history-item">
                         <div class="history-avatar">
-                            <img src="~/Images/eth_ai_brain.png" alt="ETH AI Brain">
+                            <img src="~/css/Images/eth_ai_brain.png" alt="ETH AI Brain">
                         </div>
                         <div class="history-content">
                             <span class="history-title">ETH AI Brain</span>
@@ -318,7 +315,7 @@
 
                     <div class="history-item">
                         <div class="history-avatar">
-                            <img src="~/Images/swipe_circle.png" alt="Swipe Circle">
+                            <img src="~/css/Images/swipe_circle.png" alt="Swipe Circle">
                         </div>
                         <div class="history-content">
                             <span class="history-title">Swipe Circle</span>
