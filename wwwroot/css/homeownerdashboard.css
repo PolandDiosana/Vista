@@ -8,7 +8,6 @@
     --border-color: #e6e6e6;
     --hover-bg: #CCB38B;
     --unread-color: #f0a500;
-    --body-bg: #f5f7fa;
 }
 
 * {
@@ -19,8 +18,7 @@
 
 body {
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    background-color: var(--body-bg);
-    color: var(--text-color);
+    background-color: rgba(245, 245, 245, 1);
 }
 
 .dashboard-wrapper {
@@ -44,6 +42,13 @@ body {
     display: grid;
     grid-template-columns: 1fr;
     gap: 30px;
+}
+
+.main-content .content .dashboard-container .content-title {
+    font-family: 'Poppins-Bold';
+    font-size: 32px;
+    color: black;
+    margin-left: 4%;
 }
 
 .officer-profile-card {
@@ -133,20 +138,20 @@ body {
 }
 
 .section-header h3 {
-    margin: 0 0 5px;
-    font-size: 18px;
-    font-weight: 600;
+    font-size: 24px;
+    font-family: 'Poppins-Bold';
 }
 
 .section-header p {
-    margin: 0;
-    color: var(--light-text);
-    font-size: 14px;
+    color: black;
+    font-family: 'Poppins-Regular';
+    font-size: 15px;
 }
 
 .highlight {
-    color: var(--primary-color);
-    font-weight: 600;
+    color: black;
+    font-family: 'Poppins-Bold';
+    font-size: 15px;
 }
 
 .search-bar {
@@ -175,14 +180,14 @@ body {
 .contacts-list, .messages-list {
     display: flex;
     flex-direction: column;
-    gap: 15px;
-    overflow-y: auto;
+    overflow-y: scroll;
     flex-grow: 1;
 }
 
-.contact-item, .message-item {
+.contact-item {
     display: flex;
     align-items: center;
+    justify-content: space-between;
     padding: 10px;
     border-radius: 6px;
     transition: background-color 0.3s;
@@ -190,6 +195,13 @@ body {
 
 .contact-item:hover, .message-item:hover {
     background-color: var(--hover-bg);
+    cursor: pointer;
+}
+
+.contact-item .contact-avatar {
+    width: 50px;
+    height: 50px;
+    margin-right: 8%;
 }
 
 .contact-avatar img, .message-avatar img {
@@ -199,20 +211,57 @@ body {
     object-fit: cover;
 }
 
-.contact-name, .message-sender {
-    flex-grow: 1;
-    font-weight: 500;
+.contact-name {
+    width: 200px;
 }
 
-.message-text {
-    color: var(--light-text);
+.contact-name .name {
+    font-family: 'Poppins-Bold';
     font-size: 14px;
 }
 
-.message-time {
+.contact-name .role {
+    font-family: 'Poppins-Medium';
     font-size: 12px;
-    color: var(--light-text);
+}
+
+.message-btn {
+    cursor: pointer;
+}
+
+.message-item {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    padding: 10px 0;
+    border-radius: 6px;
+}
+
+.message-item .message-content {
+    width: 180px;
+    overflow: hidden;
+}
+
+.message-item .message-content .message-sender {
+    font-family: 'Poppins-Bold';
+    font-size: 14px;
     white-space: nowrap;
+    margin-bottom: 4%;
+}
+
+.message-item .message-content .message-text {
+    color: rgba(0, 0, 0, 0.47);
+    font-family: 'Poppins-Medium';
+    font-size: 12px;
+    white-space: nowrap;
+    overflow: hidden; 
+    text-overflow: ellipsis;
+}
+
+.message-time {
+    font-family: 'Poppins-Regular';
+    font-size: 11px;
+    color: rgba(0, 0, 0, 0.47);
 }
 
 .unread-indicator {

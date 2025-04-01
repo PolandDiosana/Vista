@@ -17,8 +17,10 @@ namespace Vista_Subdivision.Pages.homeOwner
             _dbContext = dbContext;
         }
 
-        //Property to store user data
+        public int ContactCount { get; set; }
+        public List<User> Contacts { get; set; }
         public User LoggedInUser { get; set; }
+        public Property Properties { get; set; }
         public async Task<IActionResult> OnGetAsync()
         {
             string userId = HttpContext.Session.GetString("Id");
@@ -27,8 +29,9 @@ namespace Vista_Subdivision.Pages.homeOwner
             {
                 return RedirectToPage("/Login");
             }
+            Properties = await _dbContext.Properties
+                .FirstOrDefaultAsync(p => p.UserId.ToString() == userId);
 
-            // ✅ Fetch user from the database
             LoggedInUser = await _dbContext.Users
                 .FirstOrDefaultAsync(u => u.Id.ToString() == userId);
 
@@ -36,6 +39,15 @@ namespace Vista_Subdivision.Pages.homeOwner
             {
                 return RedirectToPage("/Login");
             }
+
+            ContactCount = await _dbContext.Users
+                .Where(u => (u.Role == "Homeowner" || u.Role == "Officer") && u.Id.ToString() != userId)
+                .CountAsync();
+
+            Contacts = await _dbContext.Users
+                .Where(u => (u.Role == "Homeowner" || u.Role == "Officer") && u.Id.ToString() != userId)
+                .OrderBy(u => u.Role == "Homeowner")
+                .ToListAsync();
 
             return Page();
         }

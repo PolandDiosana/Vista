@@ -94,8 +94,9 @@
 
 .right-sidebar .actions .profilepic {
     border-radius: 50%;
-    width: 80px;
-    height: 70px;
+    width: 60px;
+    height: 60px;
+    object-fit: cover;
 }
 
 .right-sidebar .actions .name {
@@ -121,7 +122,6 @@
     width: 383px;
     display: flex;
     flex-direction: column;
-    border: 1px solid black;
 }
 
 .activity-section h3 {
@@ -194,7 +194,6 @@
     height: auto;
     display: flex;
     flex-direction: column;
-    border: 1px solid black;
 }
 
 .history-section h3 {

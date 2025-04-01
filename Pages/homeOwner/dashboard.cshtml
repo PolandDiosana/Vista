@@ -83,16 +83,16 @@
             <div class="content">
                 <div class="dashboard-container">
                     <!-- Officer Profile Card -->
-                    <h2 style="margin-left:50px; font-size: 32px;font:poppins; font-weight: bold;">Home Owner Dashboard</h2>
+                    <h2 class="content-title">Home Owner Dashboard</h2>
                     <div class="officer-profile-card">
                         <div class="profile-content">
                             <div class="profile-avatar">
-                                <img src="@Model.LoggedInUser.ProfileImage" alt="Hunter De Bois">
+                                <img src="@Model.LoggedInUser.ProfileImage" alt="@Model.LoggedInUser.FirstName">
                             </div>
                             <div class="profile-info">
                                 <h3>@Model.LoggedInUser.FirstName @Model.LoggedInUser.LastName</h3>
                                 <p>Homeowner</p>
-                                <p>Le Caillou, Revachol</p>
+                                <p>@Model.Properties.CityMunicipality</p>
 
                                 <div class="contact-details">
                                     <div class="contact-item">
@@ -117,8 +117,8 @@
                         <!-- Contacts Section -->
                         <div class="contacts-section">
                             <div class="section-header">
-                                <h3 style="font-size: 25px;font:poppins; font-weight: bold;">Contacts</h3>
-                                <p>You have <span class="highlight">140</span> contacts</p>
+                                <h3>Contacts</h3>
+                                <p>You have <span class="highlight">@Model.ContactCount</span> contacts</p>
                             </div>
 
                             <div class="search-bar">
@@ -127,46 +127,29 @@
                             </div>
 
                             <div class="contacts-list">
-                                <div class="contact-item">
-                                    <div class="contact-avatar">
-                                        <img src="~/Images/tom.png" alt="Tom Hansen">
+                                @foreach (var user in Model.Contacts)
+                                {
+                                    <div class="contact-item">
+                                        <div class="contact-avatar">
+                                            <img src="@(string.IsNullOrEmpty(user.ProfileImage) ? "/Images/default-avatar.png" : user.ProfileImage)"
+                                                 alt="@($"{user.FirstName} {user.LastName}")">
+                                        </div>
+                                        <div class="contact-name">
+                                            <p class="name">@($"{user.FirstName} {user.LastName}")</p>
+                                            <p class="role">@user.Role</p>
+                                        </div>
+                                        <button class="message-btn">
+                                            <i class="fas fa-comment"></i>
+                                        </button>
                                     </div>
-                                    <div class="contact-name">Tom Hansen</div>
-                                    <button class="message-btn">
-                                        <i class="fas fa-comment"></i>
-                                    </button>
-                                </div>
-
-                                <div class="contact-item">
-                                    <div class="contact-avatar">
-                                        <img src="~/Images/ramona.png" alt="Ramona Flowers">
-                                    </div>
-                                    <div class="contact-name">Ramona Flowers</div>
-                                    <button class="message-btn">
-                                        <i class="fas fa-comment"></i>
-                                    </button>
-                                </div>
-
-                                <div class="contact-item">
-                                    <div class="contact-avatar">
-                                        <img src="~/Images/james.png" alt="James">
-                                    </div>
-                                    <div class="contact-name">James</div>
-                                    <button class="message-btn">
-                                        <i class="fas fa-comment"></i>
-                                    </button>
-                                </div>
-                            </div>
-
-                            <div class="view-all">
-                                <button class="view-all-btn">View All</button>
+                                }
                             </div>
                         </div>
 
                         <!-- Messages Section -->
                         <div class="messages-section">
                             <div class="section-header">
-                                <h3 style="font-size: 25px;font:poppins; font-weight: bold;">Messages</h3>
+                                <h3>Messages</h3>
                             </div>
 
                             <div class="search-bar">
@@ -195,7 +178,6 @@
                                         <div class="message-text">Don't forget the email doc.</div>
                                     </div>
                                     <div class="message-time">11:45 AM</div>
-                                    <div class="unread-indicator"></div>
                                 </div>
 
                                 <div class="message-item">
@@ -215,10 +197,9 @@
                                     </div>
                                     <div class="message-content">
                                         <div class="message-sender">Ken Piao</div>
-                                        <div class="message-text">Here's another message...</div>
+                                        <div class="message-text">Here's another message bla bla bla bla bla bla bla</div>
                                     </div>
                                     <div class="message-time">1:30 PM</div>
-                                    <div class="unread-indicator"></div>
                                 </div>
                             </div>
                         </div>
