@@ -1,19 +1,22 @@
 @page
+@model Vista_Subdivision.Pages.homeOwner.FacilityReservationModel
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Reservation - Vista</title>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link rel="stylesheet" href="~/css/facilityReservation.css">
+    <link rel="stylesheet" href="~/css/sidebar.css">
 </head>
 <body>
     <div class="dashboard-wrapper">
         <!-- Sidebar -->
         <aside class="sidebar">
             <div class="logo">
-                <img src="~/Images/logo.png" alt="Vista Logo">
+                <img src="~/Images/logo 1.png" alt="Vista Logo">
                 <span>vista.</span>
             </div>
 
@@ -26,15 +29,15 @@
                         </a>
                     </li>
                     <li>
-                        <a href="/homeOwner/BillingPayments">
-                            <i class="fas fa-file-invoice-dollar"></i>
-                            <span>Billing & Payments</span>
-                        </a>
-                    </li>
-                    <li class="active">
                         <a href="/homeOwner/Announcements">
                             <i class="fas fa-bullhorn"></i>
                             <span>Announcements</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="/homeOwner/BillingPayments">
+                            <i class="fas fa-file-invoice-dollar"></i>
+                            <span>Billing & Payments</span>
                         </a>
                     </li>
                     <li class="active">
@@ -70,56 +73,67 @@
                 </ul>
             </nav>
         </aside>
-
+        @inject Microsoft.AspNetCore.Antiforgery.IAntiforgery Xsrf
+        <input type="hidden" id="RequestVerificationToken"
+               name="__RequestVerificationToken"
+               value="@Xsrf.GetAndStoreTokens(HttpContext).RequestToken" />
         <!-- Main Content -->
             <main class="main-content">
                 <div class="content">
-                        <h2>Facility Reservation</h2>
+                        <div class="facilityHeader">
+                            <h2>Facility Reservation</h2>
+                        </div>
                         <div class="facility-reservation-container">
                             <div class="facility-selection">
                                 <h3>Select a facility</h3>
-                                <div class="facility-item">
+
+                                <button class="facility-item">
                                     <img src="~/Images/swimming pool.png" alt="Swimming Pool">
                                     <div class="facility-info">
                                         <h4>Swimming Pool</h4>
                                         <p>Max Capacity: 30</p>
                                     </div>
-                                </div>
-                                <div class="facility-item">
+                                </button>
+
+                                <button class="facility-item">
                                     <img src="~/Images/tennis court.png" alt="Tennis Court">
                                     <div class="facility-info">
                                         <h4>Tennis Court</h4>
                                         <p>Max Capacity: 8</p>
                                     </div>
-                                </div>
-                                <div class="facility-item">
+                                </button>
+
+                                <button class="facility-item">
                                     <img src="~/Images/basketball court.png" alt="Basketball Court">
                                     <div class="facility-info">
                                         <h4>Basketball Court</h4>
                                         <p>Max Capacity: 20</p>
                                     </div>
-                                </div>
-                                <div class="facility-item">
+                                </button>
+
+                                <button class="facility-item">
                                     <img src="~/Images/function hall.png" alt="Function Hall">
                                     <div class="facility-info">
                                         <h4>Function Hall</h4>
                                         <p>Max Capacity: 50</p>
                                     </div>
-                                </div>
-                                <div class="facility-item">
+                                </button>
+
+                                <button class="facility-item">
                                     <img src="~/Images/roomA.png" alt="Room A">
                                     <div class="facility-info">
                                         <h4>Room A</h4>
                                         <p>Max Capacity: 2</p>
                                     </div>
-                                </div>
-                                <div class="facility-item">
+                                </button>
+
+                                <button class="facility-item">
                                     <img src="~/Images/roomB.png" alt="Room B">
                                     <div class="facility-info">
                                         <h4>Room B</h4>
                                         <p>Max Capacity: 2</p>
                                     </div>
-                                </div>
+                                </button>
                             </div>
                             <div class="reservation-details">
                                 <h3>Select Date</h3>
@@ -130,11 +144,20 @@
                                     <button class="time-slot">16:00 - 18:00</button>
                                     <button class="time-slot">18:00 - 20:00</button>
                                 </div>
-                                <h3>Reservation Summary</h3>
                                 <div class="reservation-summary">
-                                    <p>Facility: <span id="summary-facility">Swimming Pool</span></p>
-                                    <p>Date: <span id="summary-date">03/12/2025</span></p>
-                                    <p>Time: <span id="summary-time">06:00 - 08:00</span></p>
+                                    <h3>Reservation Summary</h3>
+                                    <div class="summary-container">
+                                        <div class="summary-title">
+                                            <p>Facility:</p>
+                                            <p>Date:</p>
+                                            <p>Time:</p>
+                                        </div>
+                                        <div class="summary-content">
+                                            <p></p>
+                                            <p></p>
+                                            <p></p>
+                                        </div>
+                                    </div>
                                 </div>
                                 <div class="reservation-actions">
                                     <button class="cancel-btn">Cancel</button>
@@ -146,5 +169,96 @@
                 </div>
             </main>
     </div>
+    <script>
+        document.addEventListener("DOMContentLoaded", function () {
+            let selectedFacility = "";
+            let selectedDate = "";
+            let selectedTime = "";
+
+            // Select all facility buttons
+            document.querySelectorAll(".facility-item").forEach(button => {
+                button.addEventListener("click", function () {
+                    document.querySelectorAll(".facility-item").forEach(btn => btn.classList.remove("selected"));
+                    this.classList.add("selected");
+                    selectedFacility = this.querySelector("h4").innerText;
+                    updateSummary();
+                });
+            });
+
+            // Select date input
+            document.getElementById("reservation-date").addEventListener("change", function () {
+                selectedDate = this.value;
+                updateSummary();
+            });
+
+            // Select all time slot buttons
+            document.querySelectorAll(".time-slot").forEach(button => {
+                button.addEventListener("click", function () {
+                    selectedTime = this.innerText;
+                    document.querySelectorAll(".time-slot").forEach(btn => btn.classList.remove("selected"));
+                    this.classList.add("selected");
+                    updateSummary();
+                });
+            });
+
+            function updateSummary() {
+                document.querySelector(".summary-content").innerHTML = `
+                        <p>${selectedFacility || "Select a Facility"}</p>
+                        <p>${selectedDate || "Select a Date"}</p>
+                        <p>${selectedTime || "Select a Time Slot"}</p>
+                    `;
+            }
+
+            // Confirm Reservation button logic
+            document.querySelector(".confirm-btn").addEventListener("click", function () {
+                if (!selectedFacility || !selectedDate || !selectedTime) {
+                    Swal.fire({
+                        icon: "warning",
+                        title: "Incomplete Selection",
+                        text: "Please select a facility, date, and time before confirming.",
+                    });
+                    return;
+                }
+
+                const tokenInput = document.getElementById("RequestVerificationToken");
+                const token = tokenInput ? tokenInput.value : "";
+
+
+                fetch("/homeOwner/FacilityReservation?handler=Reserve", {
+                    method: "POST",
+                    headers: {
+                        "Content-Type": "application/json",
+                        "RequestVerificationToken": token
+                    },
+                    body: JSON.stringify({
+                        Facility: selectedFacility,
+                        Date: selectedDate,
+                        Time: selectedTime
+                    })
+                })
+                    .then(response => {
+                        if (response.ok) {
+                            Swal.fire({
+                                icon: "success",
+                                title: "Reservation Confirmed",
+                                text: "Your reservation has been submitted successfully!",
+                            }).then(() => {
+                                location.reload(); // Optional: reload or redirect
+                            });
+                        } else {
+                            throw new Error("Server responded with an error.");
+                        }
+                    })
+                    .catch(error => {
+                        console.error(error);
+                        Swal.fire({
+                            icon: "error",
+                            title: "Reservation Failed",
+                            text: "An error occurred while submitting your reservation. Please try again.",
+                        });
+                    });
+            });
+        });
+    </script>
 </body>
 </html>

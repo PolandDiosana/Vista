@@ -9,9 +9,10 @@ namespace Vista_Subdivision
     {
         [Key]
         public int EventID { get; set; }
-        public User User { get; set; } = null!;
+        [Required]
         public string? Title { get; set; }
         public string? Description { get; set; }
+        [Required]
         public string? EventDate { get; set; }
         public int OrganizerID { get; set; }
     }

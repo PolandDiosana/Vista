@@ -16,9 +16,9 @@ namespace Vista_Subdivision.Pages.homeOwner
 
         //Property to store user data
         public User LoggedInUser { get; set; }
-        public async Task<IActionResult> OnGetAsync()
+        public async Task<IActionResult> OnGetAllAsync()
         {
-            string userId = HttpContext.Session.GetString("Id");
+            /*string userId = HttpContext.Session.GetString("Id");
 
             if (string.IsNullOrEmpty(userId))
             {
@@ -32,9 +32,20 @@ namespace Vista_Subdivision.Pages.homeOwner
             if (LoggedInUser == null)
             {
                 return RedirectToPage("/Login");
+            }*/
+
+            var announcements = await _dbContext.Announcements.ToListAsync();
+
+            if (announcements == null || announcements.Count == 0)
+            {
+                return NotFound(new { message = "No announcements found." });
             }
 
-            return Page();
+            return new JsonResult(new
+            {
+                message = "Announcements retrieved successfully.",
+                data = announcements
+            });
         }
     }
 }

@@ -3,6 +3,7 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using Vista_Subdivision.Data;
 
@@ -11,9 +12,11 @@ using Vista_Subdivision.Data;
 namespace Vista_Subdivision.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    partial class ApplicationDbContextModelSnapshot : ModelSnapshot
+    [Migration("20250406052232_RemoveDataTypeTimeFromTimeInFacilityReservation")]
+    partial class RemoveDataTypeTimeFromTimeInFacilityReservation
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -94,17 +97,20 @@ namespace Vista_Subdivision.Migrations
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("EventDate")
-                        .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<int>("OrganizerID")
                         .HasColumnType("int");
 
                     b.Property<string>("Title")
-                        .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
+                    b.Property<int>("UserId")
+                        .HasColumnType("int");
+
                     b.HasKey("EventID");
+
+                    b.HasIndex("UserId");
 
                     b.ToTable("EventCalendars");
                 });
@@ -151,7 +157,7 @@ namespace Vista_Subdivision.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<int>("Id")
+                    b.Property<int?>("Id")
                         .HasColumnType("int");
 
                     b.Property<string>("Status")
@@ -163,6 +169,8 @@ namespace Vista_Subdivision.Migrations
                         .HasColumnType("nvarchar(max)");
 
                     b.HasKey("ReservationId");
+
+                    b.HasIndex("Id");
 
                     b.ToTable("FacilityReservations");
                 });
@@ -280,6 +288,26 @@ namespace Vista_Subdivision.Migrations
                         .HasForeignKey("UserId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
+
+                    b.Navigation("User");
+                });
+
+            modelBuilder.Entity("Vista_Subdivision.EventCalendar", b =>
+                {
+                    b.HasOne("Vista_Subdivision.User", "User")
+                        .WithMany()
+                        .HasForeignKey("UserId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("User");
+                });
+
+            modelBuilder.Entity("Vista_Subdivision.Models.FacilityReservation", b =>
+                {
+                    b.HasOne("Vista_Subdivision.User", "User")
+                        .WithMany()
+                        .HasForeignKey("Id");
 
                     b.Navigation("User");
                 });

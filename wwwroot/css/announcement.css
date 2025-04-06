@@ -23,7 +23,6 @@
 body {
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     background-color: var(--body-bg);
-    color: var(--text-color);
 }
 
 /* Wrapper for the entire dashboard layout */
@@ -48,7 +47,7 @@ body {
 .announcement-container {
     display: flex;
     flex-direction: column;
-    gap: 20px;
+    gap: 30px;
 }
 
 /* Announcement header styles */
