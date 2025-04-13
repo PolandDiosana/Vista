@@ -3,6 +3,7 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using Vista_Subdivision.Data;
 
@@ -11,9 +12,11 @@ using Vista_Subdivision.Data;
 namespace Vista_Subdivision.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    partial class ApplicationDbContextModelSnapshot : ModelSnapshot
+    [Migration("20250413081519_AddSecurityTable")]
+    partial class AddSecurityTable
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -175,17 +178,11 @@ namespace Vista_Subdivision.Migrations
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("SecurityID"));
 
-                    b.Property<DateOnly>("EntryDate")
-                        .HasColumnType("date");
+                    b.Property<DateTime>("EntryTime")
+                        .HasColumnType("datetime2");
 
-                    b.Property<TimeOnly>("EntryTime")
-                        .HasColumnType("time");
-
-                    b.Property<DateOnly?>("ExitDate")
-                        .HasColumnType("date");
-
-                    b.Property<TimeOnly?>("ExitTime")
-                        .HasColumnType("time");
+                    b.Property<DateTime?>("ExitTime")
+                        .HasColumnType("datetime2");
 
                     b.Property<int>("HomeownerID")
                         .HasColumnType("int");
