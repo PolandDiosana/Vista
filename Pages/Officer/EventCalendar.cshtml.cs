@@ -17,6 +17,12 @@ namespace Vista_Subdivision.Pages.Officer
             _context = context;
         }
 
+        public async Task<JsonResult> OnGetGetEventsAsync()
+        {
+            var events = await _context.EventCalendars.ToListAsync();
+            return new JsonResult(events);
+        }
+
         public async Task<IActionResult> OnPostAddEventAsync()
         {
             using var reader = new StreamReader(Request.Body);
