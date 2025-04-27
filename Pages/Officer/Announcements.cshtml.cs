@@ -42,7 +42,7 @@ namespace Vista_Subdivision.Pages.Officer
             }
 
             // Validate required fields manually
-            if (string.IsNullOrWhiteSpace(announcement.Title) || string.IsNullOrWhiteSpace(announcement.Content) || announcement.AuthorID == 0)
+            if (string.IsNullOrWhiteSpace(announcement.Title) || string.IsNullOrWhiteSpace(announcement.Content))
             {
                 return BadRequest(new { message = "Missing fields" });
             }
