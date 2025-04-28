@@ -18,7 +18,7 @@ namespace Vista_Subdivision.Pages.homeOwner
         public User LoggedInUser { get; set; }
         public async Task<IActionResult> OnGetAllAsync()
         {
-            /*string userId = HttpContext.Session.GetString("Id");
+            string userId = HttpContext.Session.GetString("Id");
 
             if (string.IsNullOrEmpty(userId))
             {
@@ -32,7 +32,7 @@ namespace Vista_Subdivision.Pages.homeOwner
             if (LoggedInUser == null)
             {
                 return RedirectToPage("/Login");
-            }*/
+            }
 
             var announcements = await _dbContext.Announcements.ToListAsync();
 
