@@ -1,0 +1,433 @@
+﻿@import url('/css/customfonts.css');
+
+/* Global styles */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Poppins';
+}
+
+body {
+    background-color: #f5f5f5;
+}
+
+.dashboard-wrapper {
+    display: flex;
+    min-height: 100vh;
+}
+
+/* Main content area */
+.main-content {
+    flex: 1;
+    padding: 0px 10px;
+    background-color: #f5f5f5;
+}
+
+.content {
+    padding: 20px;
+    max-width: 1600px;
+    max-height: 94vh;
+}
+
+/* Page title */
+.page-title {
+    font-size: 24px;
+    font-weight: 600;
+    margin-bottom: 20px;
+    color: #333;
+}
+
+/* Profile content container */
+.profile-content {
+    display: flex;
+    gap: 20px;
+    max-height: 100vh;
+    margin-bottom: 20px;
+}
+
+/* Left column styles */
+.profile-left-column {
+    flex: 4;
+    background-color: #fff;
+    border-radius: 8px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+    padding: 20px;
+    color: black;
+}
+
+.profile-header {
+    display: flex;
+    align-items: center;
+    margin-bottom: 20px;
+    padding-bottom: 15px;
+
+}
+
+.profile-image-container {
+    width: 120px;
+    height: 120px;
+    border-radius: 50%;
+    overflow: hidden;
+    margin-right: 15px;
+    border: 1px solid black;
+}
+
+.profile-image {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.profile-name h3 {
+    font-family: 'Poppins-SemiBold';
+    font-size: 20px;
+    margin-bottom: 5px;
+}
+
+.profile-name p {
+    font-family: 'Poppins-SemiBold';
+    font-size: 14px;
+    color: #777;
+}
+
+/* Info sections */
+.info-section {
+    margin-bottom: 25px;
+}
+
+.info-section h3 {
+    font-size: 16px;
+    font-weight: 600;
+    margin-bottom: 15px;
+    color: black;
+    border-bottom: 1px solid #eee;
+    padding-bottom: 10px;
+}
+
+/* Form styles */
+.form-row {
+    display: flex;
+    gap: 15px;
+    margin-bottom: 15px;
+}
+
+.form-group {
+    flex: 1;
+    min-width: 0; /* For text overflow handling */
+}
+
+label {
+    display: block;
+    font-size: 14px;
+    color: #555;
+    margin-bottom: 8px;
+}
+
+input[type="text"],
+input[type="email"],
+input[type="tel"],
+input[type="password"] {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    font-size: 14px;
+}
+
+/* Right column styles */
+.profile-right-column {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    width: 50%;
+    height: 80vh;
+}
+
+.info-card h3 {
+    font-size: 16px;
+    font-weight: 600;
+    margin-bottom: 15px;
+    color: #333;
+    border-bottom: 1px solid #eee;
+    padding-bottom: 10px;
+}
+
+/* Upload area */
+.upload-area {
+    border: 2px dashed #ddd;
+    border-radius: 8px;
+    padding: 30px 20px;
+    text-align: center;
+    margin-bottom: 20px;
+    background-color: #f9f9f9;
+}
+
+.upload-icon {
+    font-size: 24px;
+    color: #666;
+    margin-bottom: 10px;
+}
+
+.upload-title {
+    font-weight: 500;
+    margin-bottom: 8px;
+    color: #333;
+}
+
+.upload-subtitle {
+    color: #777;
+    font-size: 14px;
+    margin-bottom: 5px;
+}
+
+.upload-size {
+    color: #999;
+    font-size: 12px;
+}
+
+/* Document list */
+.document-list {
+    margin-top: 15px;
+}
+
+.document-item {
+    display: flex;
+    align-items: center;
+    padding: 12px;
+    background-color: #f5f5f5;
+    border-radius: 6px;
+    margin-bottom: 10px;
+}
+
+.document-icon {
+    color: #e74c3c;
+    font-size: 18px;
+    margin-right: 12px;
+}
+
+.document-info {
+    flex: 1;
+}
+
+.document-name {
+    font-size: 14px;
+    font-weight: 500;
+    margin-bottom: 2px;
+    color: #333;
+}
+
+.document-details {
+    font-size: 12px;
+    color: #777;
+}
+
+/* Action buttons */
+/* Update the action buttons styling */
+/* Make sure the right column has proper spacing */
+
+.info-card {
+    background: white;
+    border-radius: 8px;
+    padding: 20px;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+}
+
+/* Remove the action-buttons from the main form area if it exists there */
+.profile-content + .action-buttons {
+    display: none;
+}
+/* Profile header adjustments */
+.profile-image-container {
+    width: 70px;
+    height: 70px;
+    border-radius: 50%;
+    overflow: hidden;
+    margin-right: 15px;
+    border: 2px solid #f5f5f5;
+}
+
+/* Upload area refinements */
+.upload-area {
+    border: 2px dashed #ddd;
+    border-radius: 8px;
+    padding: 30px 20px;
+    text-align: center;
+    margin-bottom: 20px;
+    background-color: #f9f9f9;
+    cursor: pointer; /* Add pointer cursor to indicate clickable */
+}
+
+/* Document list refinements */
+.document-item {
+    display: flex;
+    align-items: center;
+    padding: 12px;
+    background-color: #f8f8f8;
+    border-radius: 6px;
+    margin-bottom: 10px;
+}
+
+/* Button positioning */
+.action-buttons {
+    display: flex;
+    justify-content: end;
+    margin-left: auto;
+    margin-right: auto;
+    width: 80%;
+    gap: 50px;
+    height: 50px;
+}
+h2 {
+    font-family: 'Poppins-SemiBold';
+}
+
+/* Button styles to match the image */
+.btn-cancel {
+    padding: 10px 30px;
+    background-color: #e0e0e0;
+    border: none;
+    border-radius: 4px;
+    font-family: 'Poppins-SemiBold';
+    font-size: 1.1rem;
+    color: #333;
+    width: 100%;
+    cursor: pointer;
+    transition: background-color 0.2s;
+}
+
+.btn-save {
+    padding: 10px 30px;
+    background-color: #c4a677;
+    border: none;
+    border-radius: 4px;
+    font-family: 'Poppins-SemiBold';
+    font-size: 1.1rem;
+    color: white;
+    width: 100%;
+    cursor: pointer;
+    transition: background-color 0.2s;
+}
+.info-card {
+    background: white;
+    border-radius: 8px;
+    padding: 20px;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+    margin-bottom: 20px;
+}
+
+/* Upload feedback styling */
+.upload-feedback {
+    padding: 12px;
+    border-radius: 4px;
+    margin: 15px 0;
+    text-align: center;
+    font-size: 14px;
+    transition: all 0.3s ease;
+}
+
+    .upload-feedback.success {
+        background-color: #e3f2fd;
+        color: #2962ff;
+        border: 1px solid #bbdefb;
+    }
+
+    .upload-feedback.error {
+        background-color: #ffebee;
+        color: #d50000;
+        border: 1px solid #ffcdd2;
+    }
+
+/* Document list styling enhancements */
+.document-list {
+    margin-top: 20px;
+    border-top: 1px solid #eee;
+    padding-top: 15px;
+    max-height: 300px;
+    overflow-y: auto;
+}
+
+.document-list-heading {
+    margin-bottom: 10px;
+    padding-bottom: 5px;
+    border-bottom: 1px solid #eee;
+}
+
+    .document-list-heading h4 {
+        font-size: 15px;
+        font-weight: 500;
+        color: #555;
+        margin: 0;
+    }
+
+/* Animation for new document items */
+.document-item {
+    display: flex;
+    align-items: center;
+    padding: 12px;
+    background: #f9f9f9;
+    border-radius: 4px;
+    margin-bottom: 8px;
+    transition: all 0.3s ease;
+}
+
+.document-item-new {
+    animation: fadeIn 0.5s ease;
+    background-color: #f0f7ff;
+}
+
+.document-item-removing {
+    opacity: 0;
+    transform: translateX(20px);
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(-10px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Improve document icon styling */
+.document-icon {
+    margin-right: 10px;
+    color: #4a90e2;
+    width: 20px;
+    text-align: center;
+}
+
+/* Make delete icon more visible on hover */
+.document-delete {
+    opacity: 0.6;
+    transition: all 0.2s ease;
+}
+
+.document-item:hover .document-delete {
+    opacity: 1;
+}
+
+/* Empty state message */
+.no-documents {
+    text-align: center;
+    color: #999;
+    font-style: italic;
+    padding: 20px 0;
+}
+
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+    .profile-content {
+        flex-direction: column;
+    }
+
+    .form-row {
+        flex-direction: column;
+        gap: 10px;
+    }
+}

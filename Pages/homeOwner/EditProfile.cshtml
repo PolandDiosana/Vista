@@ -7,14 +7,61 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Edit Profile - Vista</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <link rel="stylesheet" href="~/css/officerdashboard.css">
+    <link rel="stylesheet" href="~/css/sidebar.css">
+    <link rel="stylesheet" href="~/css/editprofile.css">
+    <style>
+        /* Additional styles for document list */
+        .document-list {
+            margin-top: 20px;
+            border-top: 1px solid #eee;
+            padding-top: 15px;
+        }
+
+        .document-item {
+            display: flex;
+            align-items: center;
+            padding: 8px 0;
+            border-bottom: 1px solid #f5f5f5;
+        }
+
+        .document-icon {
+            margin-right: 10px;
+            color: #666;
+        }
+
+        .document-name {
+            flex-grow: 1;
+            font-size: 14px;
+        }
+
+        .document-delete {
+            color: #ff5252;
+            cursor: pointer;
+            margin-left: 10px;
+        }
+
+        .upload-area {
+            border: 2px dashed #ccc;
+            border-radius: 5px;
+            padding: 20px;
+            text-align: center;
+            cursor: pointer;
+            transition: all 0.3s;
+            margin-bottom: 15px;
+        }
+
+            .upload-area:hover {
+                border-color: #4a90e2;
+                background-color: #f9f9f9;
+            }
+    </style>
 </head>
 <body>
     <div class="dashboard-wrapper">
         <!-- Sidebar -->
         <aside class="sidebar">
             <div class="logo">
-                <img src="~/Images/logo.png" alt="Vista Logo">
+                <img src="~/Images/logo 1.png" alt="Vista Logo">
                 <span>vista.</span>
             </div>
 
@@ -59,7 +106,7 @@
                     <li>
                         <a href="/homeOwner/EventsScheduled">
                             <i class="fas fa-calendar-alt"></i>
-                            <span>Events Scheduled</span>
+                            <span>Events Calendar</span>
                         </a>
                     </li>
                     <li class="active">
@@ -71,39 +118,295 @@
                 </ul>
             </nav>
         </aside>
+
         <!-- Main Content -->
-        <main class="main-content">
-            <!-- Top Bar -->
-            <!-- Dashboard Content -->
+        <div class="main-content">
             <div class="content">
-                <div class="dashboard-container">
-                    <!-- Officer Profile Card -->
-                    <h2 style="margin-left:50px; font-size: 32px;font:poppins; font-weight: bold;">Edit Profile</h2>
-                    <div class="officer-profile-card">
-                        <div class="profile-content">
-                            <div class="profile-avatar">
-                              
+                <h2 class="page-title">Edit User Profile</h2>
+
+                <form class="profile-form">
+                    <div class="profile-content">
+                        <!-- Left Column -->
+                        <div class="profile-left-column">
+                            <div class="profile-header">
+                                <div class="profile-image-container">
+                                    <img src="~/Images/james.png" alt="Profile Photo" class="profile-image">
+                                </div>
+                                <div class="profile-name">
+                                    <h3>Harrier De Bois</h3>
+                                    <p>Homeowner</p>
+                                </div>
                             </div>
-                            <div class="profile-info">
 
+                            <div class="info-section">
+                                <h3>Personal Information</h3>
 
-                                <div class="contact-details">
-                                    <div class="contact-item">
+                                <div class="form-row">
+                                    <div class="form-group">
+                                        <label for="firstName">First Name</label>
+                                        <input type="text" id="firstName" name="firstName">
                                     </div>
-                                    <div class="contact-item">
+                                    <div class="form-group">
+                                        <label for="lastName">Last Name</label>
+                                        <input type="text" id="lastName" name="lastName">
+                                    </div>
+                                </div>
+
+                                <div class="form-row">
+                                    <div class="form-group">
+                                        <label for="email">Email Address</label>
+                                        <input type="email" id="email" name="email">
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="phone">Phone Number</label>
+                                        <input type="tel" id="phone" name="phone">
+                                    </div>
+                                </div>
+
+                                <div class="form-row">
+                                    <div class="form-group">
+                                        <label for="unitAddress">Unit Address</label>
+                                        <input type="text" id="unitAddress" name="unitAddress">
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="city">City/Municipality</label>
+                                        <input type="text" id="city" name="city">
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="info-section">
+                                <h3>Emergency Contact</h3>
+
+                                <div class="form-row">
+                                    <div class="form-group">
+                                        <label for="contactName">Contact Name</label>
+                                        <input type="text" id="contactName" name="contactName">
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="contactNumber">Contact Number</label>
+                                        <input type="tel" id="contactNumber" name="contactNumber">
+                                    </div>
+                                </div>
+
+                                <div class="form-row">
+                                    <div class="form-group">
+                                        <label for="relationship">Relationship</label>
+                                        <input type="text" id="relationship" name="relationship">
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="contactEmail">Email Address</label>
+                                        <input type="email" id="contactEmail" name="contactEmail">
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="info-section">
+                                <h3>Account Settings</h3>
+
+                                <div class="form-row">
+                                    <div class="form-group">
+                                        <label for="username">Username</label>
+                                        <input type="text" id="username" name="username">
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="password">Password</label>
+                                        <input type="password" id="password" name="password">
+                                    </div>
+                                </div>
+
+                                <div class="form-row">
+                                    <div class="form-group">
+                                        <label for="language">Language</label>
+                                        <input type="text" id="language" name="language">
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="timezone">Timezone</label>
+                                        <input type="text" id="timezone" name="timezone">
                                     </div>
                                 </div>
                             </div>
                         </div>
+
+                        <!-- Right Column -->
+                        <div class="profile-right-column">
+                            <div class="info-card">
+                                <h3>Documents</h3>
+                                <div class="upload-area" id="upload-area">
+                                    <div class="upload-icon">
+                                        <i class="fas fa-arrow-up"></i>
+                                    </div>
+                                    <p class="upload-title">Upload Valid Documents</p>
+                                    <p class="upload-subtitle">Click or drag and drop files here</p>
+                                    <p class="upload-size">Max file size: 10 MB</p>
+                                    <input type="file" id="file-upload" style="display: none;" multiple>
+                                </div>
+
+                                <div class="document-list" id="document-list">
+                                    <!-- Uploaded documents will appear here -->
+                                </div>
+                            </div>
+
+                            <!-- Move action buttons here -->
+                            <div class="action-buttons">
+                                <button type="button" class="btn-cancel">Cancel</button>
+                                <button type="submit" class="btn-save">Save Changes</button>
+                            </div>
+                        </div>
                     </div>
-                </div>
+                </form>
             </div>
-        </main>
+        </div>
     </div>
+    <script>
+                 document.addEventListener('DOMContentLoaded', function() {
+            const uploadArea = document.getElementById('upload-area');
+            const fileInput = document.getElementById('file-upload');
+            const documentList = document.getElementById('document-list');
+
+            // Add a success message container under the upload area
+            const uploadFeedback = document.createElement('div');
+            uploadFeedback.className = 'upload-feedback';
+            uploadFeedback.style.display = 'none';
+            uploadArea.parentNode.insertBefore(uploadFeedback, documentList);
+
+            // Click on upload area triggers file input
+            uploadArea.addEventListener('click', function() {
+                fileInput.click();
+            });
+
+            // Handle file selection
+            fileInput.addEventListener('change', function(e) {
+                handleFiles(e.target.files);
+            });
+
+            // Drag and drop functionality
+            uploadArea.addEventListener('dragover', function(e) {
+                e.preventDefault();
+                uploadArea.style.borderColor = '#4a90e2';
+                uploadArea.style.backgroundColor = '#f0f7ff';
+            });
+
+            uploadArea.addEventListener('dragleave', function(e) {
+                e.preventDefault();
+                uploadArea.style.borderColor = '#ccc';
+                uploadArea.style.backgroundColor = '';
+            });
+
+            uploadArea.addEventListener('drop', function(e) {
+                e.preventDefault();
+                uploadArea.style.borderColor = '#ccc';
+                uploadArea.style.backgroundColor = '';
+
+                if (e.dataTransfer.files.length) {
+                    fileInput.files = e.dataTransfer.files;
+                    handleFiles(e.dataTransfer.files);
+                }
+            });
+
+            // Function to handle uploaded files
+            function handleFiles(files) {
+                if (!files || files.length === 0) return;
+
+                // Clear the file input to allow selecting the same files again if needed
+                fileInput.value = '';
+
+                // Show success message
+                showUploadFeedback(files.length > 1 ?
+                    `${files.length} files uploaded successfully!` :
+                    `1 file uploaded successfully!`);
+
+                // Make sure document list is visible
+                documentList.style.display = 'block';
+
+                // Add a heading if it doesn't exist
+                if (!documentList.querySelector('.document-list-heading')) {
+                    const heading = document.createElement('div');
+                    heading.className = 'document-list-heading';
+                    heading.innerHTML = '<h4>Uploaded Documents</h4>';
+                    documentList.appendChild(heading);
+                }
+
+                for (let i = 0; i < files.length; i++) {
+                    const file = files[i];
+
+                    // Check file size (10MB max)
+                    if (file.size > 10 * 1024 * 1024) {
+                        showUploadFeedback(`File "${file.name}" exceeds the 10MB limit and was not uploaded.`, 'error');
+                        continue;
+                    }
+
+                    // Create document item
+                    const documentItem = document.createElement('div');
+                    documentItem.className = 'document-item';
+
+                    // Add animation class for visual feedback
+                    documentItem.classList.add('document-item-new');
+
+                    // Determine icon based on file type
+                    let iconClass = 'fa-file';
+                    if (file.type.includes('image/')) {
+                        iconClass = 'fa-file-image';
+                    } else if (file.type.includes('pdf')) {
+                        iconClass = 'fa-file-pdf';
+                    } else if (file.type.includes('word') || file.type.includes('msword')) {
+                        iconClass = 'fa-file-word';
+                    } else if (file.type.includes('excel') || file.type.includes('spreadsheet')) {
+                        iconClass = 'fa-file-excel';
+                    }
+
+                    documentItem.innerHTML = `
+                        <i class="fas ${iconClass} document-icon"></i>
+                        <span class="document-name">${file.name}</span>
+                        <span class="document-size">(${(file.size / 1024).toFixed(2)} KB)</span>
+                        <i class="fas fa-times document-delete" title="Remove"></i>
+                    `;
+
+                    // Add delete functionality
+                    const deleteBtn = documentItem.querySelector('.document-delete');
+                    deleteBtn.addEventListener('click', function() {
+                        documentItem.classList.add('document-item-removing');
+                        setTimeout(() => {
+                            documentItem.remove();
+                            // Check if there are any documents left
+                            if (documentList.querySelectorAll('.document-item').length === 0) {
+                                // If no documents left, hide the heading
+                                const heading = documentList.querySelector('.document-list-heading');
+                                if (heading) heading.style.display = 'none';
+                            }
+                        }, 300);
+                    });
+
+                    documentList.appendChild(documentItem);
+
+                    // Remove the animation class after animation completes
+                    setTimeout(() => {
+                        documentItem.classList.remove('document-item-new');
+                    }, 500);
+                }
+            }
+
+            // Function to show feedback message
+            function showUploadFeedback(message, type = 'success') {
+                uploadFeedback.textContent = message;
+                uploadFeedback.className = `upload-feedback ${type}`;
+                uploadFeedback.style.display = 'block';
+
+                // Auto hide after 5 seconds
+                setTimeout(() => {
+                    uploadFeedback.style.display = 'none';
+                }, 5000);
+            }
+        });
+    </script>
 </body>
+<<<<<<< HEAD
+</html>
+=======
 </html>
 
 
 
 
 
+>>>>>>> 9d25f23fca11b82e479b49c16d1838693f7b3c37
