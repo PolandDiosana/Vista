@@ -2,6 +2,7 @@
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.EntityFrameworkCore;
 using Vista_Subdivision.Data;
+using Vista_Subdivision.Models;
 
 namespace Vista_Subdivision.Pages.homeOwner
 {
@@ -16,6 +17,8 @@ namespace Vista_Subdivision.Pages.homeOwner
 
         //Property to store user data
         public User LoggedInUser { get; set; }
+        public List<Announcement> Announcements { get; set; } = new List<Announcement>();
+
         public async Task<IActionResult> OnGetAllAsync()
         {
             string userId = HttpContext.Session.GetString("Id");

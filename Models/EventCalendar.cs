@@ -14,6 +14,8 @@ namespace Vista_Subdivision
         public string? Description { get; set; }
         [Required]
         public string? EventDate { get; set; }
+        public string? EventTime { get; set; }
+        public string? EventType { get; set; }
         public int OrganizerID { get; set; }
     }
 }

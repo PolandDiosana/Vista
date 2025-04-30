@@ -1,22 +1,20 @@
 @page
 
-
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Events - Vista</title>
+    <title>Event Schedule - Vista</title>
+    <link rel="stylesheet" href="~/css/customfonts.css" />
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <link rel="stylesheet" href="~/css/sidebar.css">
+    <link rel="stylesheet" href="~/css/sidebar.css" />
     <style>
         /* Main Layout */
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
         }
 
         body {
@@ -44,6 +42,7 @@
         }
 
         .calendar-title h2 {
+            font-family: 'Poppins-Medium';
             font-size: 1.5rem;
             color: #333;
             font-weight: 600;
@@ -107,6 +106,8 @@
         .month-navigation {
             display: flex;
             align-items: flex-start;
+            font-family: 'Poppins-Regular';
+            padding-left: 25px;
         }
 
         .month-nav-btn {
@@ -118,10 +119,11 @@
             padding: 0.5rem;
         }
 
-        #current-month {
+        #current-month, .current-month {
             font-size: 1.2rem;
             font-weight: 500;
             color: #333;
+            font-family: 'Poppins-Regular';
         }
 
         /* Calendar Table */
@@ -135,26 +137,28 @@
             border-spacing: 0.5rem;
         }
 
-            .calendar-table th {
-                padding: 0.5rem;
-                text-align: center;
-                font-weight: 500;
-                color: #666;
-                font-size: 0.9rem;
-            }
+        .calendar-table th {
+            padding: 0.5rem;
+            text-align: center;
+            font-weight: 500;
+            color: #666;
+            font-size: 0.9rem;
+            font-family: 'Poppins-Medium';
+        }
 
-            .calendar-table td {
-                position: relative;
-                width: 14.28%;
-                height: 100px;
-                background-color: #f9f9f9;
-                border-radius: 5px;
-                vertical-align: top;
-                text-align: center;
-                padding: 0.5rem;
-                cursor: pointer;
-                transition: background-color 0.2s;
-            }
+        .calendar-table td {
+            position: relative;
+            width: 14.28%;
+            height: 100px;
+            background-color: #f9f9f9;
+            border-radius: 5px;
+            font-family: 'Poppins-Regular';
+            vertical-align: top;
+            text-align: center;
+            padding: 0.5rem;
+            cursor: pointer;
+            transition: background-color 0.2s;
+        }
 
                 .calendar-table td:hover {
                     background-color: #f0f0f0;
@@ -243,11 +247,12 @@
             margin-bottom: 1rem;
         }
 
-            .upcoming-header h3 {
-                font-size: 1.1rem;
-                font-weight: 500;
-                color: #333;
-            }
+        .upcoming-header h3 {
+            font-family: 'Poppins-Medium';
+            font-size: 1.1rem;
+            font-weight: 500;
+            color: #333;
+        }
 
         .event-filter select {
             padding: 0.5rem;
@@ -338,169 +343,6 @@
                 background-color: #9e9e9e;
             }
 
-        /* Right Sidebar */
-        .right-sidebar {
-            width: 280px;
-            background-color: #fff;
-            border-radius: 8px;
-            box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
-            padding: 24px;
-        }
-
-        .user-header {
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            margin-bottom: 36px;
-        }
-
-        .notification-settings {
-            display: flex;
-            gap: 10px;
-        }
-
-        .icon-btn {
-            background: none;
-            border: none;
-            color: #d4b675;
-            cursor: pointer;
-            font-size: 18px;
-        }
-
-        .user-info {
-            display: flex;
-            align-items: center;
-            gap: 12px;
-        }
-
-        .user-text {
-            display: flex;
-            flex-direction: column;
-        }
-
-        .user-name {
-            font-weight: 600;
-            color: #333;
-            font-size: 16px;
-        }
-
-        .user-role {
-            color: #888;
-            font-size: 14px;
-        }
-
-        .user-avatar {
-            width: 40px;
-            height: 40px;
-            border-radius: 50%;
-            object-fit: cover;
-        }
-
-        .section-title {
-            font-size: 18px;
-            font-weight: 600;
-            color: #333;
-            margin-bottom: 16px;
-        }
-
-        .activity-list {
-            display: flex;
-            flex-direction: column;
-            gap: 16px;
-            margin-bottom: 32px;
-        }
-
-        .activity-item {
-            display: flex;
-            gap: 12px;
-        }
-
-        .activity-avatar {
-            width: 36px;
-            height: 36px;
-            border-radius: 50%;
-            object-fit: cover;
-        }
-
-        .activity-content {
-            flex: 1;
-        }
-
-        .activity-text {
-            font-size: 14px;
-            color: #333;
-            margin-bottom: 4px;
-            line-height: 1.4;
-        }
-
-            .activity-text strong {
-                font-weight: 600;
-            }
-
-        .activity-time {
-            font-size: 12px;
-            color: #888;
-        }
-
-        .history-list {
-            display: flex;
-            flex-direction: column;
-            gap: 16px;
-        }
-
-        .history-item {
-            display: flex;
-            align-items: center;
-            gap: 12px;
-        }
-
-        .history-icon {
-            width: 36px;
-            height: 36px;
-            border-radius: 8px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-        }
-
-        .purple-gradient {
-            background: linear-gradient(135deg, #7367f0, #ce9ffc);
-        }
-
-        .green-gradient {
-            background: linear-gradient(135deg, #00b09b, #96c93d);
-        }
-
-        .blue-gradient {
-            background: linear-gradient(135deg, #0072ff, #00c6ff);
-        }
-
-        .orange-gradient {
-            background: linear-gradient(135deg, #f12711, #f5af19);
-        }
-
-        .history-content {
-            flex: 1;
-        }
-
-        .history-title {
-            font-size: 14px;
-            font-weight: 600;
-            color: #333;
-            margin-bottom: 2px;
-        }
-
-        .history-user {
-            font-size: 12px;
-            color: #888;
-        }
-
-        .history-time {
-            font-size: 12px;
-            color: #888;
-            white-space: nowrap;
-        }
-
         /* Modal */
         .modal {
             display: none;
@@ -515,9 +357,9 @@
             align-items: center;
         }
 
-            .modal.show {
-                display: flex;
-            }
+        .modal.show {
+            display: flex;
+        }
 
         .modal-content {
             background-color: #fff;
@@ -548,13 +390,14 @@
             margin-bottom: 1rem;
         }
 
-            .modal-event:last-child {
-                margin-bottom: 0;
-            }
+        .modal-event:last-child {
+            margin-bottom: 0;
+        }
 
         .modal-event-title {
             font-size: 1.1rem;
             font-weight: 500;
+            font-family: 'Poppins-Medium';
             color: #333;
             margin-bottom: 0.5rem;
         }
@@ -562,6 +405,7 @@
         .modal-event-time,
         .modal-event-location,
         .modal-event-description {
+            font-family: 'Poppins-Regular';
             font-size: 0.9rem;
             color: #555;
             margin-bottom: 0.3rem;
@@ -569,11 +413,16 @@
 
         .modal-event-badge {
             display: inline-block;
-            padding: 0.2rem 0.6rem;
+            padding: 0.4rem 0.9rem;
             border-radius: 3px;
             font-size: 0.75rem;
+            font-family: 'Poppins-Light';
             color: white;
             margin-top: 0.5rem;
+        }
+
+        .no-events {
+            font-family: 'Poppins-Regular';
         }
 
         .badge-board {
@@ -606,49 +455,49 @@
             <nav class="nav-menu">
                 <ul>
                     <li>
-                        <a href="/homeOwner/dashboard">
+                        <a href="/homeOwner/dashboard" class="nav-item">
                             <i class="fas fa-th-large"></i>
                             <span>Dashboard</span>
                         </a>
                     </li>
                     <li>
-                        <a href="/homeOwner/Announcements">
+                        <a href="/homeOwner/Announcements" class="nav-item">
                             <i class="fas fa-bullhorn"></i>
                             <span>Announcements</span>
                         </a>
                     </li>
                     <li>
-                        <a href="/homeOwner/BillingPayments">
+                        <a href="/homeOwner/BillingPayments" class="nav-item">
                             <i class="fas fa-file-invoice-dollar"></i>
                             <span>Billing & Payments</span>
                         </a>
                     </li>
                     <li>
-                        <a href="/homeOwner/FacilityReservation">
+                        <a href="/homeOwner/FacilityReservation" class="nav-item">
                             <i class="fas fa-calendar-check"></i>
                             <span>Facility Reservation</span>
                         </a>
                     </li>
                     <li>
-                        <a href="/homeOwner/ServiceRequest">
+                        <a href="/homeOwner/ServiceRequest" class="nav-item">
                             <i class="fas fa-hands-helping"></i>
                             <span>Service Request</span>
                         </a>
                     </li>
                     <li>
-                        <a href="/homeOwner/Documents">
+                        <a href="/homeOwner/Documents" class="nav-item">
                             <i class="fas fa-file-alt"></i>
                             <span>Documents</span>
                         </a>
                     </li>
                     <li class="active">
-                        <a href="/homeOwner/EventsCalendar">
+                        <a href="/homeOwner/EventsScheduled" class="nav-item">
                             <i class="fas fa-calendar-alt"></i>
                             <span>Events Calendar</span>
                         </a>
                     </li>
                     <li>
-                        <a href="/homeOwner/EditProfile">
+                        <a href="/homeOwner/EditProfile" class="nav-item">
                             <i class="fas fa-user-circle"></i>
                             <span>Edit Profile</span>
                         </a>
@@ -680,15 +529,13 @@
             </div>
             <div class="month-navigation">
                 <button id="prev-month" class="month-nav-btn"><i class="fas fa-chevron-left"></i></button>
-                <h3 id="current-month">Current Month</h3>
+                <h3 id="current-month" class="current-month">Current Month</h3>
                 <button id="next-month" class="month-nav-btn"><i class="fas fa-chevron-right"></i></button>
             </div>
             <!-- Calendar Container -->
             <div class="content-container">
-
                 <!-- Main Calendar Section -->
                 <div class="calendar-section">
-
                     <div class="calendar-grid-container">
                         <table class="calendar-table">
                             <thead>
@@ -719,11 +566,11 @@
                                 </select>
                             </div>
                         </div>
-
                         <div id="upcoming-events-list" class="upcoming-events-list">
                         </div>
                     </div>
                 </div>
+            </div>
         </main>
     </div>
     <!-- Event Modal -->
@@ -735,10 +582,9 @@
             </div>
         </div>
     </div>
-   </main>
 
     <script>
-                document.addEventListener('DOMContentLoaded', function() {
+            document.addEventListener('DOMContentLoaded', function() {
             // Calendar data
             const events = [
                 { id: 1, date: '2025-03-03', title: 'Board Meeting', time: '2:00 - 4:00 PM', location: 'Community Function Hall', type: 'meeting', description: 'Monthly board meeting to discuss community issues and plans.' },
@@ -944,6 +790,7 @@
 
                 if (dateEvents.length === 0) {
                     const noEvents = document.createElement('p');
+                    noEvents.className = 'no-events';
                     noEvents.textContent = 'No events scheduled for this day.';
                     modalBody.appendChild(noEvents);
                 } else {

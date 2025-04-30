@@ -74,16 +74,11 @@ body {
     color: #333;
 }
 
-.content-row {
-    display: flex;
-    gap: 30px;
-}
-
-.content-column {
-    flex: 1;
+.submit-feedback {
     background-color: #f2ece4;
     border-radius: 4px;
     padding: 24px;
+    margin-bottom: 30px;
 }
 
 .card-title {
@@ -93,20 +88,13 @@ body {
     font-weight: bold;
 }
 
-.form-container {
-    background-color: white;
-    border-radius: 5px;
-    padding: 20px;
-    margin-bottom: 20px;
-}
-
 .form-group {
-    margin-bottom: 15px;
+    margin-bottom: 20px;
 }
 
     .form-group label {
         display: block;
-        margin-bottom: 5px;
+        margin-bottom: 8px;
         font-weight: bold;
         color: #333;
     }
@@ -119,40 +107,22 @@ body {
     font-size: 14px;
 }
 
-.option-row {
-    margin-bottom: 10px;
-    display: flex;
-    align-items: center;
+textarea.form-control {
+    height: 150px;
+    resize: vertical;
 }
-
-    .option-row input[type="radio"] {
-        margin-right: 10px;
-    }
-
-.add-option {
-    color: #555;
-    cursor: pointer;
-    font-size: 14px;
-    margin-top: 5px;
-    display: flex;
-    align-items: center;
-}
-
-    .add-option i {
-        margin-right: 5px;
-        font-size: 16px;
-    }
 
 .btn {
     background-color: #D4BC92;
     color: white;
     border: none;
-    padding: 8px 20px;
-    font-size: 14px;
+    padding: 10px 20px;
+    font-size: 16px;
     cursor: pointer;
     border-radius: 4px;
     transition: background-color 0.3s;
     display: inline-block;
+    text-align: center;
 }
 
     .btn:hover {
@@ -160,15 +130,48 @@ body {
     }
 
 .btn-container {
-    text-align: center;
+    text-align: right;
     margin-top: 20px;
+}
+
+.content-row {
+    display: flex;
+    gap: 30px;
+    margin-top: 30px;
+}
+
+.content-column {
+    flex: 1;
+    background-color: #f2ece4;
+    border-radius: 4px;
+    padding: 24px;
+}
+
+.feedback-item {
+    background-color: white;
+    border-radius: 4px;
+    padding: 16px;
+    margin-bottom: 16px;
+    border: 1px solid #eee;
+}
+
+.feedback-title {
+    font-weight: bold;
+    margin-bottom: 5px;
+}
+
+.feedback-status {
+    font-size: 12px;
+    color: #777;
+    margin-bottom: 3px;
 }
 
 .poll-item {
     background-color: white;
-    border-radius: 5px;
+    border-radius: 4px;
     padding: 16px;
     margin-bottom: 16px;
+    border: 1px solid #eee;
 }
 
 .poll-title {
@@ -200,104 +203,18 @@ body {
     font-size: 13px;
 }
 
-.action-buttons {
-    display: flex;
-    gap: 10px;
-}
-
-.action-btn {
-    background-color: #e0e0e0;
-    color: #555;
+.vote-btn {
+    background-color: #D4BC92;
+    color: white;
     border: none;
-    padding: 5px 15px;
+    padding: 6px 16px;
+    font-size: 14px;
+    cursor: pointer;
     border-radius: 4px;
-    cursor: pointer;
-    font-size: 13px;
+    transition: background-color 0.3s;
 }
 
-.section-header {
-    margin-bottom: 15px;
+.history-divider {
+    border-top: 1px solid #ddd;
+    margin: 10px 0 20px;
 }
-
-.tab-buttons {
-    display: flex;
-    margin-bottom: 20px;
-}
-
-.tab-btn {
-    padding: 8px 15px;
-    background: none;
-    border: none;
-    cursor: pointer;
-    font-size: 14px;
-    border-bottom: 2px solid transparent;
-    margin-right: 15px;
-    font-weight: bold;
-}
-
-    .tab-btn.active {
-        color: #555;
-        border-bottom: 2px solid #D4BC92;
-    }
-
-.complaint-item {
-    background-color: white;
-    border-radius: 5px;
-    padding: 16px;
-    margin-bottom: 16px;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-}
-
-.complaint-info {
-    flex: 1;
-}
-
-.complaint-title {
-    font-weight: bold;
-    margin-bottom: 3px;
-}
-
-.complaint-status {
-    font-size: 12px;
-    color: #777;
-    margin-bottom: 2px;
-}
-
-.status-options {
-    display: flex;
-    align-items: center;
-    gap: 15px;
-}
-
-.status-option {
-    display: flex;
-    align-items: center;
-}
-
-    .status-option input {
-        margin-right: 5px;
-    }
-
-    .status-option label {
-        font-size: 12px;
-        color: #555;
-    }
-
-.expiration-setting {
-    margin-top: 15px;
-    font-size: 14px;
-}
-
-.status-circle {
-    width: 18px;
-    height: 18px;
-    border-radius: 50%;
-    display: inline-block;
-    margin-right: 5px;
-}
-
-    .status-circle.resolved {
-        background-color: #D4BC92;
-    }
