@@ -6,53 +6,72 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link href="~/css/adminDash.css" rel="stylesheet" />
+    <link href="~/css/sidebar.css" rel="stylesheet" />
     <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/js/all.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/3.8.0/chart.min.js"></script>
 </head>
 <body>
     <div class="app-container">
         <!-- Sidebar -->
-        <div class="sidebar">
-            <div class="logo" >
-                <div class="logo-image"></div>
-                <img src="/Images/logo.png" alt="Vista Logo" class="logo-image">
-                <span class="logo-text">vista.</span>
+        <aside class="sidebar">
+            <div class="logo">
+                <img src="~/Images/logo 1.png" alt="Vista Logo">
+                <span>vista.</span>
             </div>
-            <ul class="nav-list">
-                <li class="nav-item active">
-                    <i class="fas fa-th-large"></i>
-                    <span>Dashboard</span>
-                </li>
-                <li class="nav-item">
-                    <i class="fas fa-bullhorn"></i>
-                    <span>Announcements</span>
-                </li>
-                <li class="nav-item">
-                    <i class="fas fa-chart-bar"></i>
-                    <span>Reports</span>
-                </li>
-                <li class="nav-item">
-                    <i class="fas fa-user-plus"></i>
-                    <span>Account Requests</span>
-                </li>
-                <li class="nav-item">
-                    <i class="fas fa-concierge-bell"></i>
-                    <span>Service Request</span>
-                </li>
-                <li class="nav-item">
-                    <i class="fas fa-file-alt"></i>
-                    <span>Documents</span>
-                </li>
-                <li class="nav-item">
-                    <i class="fas fa-calendar"></i>
-                    <span>Events Calendar</span>
-                </li>
-                <li class="nav-item">
-                    <i class="fas fa-user-edit"></i>
-                    <span>Edit Profile</span>
-                </li>
-            </ul>
-        </div>
+
+            <nav class="nav-menu">
+                <ul>
+                    <li>
+                        <a href="/homeOwner/dashboard">
+                            <i class="fas fa-th-large"></i>
+                            <span>Dashboard</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="/homeOwner/Announcements">
+                            <i class="fas fa-bullhorn"></i>
+                            <span>Announcements</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="/homeOwner/BillingPayments">
+                            <i class="fas fa-file-invoice-dollar"></i>
+                            <span>Billing & Payments</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="/homeOwner/FacilityReservation">
+                            <i class="fas fa-calendar-check"></i>
+                            <span>Facility Reservation</span>
+                        </a>
+                    </li>
+                    <li class="active">
+                        <a href="/homeOwner/ServiceRequest">
+                            <i class="fas fa-hands-helping"></i>
+                            <span>Service Request</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="/homeOwner/Documents">
+                            <i class="fas fa-file-alt"></i>
+                            <span>Documents</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="/homeOwner/EventsScheduled">
+                            <i class="fas fa-calendar-alt"></i>
+                            <span>Events Scheduled</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="/homeOwner/EditProfile">
+                            <i class="fas fa-user-circle"></i>
+                            <span>Edit Profile</span>
+                        </a>
+                    </li>
+                </ul>
+            </nav>
+        </aside>
 
         <!-- Main Content -->
         <div class="main-content">

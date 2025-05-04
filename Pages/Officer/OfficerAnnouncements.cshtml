@@ -5,6 +5,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="~/css/sidebar.css" />
     <title>Vista Community Portal</title>
     <style>
         * {
@@ -331,74 +332,65 @@
 </head>
 <body>
     <!-- Sidebar -->
-    <div class="sidebar">
+    <aside class="sidebar">
         <div class="logo">
-            <svg viewBox="0 0 100 100" width="40" height="40">
-                <polygon points="20,80 50,20 80,80" fill="#d4bd8a" />
-                <rect x="25" y="60" width="50" height="20" fill="#d4bd8a" />
-            </svg>
+            <img src="~/Images/logo 1.png" alt="Vista Logo">
             <span>vista.</span>
         </div>
 
-        <div class="menu-item">
-            <svg viewBox="0 0 24 24" fill="currentColor">
-                <rect x="3" y="3" width="7" height="7" rx="1" />
-                <rect x="14" y="3" width="7" height="7" rx="1" />
-                <rect x="3" y="14" width="7" height="7" rx="1" />
-                <rect x="14" y="14" width="7" height="7" rx="1" />
-            </svg>
-            Dashboard
-        </div>
-
-        <div class="menu-item active">
-            <svg viewBox="0 0 24 24" fill="currentColor">
-                <path d="M19 5v14H5V5h14zm0-2H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zm-7 14H7v-2h5v2zm5-4H7v-2h10v2zm0-4H7V7h10v2z" />
-            </svg>
-            Announcements
-        </div>
-
-        <div class="menu-item">
-            <svg viewBox="0 0 24 24" fill="currentColor">
-                <path d="M20 4H4c-1.11 0-1.99.89-1.99 2L2 18c0 1.11.89 2 2 2h16c1.11 0 2-.89 2-2V6c0-1.11-.89-2-2-2zm0 14H4v-6h16v6zm0-10H4V6h16v2z" />
-            </svg>
-            Billing & Payments
-        </div>
-
-        <div class="menu-item">
-            <svg viewBox="0 0 24 24" fill="currentColor">
-                <path d="M19 3H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zm-7 14h-2v-4H8v-2h2V7h2v4h2v2h-2v4z" />
-            </svg>
-            Facility Reservation
-        </div>
-
-        <div class="menu-item">
-            <svg viewBox="0 0 24 24" fill="currentColor">
-                <path d="M19 3h-4.18C14.4 1.84 13.3 1 12 1c-1.3 0-2.4.84-2.82 2H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zm-7 0c.55 0 1 .45 1 1s-.45 1-1 1-1-.45-1-1 .45-1 1-1zm-2 14l-4-4 1.41-1.41L10 14.17l6.59-6.59L18 9l-8 8z" />
-            </svg>
-            Service Request
-        </div>
-
-        <div class="menu-item">
-            <svg viewBox="0 0 24 24" fill="currentColor">
-                <path d="M19 3H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zm-2 14H7v-2h10v2zm0-4H7v-2h10v2zm0-4H7V7h10v2z" />
-            </svg>
-            Documents
-        </div>
-
-        <div class="menu-item">
-            <svg viewBox="0 0 24 24" fill="currentColor">
-                <path d="M19 3h-1V1h-2v2H8V1H6v2H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zm0 16H5V8h14v11zM7 10h5v5H7z" />
-            </svg>
-            Events Calendar
-        </div>
-
-        <div class="menu-item">
-            <svg viewBox="0 0 24 24" fill="currentColor">
-                <path d="M12 12c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm0 2c-2.67 0-8 1.34-8 4v2h16v-2c0-2.66-5.33-4-8-4z" />
-            </svg>
-            Edit Profile
-        </div>
-    </div>
+        <nav class="nav-menu">
+            <ul>
+                <li>
+                    <a href="/Officer/Officerdashboard">
+                        <i class="fas fa-th-large"></i>
+                        <span>Dashboard</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="/Officer/OfficerAnnouncements">
+                        <i class="fas fa-bullhorn"></i>
+                        <span>Announcements</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="/Officer/OfficerBillingPayments">
+                        <i class="fas fa-file-invoice-dollar"></i>
+                        <span>Billing & Payments</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="~/Officer/OfficerFacilityReservation">
+                        <i class="fas fa-calendar-check"></i>
+                        <span>Facility Reservation</span>
+                    </a>
+                </li>
+                <li class="active">
+                    <a href="/Officer/OfficerServiceRequest">
+                        <i class="fas fa-hands-helping"></i>
+                        <span>Service Request</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="/Officer/OfficerDocuments">
+                        <i class="fas fa-file-alt"></i>
+                        <span>Documents</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="/Officer/OfficerEventsScheduled">
+                        <i class="fas fa-calendar-alt"></i>
+                        <span>Events Calendar</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="/Officer/OfficerEditProfile">
+                        <i class="fas fa-user-circle"></i>
+                        <span>Edit Profile</span>
+                    </a>
+                </li>
+            </ul>
+        </nav>
+    </aside>
 
     <!-- Main Content -->
     <div class="main-content">
