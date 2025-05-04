@@ -5,57 +5,77 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Feedback and Survery - Vista</title>
+    <title>Vista Community Portal</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link rel="stylesheet" href="~/css/feedback.css">
 </head>
 <body>
-    <div class="sidebar">
+    <!-- Sidebar -->
+    <aside class="sidebar">
         <div class="logo">
-            <img src="/Images/logo.png" alt="Vista Logo">
-            <h2>vista.</h2>
+            <img src="~/Images/logo 1.png" alt="Vista Logo">
+            <span>vista.</span>
         </div>
 
-        <a href="#" class="menu-item">
-            <i class="fa-solid fa-th-large"></i>
-            Dashboard
-        </a>
-
-        <a href="#" class="menu-item">
-            <i class="fa-solid fa-bullhorn"></i>
-            Announcements
-        </a>
-
-        <a href="#" class="menu-item">
-            <i class="fa-solid fa-file-invoice-dollar"></i>
-            Billing & Payments
-        </a>
-
-        <a href="#" class="menu-item">
-            <i class="fa-solid fa-plus-square"></i>
-            Facility Reservation
-        </a>
-
-        <a href="#" class="menu-item">
-            <i class="fa-solid fa-concierge-bell"></i>
-            Service Request
-        </a>
-
-        <a href="#" class="menu-item">
-            <i class="fa-solid fa-file-alt"></i>
-            Documents
-        </a>
-
-        <a href="#" class="menu-item">
-            <i class="fa-solid fa-calendar-alt"></i>
-            Events Calendar
-        </a>
-
-        <a href="#" class="menu-item active">
-            <i class="fa-solid fa-comment-alt"></i>
-            Polls and Survey
-        </a>
-    </div>
+        <nav class="nav-menu">
+            <ul>
+                <li>
+                    <a href="/homeOwner/dashboard">
+                        <i class="fas fa-th-large"></i>
+                        <span>Dashboard</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="/homeOwner/Announcements">
+                        <i class="fas fa-bullhorn"></i>
+                        <span>Announcements</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="/homeOwner/BillingPayments">
+                        <i class="fas fa-file-invoice-dollar"></i>
+                        <span>Billing & Payments</span>
+                    </a>
+                </li>
+                <li class="active">
+                    <a href="/homeOwner/FacilityReservation">
+                        <i class="fas fa-calendar-check"></i>
+                        <span>Facility Reservation</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="/homeOwner/ServiceRequest">
+                        <i class="fas fa-hands-helping"></i>
+                        <span>Service Request</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="/homeOwner/Documents">
+                        <i class="fas fa-file-alt"></i>
+                        <span>Documents</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="/homeOwner/FeedbackAndSurvey">
+                        <i class="fas fa-file-alt"></i>
+                        <span>Feedback and Survey</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="/homeOwner/EventsScheduled">
+                        <i class="fas fa-calendar-alt"></i>
+                        <span>Events Scheduled</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="/homeOwner/EditProfile">
+                        <i class="fas fa-user-circle"></i>
+                        <span>Edit Profile</span>
+                    </a>
+                </li>
+            </ul>
+        </nav>
+    </aside>
 
     <!-- Main Content -->
     <div class="main-content">
@@ -87,70 +107,176 @@
                 <h2 class="card-title">My Feedback & Complaint History</h2>
                 <div class="history-divider"></div>
 
-                <div class="feedback-item">
-                    <div class="feedback-title">Water Leakage Issue</div>
-                    <div class="feedback-status">Status: Resolved</div>
-                    <div class="feedback-status">Submitted: Feb 20, 2025</div>
-                </div>
-
-                <div class="feedback-item">
-                    <div class="feedback-title">Defective Street Lights</div>
-                    <div class="feedback-status">Status: Pending</div>
-                    <div class="feedback-status">Submitted: Feb 10, 2025</div>
-                </div>
-
-                <div class="feedback-item">
-                    <div class="feedback-title">Basketball Ring</div>
-                    <div class="feedback-status">Status: Resolved</div>
-                    <div class="feedback-status">Submitted: Feb 1, 2025</div>
-                </div>
+                <div id="feedbackHistory" class="feedback-list"></div>
             </div>
 
             <!-- Polls Column -->
             <div class="content-column">
                 <h2 class="card-title">Polls and Survey</h2>
-
-                <div class="poll-item">
-                    <div class="poll-title">Community Garden Project</div>
-                    <div class="poll-subtitle">Vote on the proposed garden location</div>
-
-                    <div class="radio-option">
-                        <input type="radio" name="poll1" id="poll1-a">
-                        <label for="poll1-a">Location A - North park</label>
-                    </div>
-
-                    <div class="radio-option">
-                        <input type="radio" name="poll1" id="poll1-b">
-                        <label for="poll1-b">Location B - South park</label>
-                    </div>
-
-                    <div class="poll-footer">
-                        <div>Expires on April 15, 2025</div>
-                        <button class="vote-btn">Submit Vote</button>
-                    </div>
-                </div>
-
-                <div class="poll-item">
-                    <div class="poll-title">Community Garden Project</div>
-                    <div class="poll-subtitle">Vote on the proposed garden location</div>
-
-                    <div class="radio-option">
-                        <input type="radio" name="poll2" id="poll2-a">
-                        <label for="poll2-a">Location A - North park</label>
-                    </div>
-
-                    <div class="radio-option">
-                        <input type="radio" name="poll2" id="poll2-b">
-                        <label for="poll2-b">Location B - South park</label>
-                    </div>
-
-                    <div class="poll-footer">
-                        <div>Expires on April 20, 2025</div>
-                        <button class="vote-btn">Submit Vote</button>
-                    </div>
-                </div>
+                <div id="polls-container"></div> <!-- Polls will be dynamically rendered here -->
             </div>
         </div>
     </div>
+
+    <script>
+        // Fake in-memory database for feedback
+        let feedbackDB = [
+            {
+                id: 1,
+                title: "Water Leakage Issue",
+                description: "Leak near the basketball court.",
+                status: "Resolved",
+                submitted: "Feb 20, 2025"
+            },
+            {
+                id: 2,
+                title: "Defective Street Lights",
+                description: "Several lights are out near the main gate.",
+                status: "Pending",
+                submitted: "Feb 10, 2025"
+            },
+            {
+                id: 3,
+                title: "Basketball Ring",
+                description: "Broken ring in sports area.",
+                status: "Resolved",
+                submitted: "Feb 1, 2025"
+            }
+        ];
+
+        // In-memory poll vote tracking
+        let pollVotesDB = {
+            poll1: { a: 0, b: 0 },
+            poll2: { a: 0, b: 0 }
+        };
+
+        // Polls array - each poll with dynamic options
+        const polls = [
+            {
+                id: 1,
+                title: "Community Garden Project",
+                subtitle: "Vote on the proposed garden location",
+                options: [
+                    { id: "a", label: "Location A - North park" },
+                    { id: "b", label: "Location B - South park" }
+                ],
+                expiryDate: "April 15, 2025"
+            },
+            {
+                id: 2,
+                title: "Community Garden Project",
+                subtitle: "Vote on the proposed garden location",
+                options: [
+                    { id: "a", label: "Location A - North park" },
+                    { id: "b", label: "Location B - South park" }
+                ],
+                expiryDate: "April 20, 2025"
+            }
+        ];
+
+        // Function to render feedback history
+        function renderFeedbackHistory() {
+            const feedbackHistoryContainer = document.getElementById('feedbackHistory');
+            feedbackHistoryContainer.innerHTML = ''; // Clear existing feedback history
+
+            feedbackDB.forEach(feedback => {
+                const feedbackItem = document.createElement('div');
+                feedbackItem.classList.add('feedback-item');
+                feedbackItem.innerHTML = `
+                            <div class="feedback-title">${feedback.title}</div>
+                            <div class="feedback-status">Status: ${feedback.status}</div>
+                            <div class="feedback-status">Submitted: ${feedback.submitted}</div>
+                        `;
+                feedbackHistoryContainer.appendChild(feedbackItem);
+            });
+        }
+
+        // Function to render polls dynamically
+        function renderPolls() {
+            const pollsContainer = document.getElementById('polls-container');
+            pollsContainer.innerHTML = ''; // Clear previous polls
+
+            polls.forEach(poll => {
+                const pollItem = document.createElement('div');
+                pollItem.classList.add('poll-item');
+                pollItem.innerHTML = `
+                            <div class="poll-title">${poll.title}</div>
+                            <div class="poll-subtitle">${poll.subtitle}</div>
+                            ${poll.options.map(option => `
+                                <div class="radio-option">
+                                    <input type="radio" name="poll${poll.id}" id="poll${poll.id}-${option.id}">
+                                    <label for="poll${poll.id}-${option.id}">${option.label}</label>
+                                </div>
+                            `).join('')}
+                            <div class="poll-footer">
+                                <div>Expires on ${poll.expiryDate}</div>
+                                <button class="vote-btn" data-poll-id="${poll.id}">Submit Vote</button>
+                            </div>
+                        `;
+                pollsContainer.appendChild(pollItem);
+            });
+        }
+
+        // Function to submit feedback
+        function submitFeedback(title, description) {
+            const newFeedback = {
+                id: feedbackDB.length + 1,
+                title: title,
+                description: description,
+                status: "Pending",
+                submitted: new Date().toLocaleDateString('en-US', {
+                    month: 'short', day: 'numeric', year: 'numeric'
+                })
+            };
+            feedbackDB.push(newFeedback);
+            alert('Feedback Submitted Successfully!');
+            renderFeedbackHistory(); // Refresh feedback list
+        }
+
+        // Function to submit a vote
+        function submitVote(pollId, selectedOption) {
+            const pollKey = `poll${pollId}`;
+            if (pollVotesDB[pollKey]) {
+                pollVotesDB[pollKey][selectedOption]++;
+                alert('Vote Submitted Successfully!');
+                console.log('Current Poll Votes:', pollVotesDB);
+            } else {
+                alert('Poll not found.');
+            }
+        }
+
+        // Attach event listeners
+        document.addEventListener('DOMContentLoaded', function () {
+            const submitBtn = document.querySelector('.btn');
+            submitBtn.addEventListener('click', function () {
+                const title = document.getElementById('title').value;
+                const description = document.getElementById('description').value;
+                if (title && description) {
+                    submitFeedback(title, description);
+                    document.getElementById('title').value = '';
+                    document.getElementById('description').value = '';
+                } else {
+                    alert('Please fill out all fields.');
+                }
+            });
+
+            const voteButtons = document.querySelectorAll('.vote-btn');
+            voteButtons.forEach((btn) => {
+                btn.addEventListener('click', function () {
+                    const pollId = btn.getAttribute('data-poll-id');
+                    const selected = document.querySelector(`input[name="poll${pollId}"]:checked`);
+                    if (selected) {
+                        const option = selected.id.endsWith('a') ? 'a' : 'b';
+                        submitVote(pollId, option);
+                    } else {
+                        alert('Please select an option before voting.');
+                    }
+                });
+            });
+
+            renderFeedbackHistory(); // Initial load
+            renderPolls(); // Initial load of polls
+        });
+    </script>
 </body>
 </html>

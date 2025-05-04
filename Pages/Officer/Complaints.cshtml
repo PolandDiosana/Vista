@@ -1,0 +1,215 @@
+﻿@page
+@model Vista_Subdivision.Pages.Officer.ComplaintsModel
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Vista Community Portal</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="~/css/complaints.css">
+    <link href="~/css/sidebar.css" rel="stylesheet" />
+</head>
+<body>
+    <!-- Sidebar -->
+    <aside class="sidebar">
+        <div class="logo">
+            <img src="~/Images/logo 1.png" alt="Vista Logo">
+            <span>vista.</span>
+        </div>
+
+        <nav class="nav-menu">
+            <ul>
+                <li>
+                    <a href="/Officer/dashboard">
+                        <i class="fas fa-th-large"></i>
+                        <span>Dashboard</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="/Officer/Announcements">
+                        <i class="fas fa-bullhorn"></i>
+                        <span>Announcements</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="/Officer/BillingPayments">
+                        <i class="fas fa-file-invoice-dollar"></i>
+                        <span>Billing & Payments</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="/Officer/FacilityReservation">
+                        <i class="fas fa-calendar-check"></i>
+                        <span>Facility Reservation</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="/Officer/ServiceRequest">
+                        <i class="fas fa-hands-helping"></i>
+                        <span>Service Request</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="/Officer/Documents">
+                        <i class="fas fa-file-alt"></i>
+                        <span>Documents</span>
+                    </a>
+                </li>
+                <li class="active">
+                    <a href="/Officer/Complaints">
+                        <i class="fas fa-comment-alt"></i>
+                        <span>Complaints</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="/Officer/EventCalendar">
+                        <i class="fas fa-calendar-alt"></i>
+                        <span>Events Scheduled</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="/Officer/EditProfile">
+                        <i class="fas fa-user-circle"></i>
+                        <span>Edit Profile</span>
+                    </a>
+                </li>
+            </ul>
+        </nav>
+    </aside>
+
+    <!-- Main Content -->
+    <div class="main-content">
+        <h1 class="page-title">Feedback & Surveys</h1>
+
+        <div class="content-row">
+            <!-- Left Column - Create Polls -->
+            <div class="content-column">
+                <h2 class="card-title">Create Polls and Survey</h2>
+
+                <div class="form-container">
+                    <div class="form-group">
+                        <label for="title">Title:</label>
+                        <input type="text" class="form-control" id="title">
+                    </div>
+
+                    <div class="form-group">
+                        <label>Create option</label>
+                        <div class="option-row">
+                            <input type="radio" name="option" id="option1">
+                            <label for="option1">option 1</label>
+                        </div>
+                        <div class="option-row">
+                            <input type="radio" name="option" id="option2">
+                            <label for="option2">option 2</label>
+                        </div>
+                        <div class="add-option">
+                            <i class="fa-solid fa-circle-plus"></i>
+                            Add more option
+                        </div>
+                    </div>
+
+                    <div class="expiration-setting">
+                        Set expiration date:
+                    </div>
+
+                    <div class="btn-container">
+                        <button class="btn">Publish Poll</button>
+                    </div>
+                </div>
+
+                <h3 class="section-header">Recently Posted</h3>
+
+                <div class="poll-item">
+                    <div class="poll-title">Community Garden Project</div>
+                    <div class="poll-subtitle">Vote on the proposed garden location</div>
+
+                    <div class="radio-option">
+                        <input type="radio" name="poll1" id="poll1-a">
+                        <label for="poll1-a">Location A - North park</label>
+                    </div>
+
+                    <div class="radio-option">
+                        <input type="radio" name="poll1" id="poll1-b">
+                        <label for="poll1-b">Location B - South park</label>
+                    </div>
+
+                    <div class="poll-footer">
+                        <div>Expires on April 15, 2025</div>
+                        <div class="action-buttons">
+                            <button class="action-btn">Edit</button>
+                            <button class="action-btn">Delete</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Right Column - Feedback and Complaints -->
+            <div class="content-column">
+                <h2 class="card-title">Feedback and Complaints</h2>
+
+                <div class="tab-buttons">
+                    <button class="tab-btn">Recent Complaints</button>
+                    <button class="tab-btn active">Pending</button>
+                    <button class="tab-btn">Reviewed</button>
+                    <button class="tab-btn">Resolved</button>
+                </div>
+
+                <div class="complaint-item">
+                    <div class="complaint-info">
+                        <div class="complaint-title">Water Leakage Issue</div>
+                        <div class="complaint-status">Status: Reviewed</div>
+                        <div class="complaint-status">Submitted: Feb 20, 2025</div>
+                    </div>
+                    <div class="status-options">
+                        <div class="status-option">
+                            <input type="radio" name="water-status" id="water-reviewed" checked>
+                            <label for="water-reviewed">Reviewed</label>
+                        </div>
+                        <div class="status-option">
+                            <input type="radio" name="water-status" id="water-resolved">
+                            <label for="water-resolved">Resolved</label>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="complaint-item">
+                    <div class="complaint-info">
+                        <div class="complaint-title">Defective Street Lights</div>
+                        <div class="complaint-status">Status: Pending</div>
+                        <div class="complaint-status">Submitted: Feb 10, 2025</div>
+                    </div>
+                    <div class="status-options">
+                        <div class="status-option">
+                            <input type="radio" name="lights-status" id="lights-reviewed">
+                            <label for="lights-reviewed">Reviewed</label>
+                        </div>
+                        <div class="status-option">
+                            <input type="radio" name="lights-status" id="lights-resolved">
+                            <label for="lights-resolved">Resolved</label>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="complaint-item">
+                    <div class="complaint-info">
+                        <div class="complaint-title">Basketball Ring</div>
+                        <div class="complaint-status">Status: Resolved</div>
+                        <div class="complaint-status">Submitted: Feb 1, 2025</div>
+                    </div>
+                    <div class="status-options">
+                        <div class="status-option">
+                            <input type="radio" name="basketball-status" id="basketball-reviewed">
+                            <label for="basketball-reviewed">Reviewed</label>
+                        </div>
+                        <div class="status-option">
+                            <input type="radio" name="basketball-status" id="basketball-resolved" checked>
+                            <label for="basketball-resolved">Resolved</label>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

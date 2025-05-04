@@ -11,7 +11,7 @@
     <link rel="stylesheet" href="~/css/facilityReservation.css">
     <link rel="stylesheet" href="~/css/sidebar.css">
 </head>
-<body>
+<body>  
     <div class="dashboard-wrapper">
         <!-- Sidebar -->
         <aside class="sidebar">
@@ -73,6 +73,7 @@
                 </ul>
             </nav>
         </aside>
+
         @inject Microsoft.AspNetCore.Antiforgery.IAntiforgery Xsrf
         <input type="hidden" id="RequestVerificationToken"
                name="__RequestVerificationToken"
