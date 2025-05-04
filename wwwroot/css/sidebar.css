@@ -10,7 +10,7 @@
     flex-direction: column;
 }
 
-.logo {
+.sidebar .logo {
     display: flex;
     align-items: center;
     justify-content: center;
@@ -20,35 +20,35 @@
     border-bottom: 1px solid rgba(0, 0, 0, 0.15);
 }
 
-.logo img {
+.sidebar .logo img {
     height: 60px;
     width: 100px;
     padding: 0px;
     margin-right: 10px;
 }
 
-.logo span {
+.sidebar .logo span {
     font-size: 22px;
     font-family: 'Besley-ExtraBold';
 }
 
-.nav-menu {
+.sidebar .nav-menu {
     margin-top: 7%;
 }
 
-.nav-menu ul {
+.sidebar .nav-menu ul {
     list-style: none;
     padding: 0;
     margin: 0;
 }
 
-.nav-menu ul li {
+.sidebar .nav-menu ul li {
     margin: auto;
     width: 286.1px;
     height: 49px;
 }
 
-.nav-menu ul li a {
+.sidebar .nav-menu ul li a {
     display: flex;
     align-items: center;
     padding: 12px 20px;
@@ -59,13 +59,14 @@
     border-radius: 15px;
 }
 
-.nav-menu a:hover, .nav-menu li.active a {
+.sidebar .nav-menu a:hover, 
+.sidebar .nav-menu li.active a {
     background-color: #CCB38B;
     color: #ffffff;
     border-radius: 15px;
 }
 
-.nav-menu i {
+.sidebar .nav-menu i {
     width: 20px;
     margin-right: 10px;
 }

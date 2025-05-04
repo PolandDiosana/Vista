@@ -70,7 +70,7 @@ namespace Vista_Subdivision.Pages
             return role switch
             {
                 "Admin" => "/Admin/adminDash",
-                "Officer" => "/Officer/dashboard",
+                "Officer" => "/Officer/Officerdashboard",
                 _ => "/homeOwner/dashboard",
             };
         }

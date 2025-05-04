@@ -1,317 +1,14 @@
-@page
-
-
+﻿@page
+@model Vista_Subdivision.Pages.homeOwner.ServiceRequestModel
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Submit Service Request - Vista</title>
-    <link rel="stylesheet" href="~/css/sidebar.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <style>
-        :root {
-            --primary-color: #f8b84e;
-            --secondary-color: #5b5b5b;
-            --light-gray: #f5f5f5;
-            --border-color: #e0e0e0;
-            --success-color: #4CAF50;
-        }
-
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-            font-family: 'Poppins', sans-serif;
-        }
-
-        body {
-            background-color: #f9f9f9;
-            display: flex;
-            min-height: 100vh;
-        }
-
-        .dashboard-wrapper {
-            display: flex;
-            width: 100%;
-        }
-
-        /* Main Content Styles */
-        .main-content {
-            flex: 1;
-            margin-left: 250px;
-            padding: 20px;
-        }
-
-        .content {
-            padding: 20px;
-        }
-
-        h2 {
-            margin-bottom: 20px;
-            font-size: 32px;
-            font-weight: bold;
-            color: var(--secondary-color);
-        }
-
-        /* Form Styles */
-        .service-request-form {
-            background-color: white;
-            border-radius: 8px;
-            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
-            padding: 30px;
-            max-width: 800px;
-            margin-bottom: 30px;
-        }
-
-        .form-group {
-            margin-bottom: 20px;
-        }
-
-            .form-group label {
-                display: block;
-                margin-bottom: 8px;
-                font-weight: 500;
-                color: var(--secondary-color);
-            }
-
-        .form-control {
-            width: 100%;
-            padding: 12px 15px;
-            border: 1px solid var(--border-color);
-            border-radius: 4px;
-            font-size: 16px;
-            transition: border-color 0.3s ease;
-        }
-
-            .form-control:focus {
-                outline: none;
-                border-color: var(--primary-color);
-            }
-
-        textarea.form-control {
-            min-height: 150px;
-            resize: vertical;
-        }
-
-        .form-row {
-            display: flex;
-            gap: 20px;
-        }
-
-            .form-row .form-group {
-                flex: 1;
-            }
-
-        .priority-selector {
-            display: flex;
-            gap: 15px;
-        }
-
-        .priority-option {
-            flex: 1;
-            position: relative;
-        }
-
-            .priority-option input {
-                position: absolute;
-                opacity: 0;
-                cursor: pointer;
-                height: 0;
-                width: 0;
-            }
-
-            .priority-option label {
-                display: block;
-                padding: 12px;
-                text-align: center;
-                border: 2px solid var(--border-color);
-                border-radius: 4px;
-                cursor: pointer;
-                transition: all 0.3s ease;
-            }
-
-            .priority-option input:checked + label {
-                border-color: var(--primary-color);
-                background-color: rgba(248, 184, 78, 0.1);
-            }
-
-            .priority-option label.low {
-                color: #4CAF50;
-            }
-
-            .priority-option label.medium {
-                color: #FFC107;
-            }
-
-            .priority-option label.high {
-                color: #F44336;
-            }
-
-            .priority-option input:checked + label.low {
-                background-color: rgba(76, 175, 80, 0.1);
-                border-color: #4CAF50;
-            }
-
-            .priority-option input:checked + label.medium {
-                background-color: rgba(255, 193, 7, 0.1);
-                border-color: #FFC107;
-            }
-
-            .priority-option input:checked + label.high {
-                background-color: rgba(244, 67, 54, 0.1);
-                border-color: #F44336;
-            }
-
-        .file-upload {
-            border: 2px dashed var(--border-color);
-            padding: 20px;
-            text-align: center;
-            border-radius: 4px;
-            cursor: pointer;
-            transition: all 0.3s ease;
-        }
-
-            .file-upload:hover {
-                border-color: var(--primary-color);
-            }
-
-            .file-upload i {
-                font-size: 24px;
-                color: var(--secondary-color);
-                margin-bottom: 10px;
-            }
-
-            .file-upload p {
-                margin: 0;
-                color: var(--secondary-color);
-            }
-
-            .file-upload input {
-                display: none;
-            }
-
-        .btn {
-            display: inline-block;
-            padding: 12px 24px;
-            background-color: var(--primary-color);
-            color: white;
-            border: none;
-            border-radius: 4px;
-            font-size: 16px;
-            font-weight: 500;
-            cursor: pointer;
-            transition: background-color 0.3s ease;
-        }
-
-            .btn:hover {
-                background-color: #e8a93a;
-            }
-
-        .btn-submit {
-            background-color: var(--primary-color);
-        }
-
-        .btn-cancel {
-            background-color: #f1f1f1;
-            color: var(--secondary-color);
-            margin-right: 10px;
-        }
-
-            .btn-cancel:hover {
-                background-color: #e1e1e1;
-            }
-
-        .form-footer {
-            display: flex;
-            justify-content: flex-end;
-            margin-top: 30px;
-        }
-
-        .selected-files {
-            margin-top: 10px;
-            display: flex;
-            flex-wrap: wrap;
-            gap: 10px;
-        }
-
-        .file-item {
-            display: flex;
-            align-items: center;
-            background-color: var(--light-gray);
-            padding: 5px 10px;
-            border-radius: 4px;
-            font-size: 14px;
-        }
-
-            .file-item i {
-                margin-right: 5px;
-                color: var(--secondary-color);
-            }
-
-            .file-item .remove {
-                margin-left: 8px;
-                cursor: pointer;
-                color: #F44336;
-            }
-
-        /* Form submitted message */
-        .submit-success {
-            display: none;
-            background-color: rgba(76, 175, 80, 0.1);
-            border: 1px solid var(--success-color);
-            padding: 20px;
-            border-radius: 8px;
-            text-align: center;
-            margin-bottom: 30px;
-        }
-
-            .submit-success i {
-                font-size: 48px;
-                color: var(--success-color);
-                margin-bottom: 15px;
-            }
-
-            .submit-success h3 {
-                color: var(--success-color);
-                margin-bottom: 10px;
-            }
-
-        /* Location selector */
-        .location-selector {
-            display: flex;
-            gap: 10px;
-            margin-bottom: 10px;
-        }
-
-            .location-selector select {
-                flex: 1;
-            }
-
-        /* Status badges */
-        .status-badge {
-            display: inline-block;
-            padding: 4px 12px;
-            border-radius: 20px;
-            font-size: 14px;
-            font-weight: 500;
-        }
-
-        .status-pending {
-            background-color: rgba(255, 193, 7, 0.1);
-            color: #FFC107;
-        }
-
-        .status-in-progress {
-            background-color: rgba(33, 150, 243, 0.1);
-            color: #2196F3;
-        }
-
-        .status-completed {
-            background-color: rgba(76, 175, 80, 0.1);
-            color: #4CAF50;
-        }
-    </style>
+    <link rel="stylesheet" href="~/css/homeownerServiceRequest.css">
+    <link rel="stylesheet" href="~/css/sidebar.css">
 </head>
 <body>
     <div class="dashboard-wrapper">
@@ -321,7 +18,6 @@
                 <img src="~/Images/logo 1.png" alt="Vista Logo">
                 <span>vista.</span>
             </div>
-
             <nav class="nav-menu">
                 <ul>
                     <li>
@@ -386,15 +82,16 @@
                     <i class="fas fa-check-circle"></i>
                     <h3>Service Request Submitted Successfully!</h3>
                     <p>Your request has been received. We will attend to it as soon as possible.</p>
-                    <p>Request ID: <strong>REQ-<span id="requestId">2025031</span></strong></p>
+                    <p>Request ID: <strong>REQ-<span id="requestId">2025001</span></strong></p>
                 </div>
 
                 <!-- Service Request Form -->
                 <div class="service-request-form" id="requestForm">
-                    <form id="serviceRequestForm">
+                    <form id="serviceRequestForm" method="post">
+                        @Html.AntiForgeryToken()
                         <div class="form-group">
                             <label for="requestTitle">Request Title</label>
-                            <input type="text" id="requestTitle" class="form-control" placeholder="E.g., Street Light Outage on Elm Street" required>
+                            <input type="text" id="requestTitle" class="form-control" placeholder="E.g., Street Light Outage on Elm Street" name="Request.ReqTitle" required>
                         </div>
 
                         <div class="form-row">
@@ -418,23 +115,24 @@
                                         <option value="Lot 6">Lot 6</option>
                                         <option value="Lot 7">Lot 7</option>
                                     </select>
+                                    <input type="hidden" id="location" name="Request.Location"/>
                                 </div>
-                                <input type="text" id="streetName" class="form-control" placeholder="Street Name (e.g., Elm Street)" required>
+                                <input type="text" id="streetName" class="form-control" placeholder="Street Name (e.g., Elm Street)" name="Request.StreetName" required>
                             </div>
 
                             <div class="form-group">
                                 <label>Priority Level</label>
                                 <div class="priority-selector">
                                     <div class="priority-option">
-                                        <input type="radio" id="lowPriority" name="priority" value="Low">
+                                        <input type="radio" id="lowPriority" name="Request.PriorityLevel" value="Low Priority">
                                         <label for="lowPriority" class="low">Low Priority</label>
                                     </div>
                                     <div class="priority-option">
-                                        <input type="radio" id="mediumPriority" name="priority" value="Medium" checked>
+                                        <input type="radio" id="mediumPriority" name="Request.PriorityLevel" value="Medium Priority" checked>
                                         <label for="mediumPriority" class="medium">Medium Priority</label>
                                     </div>
                                     <div class="priority-option">
-                                        <input type="radio" id="highPriority" name="priority" value="High">
+                                        <input type="radio" id="highPriority" name="Request.PriorityLevel" value="High Priority">
                                         <label for="highPriority" class="high">High Priority</label>
                                     </div>
                                 </div>
@@ -443,7 +141,7 @@
 
                         <div class="form-group">
                             <label for="requestCategory">Request Category</label>
-                            <select id="requestCategory" class="form-control" required>
+                            <select id="requestCategory" class="form-control" name="Request.Category" required>
                                 <option value="">Select Category</option>
                                 <option value="Electrical">Electrical</option>
                                 <option value="Plumbing">Plumbing</option>
@@ -457,8 +155,11 @@
 
                         <div class="form-group">
                             <label for="requestDescription">Description</label>
-                            <textarea id="requestDescription" class="form-control" placeholder="Please provide detailed information about the issue..." required></textarea>
+                            <textarea id="requestDescription" class="form-control" placeholder="Please provide detailed information about the issue..." name="Request.Description" required></textarea>
                         </div>
+
+                        <input type="hidden" id="status" name="Request.Status" value="Pending">
+                        <input type="hidden" id="datesubmitted" name="Request.DateSubmitted" />
 
                         <div class="form-group">
                             <label>Attachments (optional)</label>
@@ -482,10 +183,9 @@
             </div>
         </main>
     </div>
-
     <script>
         // Show selected files
-        document.getElementById('fileInput').addEventListener('change', function(e) {
+        document.getElementById('fileInput').addEventListener('change', function (e) {
             const selectedFiles = document.getElementById('selectedFiles');
             const files = e.target.files;
 
@@ -512,12 +212,12 @@
                 }
 
                 fileItem.innerHTML = `
-                    <i class="fas ${iconClass}"></i>
-                    <span>${file.name}</span>
-                    <i class="fas fa-times remove"></i>
-                `;
+                            <i class="fas ${iconClass}"></i>
+                            <span>${file.name}</span>
+                            <i class="fas fa-times remove"></i>
+                        `;
 
-                fileItem.querySelector('.remove').addEventListener('click', function() {
+                fileItem.querySelector('.remove').addEventListener('click', function () {
                     fileItem.remove();
                 });
 
@@ -526,13 +226,13 @@
         });
 
         // Click to browse files
-        document.getElementById('fileUpload').addEventListener('click', function() {
+        document.getElementById('fileUpload').addEventListener('click', function () {
             document.getElementById('fileInput').click();
         });
 
         // Prevent default drag behaviors
         ['dragenter', 'dragover', 'dragleave', 'drop'].forEach(eventName => {
-            document.getElementById('fileUpload').addEventListener(eventName, function(e) {
+            document.getElementById('fileUpload').addEventListener(eventName, function (e) {
                 e.preventDefault();
                 e.stopPropagation();
             });
@@ -540,21 +240,21 @@
 
         // Highlight drop area when dragging over it
         ['dragenter', 'dragover'].forEach(eventName => {
-            document.getElementById('fileUpload').addEventListener(eventName, function() {
+            document.getElementById('fileUpload').addEventListener(eventName, function () {
                 this.style.borderColor = '#f8b84e';
                 this.style.backgroundColor = 'rgba(248, 184, 78, 0.05)';
             });
         });
 
         ['dragleave', 'drop'].forEach(eventName => {
-            document.getElementById('fileUpload').addEventListener(eventName, function() {
+            document.getElementById('fileUpload').addEventListener(eventName, function () {
                 this.style.borderColor = '#e0e0e0';
                 this.style.backgroundColor = 'transparent';
             });
         });
 
         // Handle dropped files
-        document.getElementById('fileUpload').addEventListener('drop', function(e) {
+        document.getElementById('fileUpload').addEventListener('drop', function (e) {
             const dt = e.dataTransfer;
             const files = dt.files;
             document.getElementById('fileInput').files = files;
@@ -564,21 +264,110 @@
             document.getElementById('fileInput').dispatchEvent(event);
         });
 
-        // Form submission
-        document.getElementById('serviceRequestForm').addEventListener('submit', function(e) {
+        // Form submission with debugging
+        document.getElementById('serviceRequestForm').addEventListener('submit', async function (e) {
             e.preventDefault();
+            const blockSelect = document.getElementById('blockNumber');
+            const lotSelect = document.getElementById('lotNumber');
+            const locationInput = document.getElementById('location');
 
-            // Generate a request ID (in a real app, this would come from the server)
-            const requestId = Math.floor(2025000 + Math.random() * 1000);
-            document.getElementById('requestId').textContent = requestId;
+            function updateLocation() {
+                const block = blockSelect.value;
+                const lot = lotSelect.value;
+                locationInput.value = `${block}, ${lot}`;
+            }
 
-            // Hide form and show success message
-            document.getElementById('requestForm').style.display = 'none';
-            document.getElementById('submitSuccess').style.display = 'block';
+            blockSelect.addEventListener('change', updateLocation);
+            lotSelect.addEventListener('change', updateLocation);
+
+            updateLocation();
+
+            const months = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
+
+            const dateNow = new Date();
+            let month = months[dateNow.getMonth()];
+            let day = dateNow.getDate();
+            let year = dateNow.getFullYear();
+
+            document.getElementById('datesubmitted').value = month + " " + day + ", " + year;
+
+            // Validate required fields manually
+            const requiredFields = [
+                { id: 'requestTitle', name: 'Request Title' },
+                { id: 'blockNumber', name: 'Block Number' },
+                { id: 'lotNumber', name: 'Lot Number' },
+                { id: 'location', name: 'Location'},
+                { id: 'streetName', name: 'Street Name' },
+                { id: 'requestCategory', name: 'Request Category' },
+                { id: 'requestDescription', name: 'Description' },
+                { id: 'status', name: 'Status'},
+            ];
+
+            let hasErrors = false;
+            requiredFields.forEach(field => {
+                const element = document.getElementById(field.id);
+                if (!element.value.trim()) {
+                    alert(`${field.name} is required.`);
+                    hasErrors = true;
+                }
+            });
+
+            // Check if priority is selected
+            if (!document.querySelector('input[name="Request.PriorityLevel"]:checked')) {
+                alert('Please select a Priority Level.');
+                hasErrors = true;
+            }
+
+            if (hasErrors) return;
+
+            // Create FormData object to properly submit the form
+            const formData = new FormData(this);
+
+            // Debug: Log all form data being sent
+            console.log("Form data being submitted:");
+            for (let pair of formData.entries()) {
+                console.log(pair[0] + ': ' + pair[1]);
+            }
+
+            try {
+                // Submit the form data using fetch
+                const response = await fetch('/homeOwner/ServiceRequest', {
+                    method: 'POST',
+                    body: formData,
+                    headers: {
+                        'X-Requested-With': 'XMLHttpRequest'
+                        // RequestVerificationToken is automatically included in FormData
+                    }
+                });
+
+                console.log("Response status:", response.status);
+                console.log("Response status text:", response.statusText);
+
+                if (response.ok) {
+                    // Get the response text for debugging
+                    const responseText = await response.text();
+                    console.log("Response body:", responseText);
+
+                    document.getElementById('requestForm').style.display = 'none';
+                    document.getElementById('submitSuccess').style.display = 'block';
+                    document.getElementById('requestId')
+                } else {
+                    try {
+                        const errorText = await response.text();
+                        console.error('Error response:', errorText);
+                        alert(`Submission error: ${response.status} ${response.statusText}\n\nDetails: ${errorText}`);
+                    } catch (textError) {
+                        alert(`Submission error: ${response.status} ${response.statusText}`);
+                    }
+                }
+            } catch (error) {
+                console.error('Form submission error:', error);
+                alert(`There was an error submitting your request: ${error.message}`);
+            }
         });
 
         // Cancel button
-        document.getElementById('cancelBtn').addEventListener('click', function() {
+        document.getElementById('cancelBtn').addEventListener('click', function () {
             if (confirm('Are you sure you want to cancel this request? All entered information will be lost.')) {
                 document.getElementById('serviceRequestForm').reset();
                 document.getElementById('selectedFiles').innerHTML = '';

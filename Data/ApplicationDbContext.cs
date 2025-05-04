@@ -15,5 +15,6 @@ namespace Vista_Subdivision.Data
         public DbSet<EventCalendar> EventCalendars { get; set; }
         public DbSet<FacilityReservation> FacilityReservations { get; set; }
         public DbSet<Security> Securities { get; set; }
+        public DbSet<ServiceRequest> ServiceRequest { get; set; }
     }
 }
