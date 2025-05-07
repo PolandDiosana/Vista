@@ -6,16 +6,401 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Documents - Vista</title>
+    <title>User Document Portal - Vista</title>
+    <link href="~/css/sidebar.css" rel="stylesheet" />
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <link rel="stylesheet" href="~/css/officerdashboard.css">
+    <!-- Add SweetAlert2 CSS -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/sweetalert2/11.7.32/sweetalert2.min.css">
+    <style>
+        /* Global Styles */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            background-color: #f5f5f7;
+        }
+
+        .dashboard-wrapper {
+            display: flex;
+        }
+
+        /* Sidebar Styles */
+        .sidebar {
+            height: 100vh;
+        }
+
+        /* Main Content Styles */
+        .main-content {
+            flex: 1;
+            margin-left: 70px;
+            padding: 30px;
+        }
+
+        .modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.5);
+            z-index: 1000;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .modal-content {
+            background-color: white;
+            border-radius: 12px;
+            width: 700px;
+            max-width: 90%;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
+            animation: modalFadeIn 0.3s ease;
+        }
+
+        .modal-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px 25px;
+            border-bottom: 1px solid #eee;
+        }
+
+            .modal-header h3 {
+                font-size: 22px;
+                font-weight: 600;
+                color: #333;
+            }
+
+        .close-modal {
+            background: none;
+            border: none;
+            font-size: 24px;
+            cursor: pointer;
+            color: #777;
+            transition: color 0.2s ease;
+        }
+
+            .close-modal:hover {
+                color: #333;
+            }
+
+        /* Document Categories - Enhanced Box Style */
+        .document-categories {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 25px;
+            margin-bottom: 40px;
+        }
+
+        .document-card {
+            background-color: white;
+            border-radius: 12px;
+            padding: 25px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            position: relative;
+            overflow: hidden;
+            display: flex;
+            flex-direction: column;
+            height: 100%;
+        }
+
+            .document-card:hover {
+                transform: translateY(-5px);
+                box-shadow: 0 8px 16px rgba(0, 0, 0, 0.12);
+            }
+
+            .document-card h3 {
+                font-size: 20px;
+                margin-bottom: 12px;
+                font-weight: 600;
+                color: #333;
+                position: relative;
+                z-index: 2;
+            }
+
+            .document-card p {
+                color: #666;
+                margin-bottom: 25px;
+                line-height: 1.6;
+                flex-grow: 1;
+                position: relative;
+                z-index: 2;
+            }
+
+        .view-btn {
+            display: inline-block;
+            padding: 8px 20px;
+            border-radius: 6px;
+            font-weight: 500;
+            cursor: pointer;
+            color: white;
+            transition: all 0.3s ease;
+            text-align: center;
+            text-decoration: none;
+            position: relative;
+            z-index: 2;
+            align-self: flex-start;
+            margin-top: auto;
+        }
+
+            .view-btn:hover {
+                opacity: 0.9;
+                transform: scale(1.05);
+            }
+
+        /* Card Color Variations */
+        .blue-card {
+            border-left: 6px solid #0066ff;
+        }
+
+            .blue-card .view-btn {
+                background-color: #0066ff;
+            }
+
+            .blue-card::before {
+                content: '';
+                position: absolute;
+                top: 0;
+                left: 0;
+                width: 100%;
+                height: 6px;
+                background-color: #0066ff;
+            }
+
+        .green-card {
+            border-left: 6px solid #00b050;
+        }
+
+            .green-card .view-btn {
+                background-color: #00b050;
+            }
+
+            .green-card::before {
+                content: '';
+                position: absolute;
+                top: 0;
+                left: 0;
+                width: 100%;
+                height: 6px;
+                background-color: #00b050;
+            }
+
+        .orange-card {
+            border-left: 6px solid #db9a00;
+        }
+
+            .orange-card .view-btn {
+                background-color: #db9a00;
+            }
+
+            .orange-card::before {
+                content: '';
+                position: absolute;
+                top: 0;
+                left: 0;
+                width: 100%;
+                height: 6px;
+                background-color: #db9a00;
+            }
+
+        /* Card Icon */
+        .document-card-icon {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            font-size: 30px;
+            opacity: 0.1;
+            color: #333;
+        }
+
+        /* Document Management Styles */
+        .content-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 30px;
+        }
+
+            .content-header h2 {
+                font-size: 28px;
+                font-weight: 600;
+                color: #333;
+            }
+
+        .search-box {
+            display: flex;
+            align-items: center;
+            background-color: white;
+            border-radius: 8px;
+            padding: 8px 15px;
+            box-shadow: 0 2px 6px rgba(0, 0, 0, 0.08);
+            width: 300px;
+        }
+
+            .search-box input {
+                border: none;
+                outline: none;
+                padding: 5px;
+                flex: 1;
+                font-size: 14px;
+            }
+
+            .search-box i {
+                color: #777;
+                font-size: 16px;
+                margin-right: 8px;
+            }
+
+        /* Popular Documents */
+        .popular-documents {
+            margin-top: 40px;
+        }
+
+            .popular-documents h3 {
+                font-size: 22px;
+                margin-bottom: 20px;
+                font-weight: 600;
+                color: #333;
+            }
+
+        .document-list {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+            gap: 20px;
+        }
+
+        .document-item {
+            background-color: white;
+            border-radius: 10px;
+            padding: 15px;
+            box-shadow: 0 2px 6px rgba(0, 0, 0, 0.08);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            cursor: pointer;
+        }
+
+            .document-item:hover {
+                transform: translateY(-5px);
+                box-shadow: 0 4px 12px rgba(0, 0, 0, 0.12);
+            }
+
+            .document-item img {
+                width: 100%;
+                height: 120px;
+                object-fit: cover;
+                border-radius: 6px;
+                margin-bottom: 12px;
+            }
+
+            .document-item h4 {
+                font-size: 16px;
+                margin-bottom: 5px;
+                color: #333;
+            }
+
+            .document-item p {
+                font-size: 13px;
+                color: #777;
+            }
+
+        /* View Modal Document List */
+        .category-document {
+            display: flex;
+            align-items: center;
+            padding: 15px;
+            border-bottom: 1px solid #eee;
+            transition: background-color 0.2s ease;
+        }
+
+            .category-document:hover {
+                background-color: #f9f9f9;
+            }
+
+            .category-document:last-child {
+                border-bottom: none;
+            }
+
+        .document-icon {
+            font-size: 24px;
+            margin-right: 15px;
+            color: #0066ff;
+        }
+
+        .document-info {
+            flex: 1;
+        }
+
+            .document-info h4 {
+                font-size: 16px;
+                margin-bottom: 3px;
+                color: #333;
+            }
+
+            .document-info p {
+                font-size: 13px;
+                color: #777;
+                margin: 0;
+            }
+
+        .document-actions {
+            display: flex;
+            gap: 15px;
+        }
+
+            .document-actions button {
+                background: none;
+                border: none;
+                cursor: pointer;
+                font-size: 16px;
+                transition: transform 0.2s ease, color 0.2s ease;
+                padding: 5px;
+            }
+
+            .document-actions .download-btn {
+                color: #0066ff;
+            }
+
+            .document-actions .view-doc-btn {
+                color: #00b050;
+            }
+
+            .document-actions button:hover {
+                transform: scale(1.2);
+            }
+
+        .modal-footer {
+            padding: 15px 25px;
+            border-top: 1px solid #eee;
+            display: flex;
+            justify-content: flex-end;
+        }
+
+        .btn-cancel {
+            padding: 8px 20px;
+            background-color: #f5f5f7;
+            border: 1px solid #ddd;
+            border-radius: 6px;
+            cursor: pointer;
+            font-weight: 500;
+            transition: background-color 0.2s ease;
+        }
+
+            .btn-cancel:hover {
+                background-color: #e5e5e7;
+            }
+
+    </style>
 </head>
 <body>
     <div class="dashboard-wrapper">
         <!-- Sidebar -->
         <aside class="sidebar">
             <div class="logo">
-                <img src="~/Images/logo.png" alt="Vista Logo">
+                <img src="~/Images/logo 1.png" alt="Vista Logo">
                 <span>vista.</span>
             </div>
 
@@ -60,7 +445,13 @@
                     <li>
                         <a href="/homeOwner/EventsScheduled">
                             <i class="fas fa-calendar-alt"></i>
-                            <span>Events Scheduled</span>
+                            <span>Events Calendar</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="/homeOwner/FeedbackAndSurvey">
+                            <i class="fas fa-calendar-alt"></i>
+                            <span>Feedback and Survey</span>
                         </a>
                     </li>
                     <li>
@@ -72,40 +463,289 @@
                 </ul>
             </nav>
         </aside>
-             <!-- Main Content -->
-        <main class="main-content">
-            <!-- Top Bar -->
-            <!-- Dashboard Content -->
-            <div class="content">
-                <div class="dashboard-container">
-                    <!-- Officer Profile Card -->
-                    <h2 style="margin-left:50px; font-size: 32px;font:poppins; font-weight: bold;">DOCUMENTS</h2>
-                    <div class="officer-profile-card">
-                        <div class="profile-content">
-                            <div class="profile-avatar">
-                                
-                            </div>
-                            <div class="profile-info">
-                                
 
-                                <div class="contact-details">
-                                    <div class="contact-item">
-                                        
-                                    </div>
-                                    <div class="contact-item">
-                                        
-                                        
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
+        <!-- Main Content -->
+        <main class="main-content">
+            <!-- Document Content Header -->
+            <div class="content-header">
+                <h2>Document Center</h2>
+                <div class="search-box">
+                    <i class="fas fa-search"></i>
+                    <input type="text" placeholder="Search documents..." id="searchInput">
+                </div>
+            </div>
+
+            <!-- Document Categories -->
+            <div class="document-categories">
+                <div class="document-card blue-card">
+                    <i class="fas fa-file-alt document-card-icon"></i>
+                    <h3>Forms & Applications</h3>
+                    <p>Access downloadable forms for various purposes including facility reservations, registrations, and more.</p>
+                    <a href="#" class="view-btn" data-category="forms">Browse Forms</a>
+                </div>
+
+                <div class="document-card green-card">
+                    <i class="fas fa-book document-card-icon"></i>
+                    <h3>Community Guidelines</h3>
+                    <p>Find all our community policies, by-laws, and guidelines for residents in one place.</p>
+                    <a href="#" class="view-btn" data-category="guidelines">View Guidelines</a>
+                </div>
+
+                <div class="document-card blue-card">
+                    <i class="fas fa-chart-pie document-card-icon"></i>
+                    <h3>Financial Reports</h3>
+                    <p>Access quarterly and annual financial reports, budget statements, and HOA financials.</p>
+                    <a href="#" class="view-btn" data-category="financial">View Reports</a>
+                </div>
+
+                <div class="document-card orange-card">
+                    <i class="fas fa-clipboard document-card-icon"></i>
+                    <h3>Meeting Minutes</h3>
+                    <p>Review minutes from board and committee meetings, stay informed about community decisions.</p>
+                    <a href="#" class="view-btn" data-category="minutes">View Minutes</a>
+                </div>
+            </div>
+
+            <!-- Popular Documents -->
+            <div class="popular-documents">
+                <h3>Popular Documents</h3>
+                <div class="document-list" id="popularDocuments">
+                    <div class="document-item">
+                        <img src="/Images/function hall.png" alt="Community Bylaws">
+                        <h4>Community Bylaws</h4>
+                        <p>Guidelines • April 2025</p>
+                    </div>
+                    <div class="document-item">
+                        <img src="/Images/basketball court.png" alt="Facility Request Form">
+                        <h4>Facility Request Form</h4>
+                        <p>Forms • Updated April 2025</p>
+                    </div>
+                    <div class="document-item">
+                        <img src="/Images/roomA.png" alt="2025 Annual Budget">
+                        <h4>2025 Annual Budget</h4>
+                        <p>Financial • March 2025</p>
+                    </div>
+                    <div class="document-item">
+                        <img src="/Images/kitsuragi.png" alt="Pool Rules">
+                        <h4>Pool Rules & Hours</h4>
+                        <p>Guidelines • April 2025</p>
+                    </div>
+                    <div class="document-item">
+                        <img src="/Images/bed.jpg" alt="April Board Meeting">
+                        <h4>April Board Meeting</h4>
+                        <p>Minutes • April 20, 2025</p>
                     </div>
                 </div>
-            </div> 
+            </div>
         </main>
     </div>
+
+    <!-- View Documents Modal -->
+    <div class="modal" id="viewDocumentsModal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3 id="viewModalTitle">Category Documents</h3>
+                <button class="close-modal" id="closeViewModal">&times;</button>
+            </div>
+            <div style="padding: 20px;">
+                <div id="documentsList" style="max-height: 400px; overflow-y: auto;">
+                    <!-- Documents will be loaded here dynamically -->
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn-cancel" id="closeViewBtn">Close</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Add SweetAlert2 JS -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/sweetalert2/11.7.32/sweetalert2.min.js"></script>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // View Documents Modal Elements
+            const viewModal = document.getElementById('viewDocumentsModal');
+            const closeViewModal = document.getElementById('closeViewModal');
+            const closeViewBtn = document.getElementById('closeViewBtn');
+            const viewBtns = document.querySelectorAll('.view-btn');
+            const viewModalTitle = document.getElementById('viewModalTitle');
+            const documentsList = document.getElementById('documentsList');
+            const searchInput = document.getElementById('searchInput');
+            const documentItems = document.querySelectorAll('.document-item');
+
+            // Sample document data for each category
+            const categoryDocuments = {
+                forms: [
+                    { title: 'Facility Reservation Form', date: 'April 15, 2025', type: 'pdf', size: '245 KB', downloads: 124 },
+                    { title: 'HOA Application Form', date: 'April 1, 2025', type: 'docx', size: '132 KB', downloads: 87 },
+                    { title: 'Contractor Registration', date: 'March 20, 2025', type: 'pdf', size: '310 KB', downloads: 65 },
+                    { title: 'Architectural Change Request', date: 'March 15, 2025', type: 'pdf', size: '280 KB', downloads: 112 },
+                    { title: 'Resident Information Form', date: 'February 28, 2025', type: 'pdf', size: '195 KB', downloads: 203 }
+                ],
+                guidelines: [
+                    { title: 'Community By-Laws', date: 'April 10, 2025', type: 'pdf', size: '1.2 MB', downloads: 345 },
+                    { title: 'Pet Policy Guidelines', date: 'March 28, 2025', type: 'pdf', size: '421 KB', downloads: 211 },
+                    { title: 'Architectural Guidelines', date: 'March 15, 2025', type: 'pdf', size: '850 KB', downloads: 189 },
+                    { title: 'Pool Rules & Regulations', date: 'April 12, 2025', type: 'pdf', size: '375 KB', downloads: 251 },
+                    { title: 'Parking Policy', date: 'March 5, 2025', type: 'pdf', size: '290 KB', downloads: 178 }
+                ],
+                financial: [
+                    { title: 'Q1 2025 Financial Report', date: 'April 5, 2025', type: 'pdf', size: '547 KB', downloads: 114 },
+                    { title: 'Annual Budget 2025', date: 'March 10, 2025', type: 'pdf', size: '689 KB', downloads: 245 },
+                    { title: 'Reserve Fund Study', date: 'February 25, 2025', type: 'pdf', size: '1.5 MB', downloads: 98 },
+                    { title: 'HOA Fee Structure', date: 'January 15, 2025', type: 'pdf', size: '320 KB', downloads: 187 },
+                    { title: 'Q4 2024 Financial Report', date: 'January 10, 2025', type: 'pdf', size: '510 KB', downloads: 92 }
+                ],
+                minutes: [
+                    { title: 'April Board Meeting', date: 'April 20, 2025', type: 'pdf', size: '425 KB', downloads: 76 },
+                    { title: 'March Board Meeting', date: 'March 22, 2025', type: 'pdf', size: '398 KB', downloads: 64 },
+                    { title: 'Special Committee Meeting', date: 'March 5, 2025', type: 'pdf', size: '210 KB', downloads: 43 },
+                    { title: 'Annual HOA Meeting', date: 'February 15, 2025', type: 'pdf', size: '615 KB', downloads: 127 },
+                    { title: 'February Board Meeting', date: 'February 20, 2025', type: 'pdf', size: '385 KB', downloads: 54 }
+                ]
+            };
+
+            // Get file icon based on file type
+            function getFileIconClass(fileType) {
+                switch(fileType.toLowerCase()) {
+                    case 'pdf':
+                        return 'fas fa-file-pdf';
+                    case 'doc':
+                    case 'docx':
+                        return 'fas fa-file-word';
+                    case 'xls':
+                    case 'xlsx':
+                        return 'fas fa-file-excel';
+                    default:
+                        return 'fas fa-file';
+                }
+            }
+
+            // Close view documents modal
+            closeViewModal.addEventListener('click', function() {
+                viewModal.style.display = 'none';
+            });
+
+            closeViewBtn.addEventListener('click', function() {
+                viewModal.style.display = 'none';
+            });
+
+            // View documents by category
+            viewBtns.forEach(btn => {
+                btn.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    const category = this.dataset.category;
+                    let categoryName = '';
+
+                    // Set the modal title based on category
+                    switch(category) {
+                        case 'forms':
+                            categoryName = 'Forms & Applications';
+                            break;
+                        case 'guidelines':
+                            categoryName = 'Community Guidelines';
+                            break;
+                        case 'financial':
+                            categoryName = 'Financial Reports';
+                            break;
+                        case 'minutes':
+                            categoryName = 'Meeting Minutes';
+                            break;
+                    }
+
+                    viewModalTitle.textContent = categoryName;
+
+                    // Clear previous documents
+                    documentsList.innerHTML = '';
+
+                    // Add documents for the selected category
+                    if (categoryDocuments[category].length > 0) {
+                        categoryDocuments[category].forEach(doc => {
+                            const docElement = document.createElement('div');
+                            docElement.className = 'category-document';
+
+                            docElement.innerHTML = `
+                                <i class="${getFileIconClass(doc.type)} document-icon"></i>
+                                <div class="document-info">
+                                    <h4>${doc.title}</h4>
+                                    <p>Added: ${doc.date} • ${doc.size} • ${doc.type.toUpperCase()} • ${doc.downloads} downloads</p>
+                                </div>
+                                <div class="document-actions">
+                                    <button title="Download" class="download-btn"><i class="fas fa-download"></i></button>
+                                    <button title="View" class="view-doc-btn"><i class="fas fa-eye"></i></button>
+                                </div>
+                            `;
+
+                            documentsList.appendChild(docElement);
+                        });
+                    } else {
+                        documentsList.innerHTML = '<p style="text-align: center; padding: 20px;">No documents in this category</p>';
+                    }
+
+                    // Open view documents modal
+                    viewModal.style.display = 'flex';
+                });
+            });
+
+            // Close modals when clicking outside of them
+            window.addEventListener('click', function(e) {
+                if (e.target === viewModal) {
+                    viewModal.style.display = 'none';
+                }
+            });
+
+            // Search functionality
+            searchInput.addEventListener('input', function() {
+                const searchTerm = this.value.toLowerCase();
+
+                // Search in popular documents
+                documentItems.forEach(item => {
+                    const title = item.querySelector('h4').textContent.toLowerCase();
+                    const category = item.querySelector('p').textContent.toLowerCase();
+
+                    if (title.includes(searchTerm) || category.includes(searchTerm)) {
+                        item.style.display = 'block';
+                    } else {
+                        item.style.display = 'none';
+                    }
+                });
+            });
+
+            // Add download and view functionality
+            document.addEventListener('click', function(e) {
+                if (e.target.classList.contains('fa-download') || e.target.classList.contains('fa-eye')) {
+                    e.preventDefault();
+
+                    // Get the document title
+                    const docTitle = e.target.closest('.category-document').querySelector('.document-info h4').textContent;
+
+                    Swal.fire({
+                        title: e.target.classList.contains('fa-download') ? 'Download Started' : 'Viewing Document',
+                        text: `${e.target.classList.contains('fa-download') ? 'Downloading' : 'Opening'} "${docTitle}"`,
+                        icon: 'success',
+                        timer: 2000,
+                        timerProgressBar: true,
+                        showConfirmButton: false
+                    });
+                }
+            });
+
+            // Make document items clickable to view
+            documentItems.forEach(item => {
+                item.addEventListener('click', function() {
+                    const title = this.querySelector('h4').textContent;
+
+                    Swal.fire({
+                        title: 'Viewing Document',
+                        text: `Opening "${title}"`,
+                        icon: 'success',
+                        timer: 2000,
+                        timerProgressBar: true,
+                        showConfirmButton: false
+                    });
+                });
+            });
+        });
+    </script>
 </body>
-</html>      
-
-
-
+</html>

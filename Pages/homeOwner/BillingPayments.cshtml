@@ -1,4 +1,4 @@
-@page
+﻿@page
 
 
 <!DOCTYPE html>
@@ -6,65 +6,233 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Officer Dashboard - Vista</title>
+    <title>Homeowner Dashboard - Vista</title>
+    <link href="~/css/sidebar.css" rel="stylesheet" />
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <link rel="stylesheet" href="~/css/officerdashboard.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/flatpickr/4.6.13/flatpickr.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            background-color: #f5f5f5;
+            display: flex;
+        }
+
+        .dashboard-wrapper {
+            display: flex;
+            width: 100%;
+        }
+
+        /* Sidebar Styles */
+        .sidebar {
+            height: 100vh;
+        }
+        /* Main Content Styles */
+        .main-content {
+            flex: 1;
+            margin-left: 60px;
+            padding: 20px;
+        }
+
+        /* Payment Section Styles */
+        .payment-container {
+            display: flex;
+            gap: 20px;
+            margin-top: 20px;
+        }
+
+        .bills-payment {
+            flex: 2;
+            background-color: #fff;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            padding: 20px;
+        }
+
+        .payment-summary {
+            flex: 1;
+            background-color: #fff;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            padding: 20px;
+        }
+
+        .section-header {
+            background-color: #C4A484;
+            color: white;
+            padding: 12px 20px;
+            border-radius: 5px;
+            font-size: 18px;
+            margin-bottom: 20px;
+            text-align: center;
+        }
+
+        .form-group {
+            margin-bottom: 20px;
+        }
+
+            .form-group label {
+                display: block;
+                margin-bottom: 8px;
+                font-weight: 500;
+                color: #333;
+            }
+
+        .form-control {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            font-size: 14px;
+        }
+
+        .payment-methods {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 10px;
+            margin-top: 10px;
+        }
+
+        .payment-method {
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            padding: 10px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            cursor: pointer;
+        }
+
+            .payment-method.selected {
+                border-color: #C4A484;
+                background-color: #f9f3ee;
+            }
+
+            .payment-method img {
+                height: 30px;
+            }
+
+        .summary-row {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 15px;
+            font-size: 14px;
+        }
+
+            .summary-row.total {
+                font-weight: bold;
+                font-size: 16px;
+                border-top: 1px solid #ddd;
+                padding-top: 15px;
+                margin-top: 15px;
+            }
+
+        .pay-button {
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            padding: 12px;
+            width: 100%;
+            border-radius: 5px;
+            font-size: 16px;
+            cursor: pointer;
+            margin-top: 20px;
+        }
+
+            .pay-button:hover {
+                background-color: #45a049;
+            }
+
+        .checkbox-container {
+            display: flex;
+            align-items: flex-start;
+            margin-bottom: 10px;
+        }
+
+            .checkbox-container input {
+                margin-right: 10px;
+                margin-top: 3px;
+            }
+
+            .checkbox-container label {
+                font-size: 12px;
+                color: #666;
+            }
+
+        .positive-amount {
+            color: #4CAF50;
+        }
+
+        .negative-amount {
+            color: #f44336;
+        }
+
+
+        /* Calendar styling for Flatpickr */
+        .flatpickr-calendar {
+            box-shadow: 0 3px 13px rgba(0,0,0,0.08);
+        }
+    </style>
 </head>
 <body>
     <div class="dashboard-wrapper">
         <!-- Sidebar -->
         <aside class="sidebar">
             <div class="logo">
-                <img src="~/Images/logo.png" alt="Vista Logo">
+                <img src="~/Images/logo 1.png" alt="Vista Logo">
                 <span>vista.</span>
             </div>
 
             <nav class="nav-menu">
                 <ul>
                     <li>
-                        <a href="/homeOwner/dashboard">
+                        <a href="/Officer/Officerdashboard">
                             <i class="fas fa-th-large"></i>
                             <span>Dashboard</span>
                         </a>
                     </li>
                     <li>
-                        <a href="/homeOwner/Announcements">
+                        <a href="/Officer/OfficerAnnouncements">
                             <i class="fas fa-bullhorn"></i>
                             <span>Announcements</span>
                         </a>
                     </li>
                     <li class="active">
-                        <a href="/homeOwner/BillingPayments">
+                        <a href="/Officer/OfficerBillingPayments">
                             <i class="fas fa-file-invoice-dollar"></i>
                             <span>Billing & Payments</span>
                         </a>
                     </li>
                     <li>
-                        <a href="/homeOwner/FacilityReservation">
+                        <a href="~/Officer/OfficerFacilityReservation">
                             <i class="fas fa-calendar-check"></i>
                             <span>Facility Reservation</span>
                         </a>
                     </li>
                     <li>
-                        <a href="/homeOwner/ServiceRequest">
+                        <a href="/Officer/OfficerServiceRequest">
                             <i class="fas fa-hands-helping"></i>
                             <span>Service Request</span>
                         </a>
                     </li>
                     <li>
-                        <a href="/homeOwner/Documents">
+                        <a href="/Officer/OfficerDocuments">
                             <i class="fas fa-file-alt"></i>
                             <span>Documents</span>
                         </a>
                     </li>
                     <li>
-                        <a href="/homeOwner/EventsScheduled">
+                        <a href="/Officer/OfficerEventCalendar">
                             <i class="fas fa-calendar-alt"></i>
-                            <span>Events Scheduled</span>
+                            <span>Events Calendar</span>
                         </a>
                     </li>
                     <li>
-                        <a href="/homeOwner/EditProfile">
+                        <a href="/Officer/OfficerEditProfile">
                             <i class="fas fa-user-circle"></i>
                             <span>Edit Profile</span>
                         </a>
@@ -72,37 +240,276 @@
                 </ul>
             </nav>
         </aside>
-            <!-- Main Content -->
-        <main class="main-content">
-            <!-- Top Bar -->
-            <!-- Dashboard Content -->
-            <div class="content">
-                <div class="dashboard-container">
-                    <!-- Officer Profile Card -->
-                    <h2 style="margin-left:50px; font-size: 32px;font:poppins; font-weight: bold;">PAYMENTS</h2>
-                    <div class="officer-profile-card">
-                        <div class="profile-content">
-                            <div class="profile-avatar">
-                               
-                            </div>
-                            <div class="profile-info">
-                                
 
-                                <div class="contact-details">
-                                    <div class="contact-item">
-                                        
-                                    </div>
-                                    <div class="contact-item">
-                                        
-                                        
-                                    </div>
-                                </div>
+        <!-- Main Content -->
+        <main class="main-content">
+            <div class="payment-container">
+                <!-- Bills Payment Section -->
+                <div class="bills-payment">
+                    <div class="section-header">Bills Payment</div>
+
+                    <div class="form-group">
+                        <label for="billType">Bill Type</label>
+                        <select class="form-control" id="billType" onchange="updateSummary()">
+                            <option value="Select Bill Type">Select Bill Type</option>
+                            <option value="Electric Bill">Electric Bill</option>
+                            <option value="Water Bill">Water Bill</option>
+                            <option value="Association Dues">Association Dues</option>
+                            <option value="Maintenance Fee">Maintenance Fee</option>
+                        </select>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="refNumber">Bill/Reference Number</label>
+                        <input type="text" class="form-control" id="refNumber" placeholder="Enter bill or reference number" onchange="updateSummary()" onkeyup="updateSummary()">
+                    </div>
+
+                    <div class="form-group">
+                        <label for="amount">Amount (₱)</label>
+                        <input type="number" class="form-control" id="amount" placeholder="0.00" onchange="updateSummary()" onkeyup="updateSummary()">
+                    </div>
+
+                    <div class="form-group">
+                        <label for="dueDate">Due Date</label>
+                        <input type="text" class="form-control" id="dueDate" placeholder="mm/dd/yyyy" readonly>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="paymentNote">Payment Note</label>
+                        <textarea class="form-control" id="paymentNote" rows="4" placeholder="Add any payment details or notes..." onchange="updateSummary()" onkeyup="updateSummary()"></textarea>
+                    </div>
+
+                    <div class="form-group">
+                        <label>Methods of Payment</label>
+                        <div class="payment-methods">
+                            <div class="payment-method selected" onclick="selectPaymentMethod(this, 'GCash')">
+                                <img src="/api/placeholder/70/30" alt="GCash">
+                            </div>
+                            <div class="payment-method" onclick="selectPaymentMethod(this, 'Mastercard')">
+                                <img src="/api/placeholder/70/30" alt="Mastercard">
+                            </div>
+                            <div class="payment-method" onclick="selectPaymentMethod(this, 'BDO')">
+                                <img src="/api/placeholder/70/30" alt="BDO">
+                            </div>
+                            <div class="payment-method" onclick="selectPaymentMethod(this, 'BPI')">
+                                <img src="/api/placeholder/70/30" alt="BPI">
+                            </div>
+                            <div class="payment-method" onclick="selectPaymentMethod(this, 'Metrobank')">
+                                <img src="/api/placeholder/70/30" alt="Metrobank">
+                            </div>
+                            <div class="payment-method" onclick="selectPaymentMethod(this, 'PayPal')">
+                                <img src="/api/placeholder/70/30" alt="PayPal">
+                            </div>
+                            <div class="payment-method" onclick="selectPaymentMethod(this, 'Visa')">
+                                <img src="/api/placeholder/70/30" alt="Visa">
+                            </div>
+                            <div class="payment-method" onclick="selectPaymentMethod(this, 'Alipay')">
+                                <img src="/api/placeholder/70/30" alt="Alipay">
                             </div>
                         </div>
                     </div>
                 </div>
-            </div> 
+
+                <!-- Payment Summary Section -->
+                <div class="payment-summary">
+                    <h3 style="margin-bottom: 20px;">Payment Summary</h3>
+
+                    <div class="summary-row">
+                        <span>Bill Type:</span>
+                        <span id="summaryBillType"></span>
+                    </div>
+
+                    <div class="summary-row">
+                        <span>Ref No:</span>
+                        <span id="summaryRefNo"></span>
+                    </div>
+
+                    <div class="summary-row">
+                        <span>Amount:</span>
+                        <span id="summaryAmount" class="positive-amount"></span>
+                    </div>
+
+                    <div class="summary-row">
+                        <span>Due Date:</span>
+                        <span id="summaryDueDate"></span>
+                    </div>
+
+                    <div class="summary-row">
+                        <span>Payment Method:</span>
+                        <span id="summaryPaymentMethod"></span>
+                    </div>
+
+                    <div class="summary-row">
+                        <span>Payment Note:</span>
+                        <span id="summaryPaymentNote"></span>
+                    </div>
+
+                    <div class="summary-row">
+                        <span>Convenience Fee:</span>
+                        <span class="positive-amount"></span>
+                    </div>
+
+                    <div class="summary-row total">
+                        <span>Total Amount to Pay:</span>
+                        <span id="totalAmount" class="negative-amount"></span>
+                    </div>
+
+                    <div class="checkbox-container">
+                        <input type="checkbox" id="terms">
+                        <label for="terms">I agree to payment Terms & Conditions</label>
+                    </div>
+
+                    <div class="checkbox-container">
+                        <input type="checkbox" id="confirm">
+                        <label for="confirm">I confirm that the information provided is accurate and complete.</label>
+                    </div>
+
+                    <button class="pay-button" id="payButton" onclick="showPaymentConfirmation()">Pay</button>
+                </div>
+            </div>
         </main>
     </div>
+
+    <!-- Include SweetAlert and Flatpickr for nice alerts and date picker -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/sweetalert/2.1.2/sweetalert.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/flatpickr/4.6.13/flatpickr.min.js"></script>
+
+    <script>
+        // Global variables
+        let selectedPaymentMethod = "GCash";
+        const convenienceFeeAmount = 10.00;
+
+        // Initialize date picker
+        document.addEventListener('DOMContentLoaded', function() {
+            // Initialize flatpickr date picker
+            flatpickr("#dueDate", {
+                dateFormat: "m/d/Y",
+                minDate: "today",
+                defaultDate: "today",
+                onChange: function(selectedDates, dateStr) {
+                    updateSummary();
+                }
+            });
+
+            // Set Electric Bill as default selection
+            document.getElementById('billType').value = "Electric Bill";
+
+            // Update the summary initially
+            updateSummary();
+        });
+
+        // Function to update the payment summary
+        function updateSummary() {
+            // Get values from form fields
+            const billType = document.getElementById('billType').value;
+            const refNo = document.getElementById('refNumber').value;
+            const amount = document.getElementById('amount').value;
+            const dueDate = document.getElementById('dueDate').value;
+            const paymentNote = document.getElementById('paymentNote').value;
+
+            // Format the amount with commas for display
+            let formattedAmount = "";
+            if (amount && !isNaN(parseFloat(amount))) {
+                formattedAmount = parseFloat(amount).toLocaleString('en-PH', {
+                    minimumFractionDigits: 2,
+                    maximumFractionDigits: 2
+                });
+            }
+
+            // Calculate total amount
+            let totalAmountValue = convenienceFeeAmount;
+            if (amount && !isNaN(parseFloat(amount))) {
+                totalAmountValue += parseFloat(amount);
+            }
+
+            const formattedTotal = totalAmountValue.toLocaleString('en-PH', {
+                minimumFractionDigits: 2,
+                maximumFractionDigits: 2
+            });
+
+            // Update summary fields
+            document.getElementById('summaryBillType').textContent = billType !== "Select Bill Type" ? billType : '';
+            document.getElementById('summaryRefNo').textContent = refNo || '';
+            document.getElementById('summaryAmount').textContent = formattedAmount ? '₱' + formattedAmount : '';
+            document.getElementById('summaryDueDate').textContent = dueDate || '';
+            document.getElementById('summaryPaymentMethod').textContent = selectedPaymentMethod;
+            document.getElementById('summaryPaymentNote').textContent = paymentNote ? '' + paymentNote + '' : '';
+
+            // Update the pay button text
+            document.getElementById('payButton').textContent = 'Pay ₱' + formattedTotal;
+
+            // Update total amount in summary
+            document.getElementById('totalAmount').textContent = '₱' + formattedTotal;
+        }
+
+        // Function to select payment method
+        function selectPaymentMethod(element, method) {
+            // Remove 'selected' class from all payment methods
+            const allMethods = document.querySelectorAll('.payment-method');
+            allMethods.forEach(method => {
+                method.classList.remove('selected');
+            });
+
+            // Add 'selected' class to clicked method
+            element.classList.add('selected');
+
+            // Update selected payment method
+            selectedPaymentMethod = method;
+
+            // Update the summary
+            document.getElementById('summaryPaymentMethod').textContent = method;
+        }
+
+        // Function to show payment confirmation
+        function showPaymentConfirmation() {
+            const termsChecked = document.getElementById('terms').checked;
+            const confirmChecked = document.getElementById('confirm').checked;
+
+            if (!termsChecked || !confirmChecked) {
+                swal({
+                    title: "Required Agreements",
+                    text: "Please check both agreement boxes before proceeding with payment.",
+                    icon: "warning",
+                    button: "OK",
+                });
+                return;
+            }
+
+            const billType = document.getElementById('summaryBillType').textContent;
+            const refNo = document.getElementById('summaryRefNo').textContent;
+            const amount = document.getElementById('totalAmount').textContent;
+
+            swal({
+                title: "Payment Confirmation",
+                text: `You are about to pay ${amount} for ${billType} (Ref: ${refNo}).\nDo you want to continue?`,
+                icon: "info",
+                buttons: ["Cancel", "Pay Now"],
+                dangerMode: false,
+            })
+            .then((willPay) => {
+                if (willPay) {
+                    // Simulate payment processing
+                    swal({
+                        title: "Processing Payment",
+                        text: "Please wait while we process your payment...",
+                        icon: "info",
+                        buttons: false,
+                        closeOnClickOutside: false,
+                        closeOnEsc: false,
+                    });
+
+                    // Simulate a delay for processing
+                    setTimeout(() => {
+                        swal({
+                            title: "Payment Successful!",
+                            text: `Your payment of ${amount} has been processed successfully.\nThank you for your payment!`,
+                            icon: "success",
+                            button: "Done",
+                        });
+                    }, 2000);
+                }
+            });
+        }
+    </script>
 </body>
-</html>   
+</html>

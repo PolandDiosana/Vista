@@ -22,7 +22,6 @@
             margin: 0;
             padding: 0;
             box-sizing: border-box;
-            font-family: 'Poppins', sans-serif;
         }
 
         body {
@@ -36,10 +35,17 @@
             width: 100%;
         }
 
+        .sidebar {
+            position: sticky;
+            top: 0;
+            height: 100vh;
+            overflow-y: auto;
+        }
+
         /* Main Content Styles */
         .main-content {
             flex: 1;
-            margin-left: 250px;
+            margin-left: 50px;
             padding: 20px;
         }
 
@@ -363,7 +369,13 @@
                     <li>
                         <a href="/homeOwner/EventsScheduled">
                             <i class="fas fa-calendar-alt"></i>
-                            <span>Events Scheduled</span>
+                            <span>Events Calendar</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="/homeOwner/FeedbackAndSurvey">
+                            <i class="fas fa-calendar-alt"></i>
+                            <span>Feedback and Survey</span>
                         </a>
                     </li>
                     <li>

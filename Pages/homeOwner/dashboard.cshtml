@@ -12,6 +12,14 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link rel="stylesheet" href="~/css/homeownerdashboard.css">
     <link rel="stylesheet" href="~/css/sidebar.css">
+    <style>
+        .sidebar {
+            position: sticky;
+            top: 0;
+            height: 100vh;
+            overflow-y: auto;
+        }
+    </style>
 </head>
 <body>
     <div class="dashboard-wrapper">
@@ -43,7 +51,7 @@
                         </a>
                     </li>
                     <li>
-                        <a href="~/homeOwner/FacilityReservation">
+                        <a href="/homeOwner/FacilityReservation">
                             <i class="fas fa-calendar-check"></i>
                             <span>Facility Reservation</span>
                         </a>
@@ -64,6 +72,12 @@
                         <a href="/homeOwner/EventsScheduled">
                             <i class="fas fa-calendar-alt"></i>
                             <span>Events Calendar</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="/homeOwner/FeedbackAndSurvey">
+                            <i class="fas fa-calendar-alt"></i>
+                            <span>Feedback and Survey</span>
                         </a>
                     </li>
                     <li>
