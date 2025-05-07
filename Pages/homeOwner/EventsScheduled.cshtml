@@ -1,5 +1,5 @@
-@page
-
+﻿@page
+@model Vista_Subdivision.Pages.homeOwner.EventsScheduledModel
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -493,7 +493,7 @@
                     <li class="active">
                         <a href="/homeOwner/EventsScheduled">
                             <i class="fas fa-calendar-alt"></i>
-                            <span>Events Calendar</span>
+                            <span>Events Scheduled</span>
                         </a>
                     </li>
                     <li>
@@ -592,14 +592,47 @@
     <script>
             document.addEventListener('DOMContentLoaded', function() {
             // Calendar data
-            const events = [
-                { id: 1, date: '2025-03-03', title: 'Board Meeting', time: '2:00 - 4:00 PM', location: 'Community Function Hall', type: 'meeting', description: 'Monthly board meeting to discuss community issues and plans.' },
-                { id: 2, date: '2025-03-12', title: 'Pool Inspection', time: '9:00 AM', location: 'Community Pool', type: 'pool', description: 'Regular inspection of the community pool facilities.' },
-                { id: 3, date: '2025-03-14', title: 'Maintenance', time: '7:00 - 11:00 AM', location: 'Common Areas', type: 'maintenance', description: 'Scheduled maintenance of common areas.' },
-                { id: 4, date: '2025-03-21', title: 'Yard Sale', time: '8:00 AM', location: 'Throughout neighborhood', type: 'yard', description: 'Community yard sale. Sign up to participate.' },
-                { id: 5, date: '2025-03-09', title: 'Landscape Maintenance', time: '7:00 - 11:00 AM', location: 'Common Areas', type: 'maintenance', description: 'Scheduled landscape maintenance.' },
-                { id: 6, date: '2025-03-09', title: 'Community Yard Sale', time: '8:00 AM', location: 'Throughout neighborhood', type: 'yard', description: 'Community yard sale. Sign up to participate.' }
-            ];
+                //{ id: 1, date: '2025-05-03', title: 'Board Meeting', time: '2:00 - 4:00 PM', type: 'meeting', description: 'Monthly board meeting to discuss community issues and plans.' },
+                //{ id: 2, date: '2025-05-12', title: 'Pool Inspection', time: '9:00 AM', type: 'pool', description: 'Regular inspection of the community pool facilities.' },
+                //{ id: 3, date: '2025-05-14', title: 'Maintenance', time: '7:00 - 11:00 AM', type: 'maintenance', description: 'Scheduled maintenance of common areas.' },
+                //{ id: 4, date: '2025-05-21', title: 'Yard Sale', time: '8:00 AM', type: 'yard', description: 'Community yard sale. Sign up to participate.' },
+                //{ id: 5, date: '2025-05-09', title: 'Landscape Maintenance', time: '7:00 - 11:00 AM', type: 'maintenance', description: 'Scheduled landscape maintenance.' },
+                //{ id: 6, date: '2025-05-09', title: 'Community Yard Sale', time: '8:00 AM', type: 'yard', description: 'Community yard sale. Sign up to participate.' }
+
+
+            let events = [];
+
+            async function fetchEventsFromDatabase() {
+                try {
+                    fetch('/homeOwner/EventsScheduled?handler=GetEvents')
+                        .then(response => response.json())
+                        .then(eventsIn => {
+                            console.log('Events fetched:', eventsIn);
+
+                            events = [];
+
+                            eventsIn.forEach(event => {
+                                const formattedEvent = {
+                                    id: event.eventID,
+                                    date: event.eventDate, 
+                                    title: event.title,
+                                    time: event.eventTime,
+                                    type: event.eventType.trim(),
+                                    description: event.description
+                                };
+                                events.push(formattedEvent);
+                            });
+
+                            renderCalendar();
+                            renderUpcomingEvents();
+                        })
+                        .catch(error => {
+                            console.error('Error fetching events:', error);
+                        });
+                } catch (error) {
+                    console.error('Error fetching events:', error);
+                }
+            }
 
             // Initialize calendar
             const today = new Date();
@@ -625,6 +658,7 @@
             eventFilter.addEventListener('change', filterEvents);
 
             // Initial render
+            fetchEventsFromDatabase();
             renderCalendar();
             renderUpcomingEvents();
 

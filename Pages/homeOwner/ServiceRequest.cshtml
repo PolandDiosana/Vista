@@ -1,14 +1,13 @@
-@page
-
-
+﻿@page
+@model Vista_Subdivision.Pages.homeOwner.ServiceRequestModel
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Submit Service Request - Vista</title>
-    <link rel="stylesheet" href="~/css/sidebar.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+<<<<<<< HEAD
     <style>
         :root {
             --primary-color: #f8b84e;
@@ -318,6 +317,10 @@
             color: #4CAF50;
         }
     </style>
+=======
+    <link rel="stylesheet" href="~/css/homeownerServiceRequest.css">
+    <link rel="stylesheet" href="~/css/sidebar.css">
+>>>>>>> 91b4f5134952e0e95185751d81173afa1e79841c
 </head>
 <body>
     <div class="dashboard-wrapper">
@@ -327,7 +330,6 @@
                 <img src="~/Images/logo 1.png" alt="Vista Logo">
                 <span>vista.</span>
             </div>
-
             <nav class="nav-menu">
                 <ul>
                     <li>
@@ -398,15 +400,16 @@
                     <i class="fas fa-check-circle"></i>
                     <h3>Service Request Submitted Successfully!</h3>
                     <p>Your request has been received. We will attend to it as soon as possible.</p>
-                    <p>Request ID: <strong>REQ-<span id="requestId">2025031</span></strong></p>
+                    <p>Request ID: <strong>REQ-<span id="requestId">2025001</span></strong></p>
                 </div>
 
                 <!-- Service Request Form -->
                 <div class="service-request-form" id="requestForm">
-                    <form id="serviceRequestForm">
+                    <form id="serviceRequestForm" method="post">
+                        @Html.AntiForgeryToken()
                         <div class="form-group">
                             <label for="requestTitle">Request Title</label>
-                            <input type="text" id="requestTitle" class="form-control" placeholder="E.g., Street Light Outage on Elm Street" required>
+                            <input type="text" id="requestTitle" class="form-control" placeholder="E.g., Street Light Outage on Elm Street" name="Request.ReqTitle" required>
                         </div>
 
                         <div class="form-row">
@@ -430,23 +433,24 @@
                                         <option value="Lot 6">Lot 6</option>
                                         <option value="Lot 7">Lot 7</option>
                                     </select>
+                                    <input type="hidden" id="location" name="Request.Location"/>
                                 </div>
-                                <input type="text" id="streetName" class="form-control" placeholder="Street Name (e.g., Elm Street)" required>
+                                <input type="text" id="streetName" class="form-control" placeholder="Street Name (e.g., Elm Street)" name="Request.StreetName" required>
                             </div>
 
                             <div class="form-group">
                                 <label>Priority Level</label>
                                 <div class="priority-selector">
                                     <div class="priority-option">
-                                        <input type="radio" id="lowPriority" name="priority" value="Low">
+                                        <input type="radio" id="lowPriority" name="Request.PriorityLevel" value="Low Priority">
                                         <label for="lowPriority" class="low">Low Priority</label>
                                     </div>
                                     <div class="priority-option">
-                                        <input type="radio" id="mediumPriority" name="priority" value="Medium" checked>
+                                        <input type="radio" id="mediumPriority" name="Request.PriorityLevel" value="Medium Priority" checked>
                                         <label for="mediumPriority" class="medium">Medium Priority</label>
                                     </div>
                                     <div class="priority-option">
-                                        <input type="radio" id="highPriority" name="priority" value="High">
+                                        <input type="radio" id="highPriority" name="Request.PriorityLevel" value="High Priority">
                                         <label for="highPriority" class="high">High Priority</label>
                                     </div>
                                 </div>
@@ -455,7 +459,7 @@
 
                         <div class="form-group">
                             <label for="requestCategory">Request Category</label>
-                            <select id="requestCategory" class="form-control" required>
+                            <select id="requestCategory" class="form-control" name="Request.Category" required>
                                 <option value="">Select Category</option>
                                 <option value="Electrical">Electrical</option>
                                 <option value="Plumbing">Plumbing</option>
@@ -469,8 +473,11 @@
 
                         <div class="form-group">
                             <label for="requestDescription">Description</label>
-                            <textarea id="requestDescription" class="form-control" placeholder="Please provide detailed information about the issue..." required></textarea>
+                            <textarea id="requestDescription" class="form-control" placeholder="Please provide detailed information about the issue..." name="Request.Description" required></textarea>
                         </div>
+
+                        <input type="hidden" id="status" name="Request.Status" value="Pending">
+                        <input type="hidden" id="datesubmitted" name="Request.DateSubmitted" />
 
                         <div class="form-group">
                             <label>Attachments (optional)</label>
@@ -494,10 +501,9 @@
             </div>
         </main>
     </div>
-
     <script>
         // Show selected files
-        document.getElementById('fileInput').addEventListener('change', function(e) {
+        document.getElementById('fileInput').addEventListener('change', function (e) {
             const selectedFiles = document.getElementById('selectedFiles');
             const files = e.target.files;
 
@@ -524,12 +530,12 @@
                 }
 
                 fileItem.innerHTML = `
-                    <i class="fas ${iconClass}"></i>
-                    <span>${file.name}</span>
-                    <i class="fas fa-times remove"></i>
-                `;
+                            <i class="fas ${iconClass}"></i>
+                            <span>${file.name}</span>
+                            <i class="fas fa-times remove"></i>
+                        `;
 
-                fileItem.querySelector('.remove').addEventListener('click', function() {
+                fileItem.querySelector('.remove').addEventListener('click', function () {
                     fileItem.remove();
                 });
 
@@ -538,13 +544,13 @@
         });
 
         // Click to browse files
-        document.getElementById('fileUpload').addEventListener('click', function() {
+        document.getElementById('fileUpload').addEventListener('click', function () {
             document.getElementById('fileInput').click();
         });
 
         // Prevent default drag behaviors
         ['dragenter', 'dragover', 'dragleave', 'drop'].forEach(eventName => {
-            document.getElementById('fileUpload').addEventListener(eventName, function(e) {
+            document.getElementById('fileUpload').addEventListener(eventName, function (e) {
                 e.preventDefault();
                 e.stopPropagation();
             });
@@ -552,21 +558,21 @@
 
         // Highlight drop area when dragging over it
         ['dragenter', 'dragover'].forEach(eventName => {
-            document.getElementById('fileUpload').addEventListener(eventName, function() {
+            document.getElementById('fileUpload').addEventListener(eventName, function () {
                 this.style.borderColor = '#f8b84e';
                 this.style.backgroundColor = 'rgba(248, 184, 78, 0.05)';
             });
         });
 
         ['dragleave', 'drop'].forEach(eventName => {
-            document.getElementById('fileUpload').addEventListener(eventName, function() {
+            document.getElementById('fileUpload').addEventListener(eventName, function () {
                 this.style.borderColor = '#e0e0e0';
                 this.style.backgroundColor = 'transparent';
             });
         });
 
         // Handle dropped files
-        document.getElementById('fileUpload').addEventListener('drop', function(e) {
+        document.getElementById('fileUpload').addEventListener('drop', function (e) {
             const dt = e.dataTransfer;
             const files = dt.files;
             document.getElementById('fileInput').files = files;
@@ -576,21 +582,110 @@
             document.getElementById('fileInput').dispatchEvent(event);
         });
 
-        // Form submission
-        document.getElementById('serviceRequestForm').addEventListener('submit', function(e) {
+        // Form submission with debugging
+        document.getElementById('serviceRequestForm').addEventListener('submit', async function (e) {
             e.preventDefault();
+            const blockSelect = document.getElementById('blockNumber');
+            const lotSelect = document.getElementById('lotNumber');
+            const locationInput = document.getElementById('location');
 
-            // Generate a request ID (in a real app, this would come from the server)
-            const requestId = Math.floor(2025000 + Math.random() * 1000);
-            document.getElementById('requestId').textContent = requestId;
+            function updateLocation() {
+                const block = blockSelect.value;
+                const lot = lotSelect.value;
+                locationInput.value = `${block}, ${lot}`;
+            }
 
-            // Hide form and show success message
-            document.getElementById('requestForm').style.display = 'none';
-            document.getElementById('submitSuccess').style.display = 'block';
+            blockSelect.addEventListener('change', updateLocation);
+            lotSelect.addEventListener('change', updateLocation);
+
+            updateLocation();
+
+            const months = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
+
+            const dateNow = new Date();
+            let month = months[dateNow.getMonth()];
+            let day = dateNow.getDate();
+            let year = dateNow.getFullYear();
+
+            document.getElementById('datesubmitted').value = month + " " + day + ", " + year;
+
+            // Validate required fields manually
+            const requiredFields = [
+                { id: 'requestTitle', name: 'Request Title' },
+                { id: 'blockNumber', name: 'Block Number' },
+                { id: 'lotNumber', name: 'Lot Number' },
+                { id: 'location', name: 'Location'},
+                { id: 'streetName', name: 'Street Name' },
+                { id: 'requestCategory', name: 'Request Category' },
+                { id: 'requestDescription', name: 'Description' },
+                { id: 'status', name: 'Status'},
+            ];
+
+            let hasErrors = false;
+            requiredFields.forEach(field => {
+                const element = document.getElementById(field.id);
+                if (!element.value.trim()) {
+                    alert(`${field.name} is required.`);
+                    hasErrors = true;
+                }
+            });
+
+            // Check if priority is selected
+            if (!document.querySelector('input[name="Request.PriorityLevel"]:checked')) {
+                alert('Please select a Priority Level.');
+                hasErrors = true;
+            }
+
+            if (hasErrors) return;
+
+            // Create FormData object to properly submit the form
+            const formData = new FormData(this);
+
+            // Debug: Log all form data being sent
+            console.log("Form data being submitted:");
+            for (let pair of formData.entries()) {
+                console.log(pair[0] + ': ' + pair[1]);
+            }
+
+            try {
+                // Submit the form data using fetch
+                const response = await fetch('/homeOwner/ServiceRequest', {
+                    method: 'POST',
+                    body: formData,
+                    headers: {
+                        'X-Requested-With': 'XMLHttpRequest'
+                        // RequestVerificationToken is automatically included in FormData
+                    }
+                });
+
+                console.log("Response status:", response.status);
+                console.log("Response status text:", response.statusText);
+
+                if (response.ok) {
+                    // Get the response text for debugging
+                    const responseText = await response.text();
+                    console.log("Response body:", responseText);
+
+                    document.getElementById('requestForm').style.display = 'none';
+                    document.getElementById('submitSuccess').style.display = 'block';
+                    document.getElementById('requestId')
+                } else {
+                    try {
+                        const errorText = await response.text();
+                        console.error('Error response:', errorText);
+                        alert(`Submission error: ${response.status} ${response.statusText}\n\nDetails: ${errorText}`);
+                    } catch (textError) {
+                        alert(`Submission error: ${response.status} ${response.statusText}`);
+                    }
+                }
+            } catch (error) {
+                console.error('Form submission error:', error);
+                alert(`There was an error submitting your request: ${error.message}`);
+            }
         });
 
         // Cancel button
-        document.getElementById('cancelBtn').addEventListener('click', function() {
+        document.getElementById('cancelBtn').addEventListener('click', function () {
             if (confirm('Are you sure you want to cancel this request? All entered information will be lost.')) {
                 document.getElementById('serviceRequestForm').reset();
                 document.getElementById('selectedFiles').innerHTML = '';

@@ -129,16 +129,16 @@
             <div class="content">
                 <h2 class="page-title">Edit User Profile</h2>
 
-                <form class="profile-form">
+                <form class="profile-form" id="editProfileForm" method="post">
                     <div class="profile-content">
                         <!-- Left Column -->
                         <div class="profile-left-column">
                             <div class="profile-header">
                                 <div class="profile-image-container">
-                                    <img src="~/Images/james.png" alt="Profile Photo" class="profile-image">
+                                    <img src="@Model.LoggedInUser.ProfileImage" alt="Profile Photo" class="profile-image">
                                 </div>
                                 <div class="profile-name">
-                                    <h3 class="name">Harrier De Bois</h3>
+                                    <h3 class="name">@Model.LoggedInUser.FirstName @Model.LoggedInUser.LastName</h3>
                                     <p class="role">Homeowner</p>
                                 </div>
                             </div>
@@ -149,33 +149,33 @@
                                 <div class="form-row">
                                     <div class="form-group">
                                         <label for="firstName">First Name</label>
-                                        <input type="text" id="firstName" name="firstName">
+                                        <input type="text" id="firstName" name="firstName" value="@Model.LoggedInUser.FirstName">
                                     </div>
                                     <div class="form-group">
                                         <label for="lastName">Last Name</label>
-                                        <input type="text" id="lastName" name="lastName">
+                                        <input type="text" id="lastName" name="lastName" value="@Model.LoggedInUser.LastName">
                                     </div>
                                 </div>
 
                                 <div class="form-row">
                                     <div class="form-group">
                                         <label for="email">Email Address</label>
-                                        <input type="email" id="email" name="email">
+                                        <input type="email" id="email" name="email" value="@Model.LoggedInUser.Email">
                                     </div>
                                     <div class="form-group">
                                         <label for="phone">Phone Number</label>
-                                        <input type="tel" id="phone" name="phone">
+                                        <input type="text" id="phoneNumber" name="phoneNumber" value="@Model.LoggedInUser.PhoneNumber">
                                     </div>
                                 </div>
 
                                 <div class="form-row">
                                     <div class="form-group">
-                                        <label for="unitAddress">Unit Address</label>
-                                        <input type="text" id="unitAddress" name="unitAddress">
+                                        <label for="subdivisionName">Subdivision Name</label>
+                                        <input type="text" id="subdivisionName" name="subdivisionName" value="@Model.Properties.SubdivisionName">
                                     </div>
                                     <div class="form-group">
                                         <label for="city">City/Municipality</label>
-                                        <input type="text" id="city" name="city">
+                                        <input type="text" id="city" name="city" value="@Model.Properties.CityMunicipality">
                                     </div>
                                 </div>
                             </div>
@@ -186,22 +186,22 @@
                                 <div class="form-row">
                                     <div class="form-group">
                                         <label for="contactName">Contact Name</label>
-                                        <input type="text" id="contactName" name="contactName">
+                                        <input type="text" id="contactName" name="contactName" value="@Model.EmergencyContact.ContactName">
                                     </div>
                                     <div class="form-group">
                                         <label for="contactNumber">Contact Number</label>
-                                        <input type="tel" id="contactNumber" name="contactNumber">
+                                        <input type="tel" id="contactNumber" name="contactNumber" value="@Model.EmergencyContact.PhoneNumber">
                                     </div>
                                 </div>
 
                                 <div class="form-row">
                                     <div class="form-group">
                                         <label for="relationship">Relationship</label>
-                                        <input type="text" id="relationship" name="relationship">
+                                        <input type="text" id="relationship" name="relationship" value="@Model.EmergencyContact.Relationship">
                                     </div>
                                     <div class="form-group">
                                         <label for="contactEmail">Email Address</label>
-                                        <input type="email" id="contactEmail" name="contactEmail">
+                                        <input type="email" id="contactEmail" name="contactEmail" value="@Model.EmergencyContact.Email">
                                     </div>
                                 </div>
                             </div>
@@ -212,26 +212,29 @@
                                 <div class="form-row">
                                     <div class="form-group">
                                         <label for="username">Username</label>
-                                        <input type="text" id="username" name="username">
+                                        <input type="text" id="username" name="username" value="@Model.LoggedInUser.Username">
                                     </div>
                                     <div class="form-group">
                                         <label for="password">Password</label>
-                                        <input type="password" id="password" name="password">
+                                        <input type="password" id="password" name="password" value="@Model.LoggedInUser.PasswordHash">
                                     </div>
                                 </div>
 
                                 <div class="form-row">
                                     <div class="form-group">
                                         <label for="language">Language</label>
-                                        <input type="text" id="language" name="language">
+                                        <input type="text" id="language" name="language" value="@Model.LoggedInUser.Language">
                                     </div>
                                     <div class="form-group">
                                         <label for="timezone">Timezone</label>
-                                        <input type="text" id="timezone" name="timezone">
+                                        <input type="text" id="timezone" name="timezone" value="@Model.LoggedInUser.Timezone">
                                     </div>
                                 </div>
                             </div>
                         </div>
+
+                        <!-- USER ID -->
+                        <input type="hidden" id="userId" name="userId" value="@Model.LoggedInUser.Id">
 
                         <!-- Right Column -->
                         <div class="profile-right-column">
@@ -257,6 +260,7 @@
                                 <button type="button" class="btn-cancel">Cancel</button>
                                 <button type="submit" class="btn-save">Save Changes</button>
                             </div>
+                            <p id="userIDd"></p>
                         </div>
                     </div>
                 </form>
@@ -264,7 +268,8 @@
         </div>
     </div>
     <script>
-                 document.addEventListener('DOMContentLoaded', function() {
+        console.log("User ID:", document.getElementById('userid').value);
+        document.addEventListener('DOMContentLoaded', function() {
             const uploadArea = document.getElementById('upload-area');
             const fileInput = document.getElementById('file-upload');
             const documentList = document.getElementById('document-list');
@@ -403,6 +408,75 @@
                 }, 5000);
             }
         });
+    
+        const form = document.getElementById('editProfileForm');
+
+        form.addEventListener('submit', async (e) => {
+            e.preventDefault();
+
+            const userId = document.getElementById('userId').value;
+            console.log("User ID:", document.getElementById('userId').value);
+            console.log("firstName:", document.getElementById('firstName').value);
+            console.log("lastName:", document.getElementById('lastName').value);
+            console.log("email:", document.getElementById('email').value);
+            console.log("phoneNumber:", document.getElementById('phoneNumber').value);
+            console.log("username:", document.getElementById('username').value);
+            console.log("password:", document.getElementById('password').value);
+
+            console.log("contactName:", document.getElementById('contactName').value);
+            console.log("contactNumber:", document.getElementById('contactNumber').value);
+            console.log("relationship:", document.getElementById('relationship').value);
+
+            console.log("SubdivisionName:", document.getElementById('subdivisionName').value);
+            console.log("CityMunicipality:", document.getElementById('city').value);
+
+
+            const data = {
+                user: {
+                    id: parseInt(userId),
+                    firstName: document.getElementById('firstName').value,
+                    lastName: document.getElementById('lastName').value,
+                    email: document.getElementById('email').value,
+                    phoneNumber: document.getElementById('phoneNumber').value,
+                    username: document.getElementById('username').value,
+                    passwordHash: document.getElementById('password').value // Or new password
+                },
+                emergencyContact: {
+                    ContactName: document.getElementById('contactName').value,
+                    PhoneNumber: document.getElementById('contactNumber').value,
+                    Relationship: document.getElementById('relationship').value,
+                    Email: document.getElementById('contactEmail').value
+                },
+                property: {
+                    SubdivisionName: document.getElementById('subdivisionName').value,
+                    CityMunicipality: document.getElementById('city').value
+                }
+            };
+
+            console.log("Submitting form with data:", data);
+
+            try {
+                const response = await fetch('/homeOwner/EditProfile?handler=EditProfile', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json'
+                    },
+                    body: JSON.stringify(data)
+                });
+
+                const result = await response.json();
+
+                if (response.ok) {
+                    alert(result.message || 'Profile updated successfully.');
+                } else {
+                    alert(result.message || 'Error updating profile.');
+                }
+            } catch (error) {
+                console.error('Fetch error:', error);
+                alert('An error occurred. Please try again.');
+            }
+        });
+
     </script>
 </body>
 </html>

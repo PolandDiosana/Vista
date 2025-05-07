@@ -9,7 +9,9 @@ namespace Vista_Subdivision
         public string PhoneNumber { get; set; } = null!;
         public string Username { get; set; } = null!;
         public string PasswordHash { get; set; } = null!;
-        public string ProfileImage { get; set; } = null!;
+        public string? ProfileImage { get; set; }
         public string Role { get; set; } = null!; // Admin, Homeowner, Subdivision Official
+        public string? Language { get; set; }
+        public string? Timezone { get; set; } 
     }
 }

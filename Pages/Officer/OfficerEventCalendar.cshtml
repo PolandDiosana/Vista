@@ -16,7 +16,10 @@
 </head>
 <body>
     <div class="dashboard-wrapper">
+<<<<<<< HEAD
         <!-- Sidebar -->
+=======
+>>>>>>> 91b4f5134952e0e95185751d81173afa1e79841c
         <aside class="sidebar">
             <div class="logo">
                 <img src="~/Images/logo 1.png" alt="Vista Logo">
@@ -62,7 +65,11 @@
                         </a>
                     </li>
                     <li class="active">
+<<<<<<< HEAD
                         <a href="/Officer/OfficerEventCalendar">
+=======
+                        <a href="/Officer/OfficerEventsScheduled">
+>>>>>>> 91b4f5134952e0e95185751d81173afa1e79841c
                             <i class="fas fa-calendar-alt"></i>
                             <span>Events Calendar</span>
                         </a>
@@ -213,7 +220,7 @@
 
             async function fetchEventsFromDatabase() {
                 try {
-                    fetch('/Officer/EventCalendar?handler=GetEvents')
+                    fetch('/Officer/OfficerEventCalendar?handler=GetEvents')
                         .then(response => response.json())
                         .then(eventsIn => {
                             console.log('Events fetched:', eventsIn);
