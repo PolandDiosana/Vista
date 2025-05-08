@@ -10,12 +10,7 @@
     flex-direction: column;
 }
 
-<<<<<<< HEAD
-
-.logo {
-=======
 .sidebar .logo {
->>>>>>> 91b4f5134952e0e95185751d81173afa1e79841c
     display: flex;
     align-items: center;
     justify-content: center;
