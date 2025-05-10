@@ -130,6 +130,7 @@
                 <h2 class="page-title">Edit User Profile</h2>
 
                 <form class="profile-form" id="editProfileForm" method="post">
+                    @Html.AntiForgeryToken()
                     <div class="profile-content">
                         <!-- Left Column -->
                         <div class="profile-left-column">
@@ -268,7 +269,6 @@
         </div>
     </div>
     <script>
-        console.log("User ID:", document.getElementById('userid').value);
         document.addEventListener('DOMContentLoaded', function() {
             const uploadArea = document.getElementById('upload-area');
             const fileInput = document.getElementById('file-upload');
@@ -408,52 +408,57 @@
                 }, 5000);
             }
         });
-    
+
         const form = document.getElementById('editProfileForm');
 
         form.addEventListener('submit', async (e) => {
             e.preventDefault();
 
-            const userId = document.getElementById('userId').value;
-            console.log("User ID:", document.getElementById('userId').value);
-            console.log("firstName:", document.getElementById('firstName').value);
-            console.log("lastName:", document.getElementById('lastName').value);
-            console.log("email:", document.getElementById('email').value);
-            console.log("phoneNumber:", document.getElementById('phoneNumber').value);
-            console.log("username:", document.getElementById('username').value);
-            console.log("password:", document.getElementById('password').value);
+            // Helper function to safely get element value
+            const getElementValue = (id) => {
+                const element = document.getElementById(id);
+                return element ? element.value : '';
+            };
 
-            console.log("contactName:", document.getElementById('contactName').value);
-            console.log("contactNumber:", document.getElementById('contactNumber').value);
-            console.log("relationship:", document.getElementById('relationship').value);
+            const userId = getElementValue('userId');
 
-            console.log("SubdivisionName:", document.getElementById('subdivisionName').value);
-            console.log("CityMunicipality:", document.getElementById('city').value);
-
+            // Log all form field values before creating data object
+            const formValues = {
+                firstName: getElementValue('firstName'),
+                lastName: getElementValue('lastName'),
+                email: getElementValue('email'),
+                phoneNumber: getElementValue('phoneNumber'),
+                username: getElementValue('username'),
+                password: getElementValue('password'),
+                contactName: getElementValue('contactName'),
+                contactNumber: getElementValue('contactNumber'),
+                relationship: getElementValue('relationship'),
+                contactEmail: getElementValue('contactEmail'),
+                subdivisionName: getElementValue('subdivisionName'),
+                city: getElementValue('city')
+            };
 
             const data = {
                 user: {
-                    id: parseInt(userId),
-                    firstName: document.getElementById('firstName').value,
-                    lastName: document.getElementById('lastName').value,
-                    email: document.getElementById('email').value,
-                    phoneNumber: document.getElementById('phoneNumber').value,
-                    username: document.getElementById('username').value,
-                    passwordHash: document.getElementById('password').value // Or new password
+                    id: parseInt(userId) || 0,
+                    firstName: formValues.firstName,
+                    lastName: formValues.lastName,
+                    email: formValues.email,
+                    phoneNumber: formValues.phoneNumber,
+                    username: formValues.username,
+                    passwordHash: formValues.password
                 },
                 emergencyContact: {
-                    ContactName: document.getElementById('contactName').value,
-                    PhoneNumber: document.getElementById('contactNumber').value,
-                    Relationship: document.getElementById('relationship').value,
-                    Email: document.getElementById('contactEmail').value
+                    ContactName: formValues.contactName,
+                    PhoneNumber: formValues.contactNumber,
+                    Relationship: formValues.relationship,
+                    Email: formValues.contactEmail
                 },
                 property: {
-                    SubdivisionName: document.getElementById('subdivisionName').value,
-                    CityMunicipality: document.getElementById('city').value
+                    SubdivisionName: formValues.subdivisionName,
+                    CityMunicipality: formValues.city
                 }
             };
-
-            console.log("Submitting form with data:", data);
 
             try {
                 const response = await fetch('/homeOwner/EditProfile?handler=EditProfile', {
@@ -468,12 +473,14 @@
 
                 if (response.ok) {
                     alert(result.message || 'Profile updated successfully.');
+                    // Optionally refresh the page to show updated data
+                    window.location.reload();
                 } else {
                     alert(result.message || 'Error updating profile.');
                 }
             } catch (error) {
                 console.error('Fetch error:', error);
-                alert('An error occurred. Please try again.');
+                alert('An error occurred while updating the profile. Please try again.');
             }
         });
 
