@@ -1,0 +1,32 @@
+﻿/* Mobile Responsive */
+@media (max-width: 1024px) {
+    .dashboard-content {
+        grid-template-columns: 1fr;
+    }
+
+    .dashboard-bottom {
+        grid-template-columns: 1fr;
+    }
+
+    .stats-cards {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+@media (max-width: 768px) {
+    .sidebar {
+        width: 60px;
+    }
+
+        .sidebar .logo span, .sidebar .nav-menu span {
+            display: none;
+        }
+
+    .main-content {
+        margin-left: 60px;
+    }
+
+    .stats-cards {
+        grid-template-columns: 1fr;
+    }
+}

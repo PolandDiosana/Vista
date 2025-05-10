@@ -1,0 +1,75 @@
+﻿/* Sidebar Styles */
+@import url('/css/customfonts.css');
+
+.sidebar {
+    width: 339px;
+    background-color: #FFFFFF;
+    padding: 20px 0;
+    color: #696969;
+    display: flex;
+    flex-direction: column;
+}
+
+    .sidebar .logo {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        margin-bottom: 10px;
+        padding-top: 40px;
+        padding-bottom: 25px;
+        border-bottom: 1px solid rgba(0, 0, 0, 0.15);
+    }
+
+        .sidebar .logo img {
+            height: 60px;
+            width: 100px;
+            padding: 0px;
+            margin-right: 10px;
+        }
+
+        .sidebar .logo span {
+            font-size: 22px;
+            font-family: 'Besley-ExtraBold';
+        }
+
+    .sidebar .nav-menu {
+        margin-top: 7%;
+    }
+
+        .sidebar .nav-menu ul {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+
+            .sidebar .nav-menu ul li {
+                margin: auto;
+                width: 286.1px;
+                height: 49px;
+            }
+
+                .sidebar .nav-menu ul li a {
+                    display: flex;
+                    align-items: center;
+                    padding: 12px 20px;
+                    color: #696969;
+                    font-family: 'Poppins-Medium';
+                    text-decoration: none;
+                    transition: background-color 0.3s;
+                    border-radius: 15px;
+                }
+
+        .sidebar .nav-menu a:hover,
+        .sidebar .nav-menu li.active a {
+            background-color: #CCB38B;
+            color: #ffffff;
+            border-radius: 15px;
+        }
+
+        .sidebar .nav-menu i {
+            width: 20px;
+            margin-right: 10px;
+        }
+
+
+

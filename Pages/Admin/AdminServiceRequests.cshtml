@@ -1,0 +1,1014 @@
+﻿@page
+
+
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Service Requests - Vista</title>
+    <link rel="stylesheet" href="~/css/adminsidebar.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        /* General styling */
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f5f5f5;
+        }
+
+        .dashboard-wrapper {
+            display: flex;
+            min-height: 100vh;
+        }
+
+        .main-content {
+            flex: 1;
+            padding: 25px;
+            background-color: #f8f9fa;
+        }
+
+        /* Contacts container */
+        .contacts-container {
+            background-color: white;
+            border-radius: 10px;
+            padding: 30px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.05);
+        }
+
+        .contacts-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 20px;
+        }
+
+            .contacts-header h2 {
+                margin: 0;
+                font-size: 24px;
+                font-weight: 600;
+            }
+
+        .add-contact-btn {
+            background-color: #D4B88E;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            padding: 10px 15px;
+            cursor: pointer;
+            font-size: 14px;
+            font-weight: 500;
+            transition: background-color 0.2s;
+        }
+
+            .add-contact-btn:hover {
+                background-color: #c6a77c;
+            }
+
+        /* Search bar */
+        .search-container {
+            margin-bottom: 15px;
+        }
+
+            .search-container input {
+                width: 100%;
+                padding: 12px 15px;
+                border: 1px solid #e0e0e0;
+                border-radius: 5px;
+                font-size: 14px;
+                box-sizing: border-box;
+                background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="%23999" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>');
+                background-repeat: no-repeat;
+                background-position: 10px center;
+                padding-left: 40px;
+            }
+
+        /* Filter dropdown */
+        .filter-dropdown {
+            margin-bottom: 20px;
+        }
+
+            .filter-dropdown select {
+                width: 100%;
+                padding: 12px 15px;
+                border: 1px solid #e0e0e0;
+                border-radius: 5px;
+                font-size: 14px;
+                background-color: white;
+            }
+
+        /* Action bar */
+        .actions-bar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background-color: #f9f9f9;
+            padding: 10px 15px;
+            border-radius: 5px;
+            margin-bottom: 10px;
+        }
+
+            .actions-bar .selected-count {
+                font-size: 14px;
+                color: #666;
+            }
+
+        .action-buttons button {
+            padding: 8px 12px;
+            background-color: white;
+            border: 1px solid #e0e0e0;
+            border-radius: 4px;
+            margin-left: 10px;
+            cursor: pointer;
+            display: inline-flex;
+            align-items: center;
+            font-size: 13px;
+            transition: all 0.2s;
+        }
+
+            .action-buttons button:hover {
+                background-color: #f5f5f5;
+            }
+
+            .action-buttons button i {
+                margin-right: 5px;
+            }
+
+        .delete-btn {
+            color: #f44336;
+        }
+
+            .delete-btn:hover {
+                background-color: #fee8e7 !important;
+            }
+
+        /* Contacts table */
+        .contacts-table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+
+            .contacts-table th {
+                text-align: left;
+                padding: 15px;
+                border-bottom: 1px solid #e0e0e0;
+                color: #666;
+                font-weight: 500;
+                font-size: 14px;
+            }
+
+            .contacts-table td {
+                padding: 15px;
+                border-bottom: 1px solid #e0e0e0;
+                font-size: 14px;
+            }
+
+            .contacts-table tr:hover {
+                background-color: #f9f9f9;
+            }
+
+        .contact-info {
+            display: flex;
+            align-items: center;
+        }
+
+        .contact-avatar {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            margin-right: 15px;
+            object-fit: cover;
+        }
+
+        .contact-name {
+            font-weight: 500;
+            margin-bottom: 3px;
+        }
+
+        .contact-address {
+            color: #888;
+            font-size: 13px;
+        }
+
+        .contact-email {
+            font-weight: 500;
+            margin-bottom: 3px;
+        }
+
+        .contact-phone {
+            color: #888;
+            font-size: 13px;
+        }
+
+        /* Role badges */
+        .role-badge {
+            display: inline-block;
+            padding: 5px 15px;
+            border-radius: 20px;
+            font-size: 13px;
+            font-weight: 500;
+        }
+
+        .homeowner {
+            background-color: #e8f5e9;
+            color: #2e7d32;
+        }
+
+        .officer {
+            background-color: #fff3e0;
+            color: #ef6c00;
+        }
+
+        .administrator {
+            background-color: #e3f2fd;
+            color: #1565c0;
+        }
+
+        /* Checkbox styling */
+        .checkbox-container {
+            display: block;
+            position: relative;
+            padding-left: 25px;
+            cursor: pointer;
+            user-select: none;
+        }
+
+            .checkbox-container input {
+                position: absolute;
+                opacity: 0;
+                cursor: pointer;
+                height: 0;
+                width: 0;
+            }
+
+        .checkmark {
+            position: absolute;
+            top: 0;
+            left: 0;
+            height: 18px;
+            width: 18px;
+            background-color: #fff;
+            border: 1px solid #ddd;
+            border-radius: 3px;
+            transition: all 0.2s;
+        }
+
+        .checkbox-container:hover input ~ .checkmark {
+            background-color: #f5f5f5;
+        }
+
+        .checkbox-container input:checked ~ .checkmark {
+            background-color: #4285f4;
+            border-color: #4285f4;
+        }
+
+        .checkmark:after {
+            content: "";
+            position: absolute;
+            display: none;
+        }
+
+        .checkbox-container input:checked ~ .checkmark:after {
+            display: block;
+        }
+
+        .checkbox-container .checkmark:after {
+            left: 6px;
+            top: 2px;
+            width: 5px;
+            height: 10px;
+            border: solid white;
+            border-width: 0 2px 2px 0;
+            transform: rotate(45deg);
+        }
+
+        /* Modal styles */
+        .modal {
+            display: none;
+            position: fixed;
+            z-index: 1000;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0,0,0,0.5);
+            align-items: center;
+            justify-content: center;
+        }
+
+        .modal-content {
+            background-color: #fff;
+            border-radius: 8px;
+            width: 500px;
+            max-width: 90%;
+            padding: 30px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+            position: relative;
+        }
+
+        .modal-close {
+            position: absolute;
+            top: 15px;
+            right: 15px;
+            font-size: 20px;
+            cursor: pointer;
+            color: #666;
+        }
+
+        .modal-title {
+            margin-top: 0;
+            margin-bottom: 20px;
+            font-size: 20px;
+            font-weight: 600;
+        }
+
+        .form-group {
+            margin-bottom: 20px;
+        }
+
+            .form-group label {
+                display: block;
+                margin-bottom: 8px;
+                font-weight: 500;
+                font-size: 14px;
+            }
+
+            .form-group input, .form-group select {
+                width: 100%;
+                padding: 10px 12px;
+                border: 1px solid #e0e0e0;
+                border-radius: 5px;
+                font-size: 14px;
+                box-sizing: border-box;
+            }
+
+        .modal-footer {
+            display: flex;
+            justify-content: flex-end;
+            margin-top: 30px;
+        }
+
+        .btn {
+            padding: 10px 20px;
+            border-radius: 5px;
+            font-size: 14px;
+            cursor: pointer;
+            border: none;
+            margin-left: 10px;
+            font-weight: 500;
+        }
+
+        .btn-secondary {
+            background-color: #f5f5f5;
+            color: #333;
+            border: 1px solid #ddd;
+        }
+
+        .btn-primary {
+            background-color: #D4B88E;
+            color: white;
+        }
+
+            .btn-primary:hover {
+                background-color: #c6a77c;
+            }
+
+        /* Toast notification */
+        .toast {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            background-color: #333;
+            color: white;
+            padding: 15px 25px;
+            border-radius: 5px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.2);
+            display: none;
+            z-index: 1001;
+            animation: fadeIn 0.3s, fadeOut 0.3s 2.7s;
+            animation-fill-mode: forwards;
+        }
+
+        .toast-success {
+            background-color: #4caf50;
+        }
+
+        .toast-error {
+            background-color: #f44336;
+        }
+
+
+        /* Email modal */
+        .email-modal .modal-content {
+            width: 600px;
+        }
+
+        .email-form textarea {
+            width: 100%;
+            min-height: 150px;
+            padding: 12px;
+            box-sizing: border-box;
+            border: 1px solid #e0e0e0;
+            border-radius: 5px;
+            font-family: inherit;
+            font-size: 14px;
+            resize: vertical;
+        }
+
+        .email-recipients {
+            margin-bottom: 15px;
+            padding: 10px;
+            background-color: #f9f9f9;
+            border-radius: 5px;
+            font-size: 14px;
+        }
+
+        .email-recipient {
+            display: inline-block;
+            background-color: #e3f2fd;
+            padding: 4px 8px;
+            border-radius: 4px;
+            margin-right: 5px;
+            margin-bottom: 5px;
+        }
+    </style>
+</head>
+<body>
+    <div class="dashboard-wrapper">
+        <!-- Sidebar -->
+        <aside class="sidebar">
+            <div class="logo">
+                <img src="~/Images/logo 1.png" alt="Vista Logo">
+                <span>vista.</span>
+            </div>
+            <nav class="nav-menu">
+                <ul>
+                    <li>
+                        <a href="/Admin/AdminDashboard">
+                            <i class="fas fa-th-large"></i>
+                            <span>Dashboard</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="/Admin/AdminAnnouncements">
+                            <i class="fas fa-bullhorn"></i>
+                            <span>Announcements</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="/Admin/AdminBillingPayments">
+                            <i class="fas fa-file-invoice-dollar"></i>
+                            <span>Billing & Payments</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="/Admin/AdminFacilityReservation">
+                            <i class="fas fa-calendar-check"></i>
+                            <span>Facility Reservation</span>
+                        </a>
+                    </li>
+                    <li class="active">
+                        <a href="~/Admin/AdminServiceRequests">
+                            <i class="fas fa-hands-helping"></i>
+                            <span>Service Requests</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="/Admin/AdminDocuments">
+                            <i class="fas fa-file-alt"></i>
+                            <span>Documents</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="/Admin/AdminAccountPrivileges">
+                            <i class="fas fa-user-shield"></i>
+                            <span>Account Privilege</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="/Admin/AdminEventCalendar">
+                            <i class="fas fa-calendar-alt"></i>
+                            <span>Events Calendar</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="/Admin/AdminEditProfile">
+                            <i class="fas fa-user-circle"></i>
+                            <span>Edit Profile</span>
+                        </a>
+                    </li>
+                </ul>
+            </nav>
+        </aside>
+
+        <!-- Main content -->
+        <div class="main-content">
+            <div class="contacts-container">
+                <div class="contacts-header">
+                    <h2>Contacts</h2>
+                    <button class="add-contact-btn" id="addContactBtn">+ Add Contacts</button>
+                </div>
+
+                <div class="search-container">
+                    <input type="text" placeholder="Search Contacts" id="searchInput">
+                </div>
+
+                <div class="filter-dropdown">
+                    <select id="roleFilter">
+                        <option value="all">All Contacts</option>
+                        <option value="homeowner">Homeowners</option>
+                        <option value="officer">Officers</option>
+                        <option value="administrator">Administrators</option>
+                    </select>
+                </div>
+
+                <div class="actions-bar">
+                    <div class="selected-count" id="selectedCount">2 contacts selected</div>
+                    <div class="action-buttons">
+                        <button id="emailBtn"><i class="far fa-envelope"></i> Email</button>
+                        <button class="delete-btn" id="deleteBtn"><i class="far fa-trash-alt"></i> Delete</button>
+                    </div>
+                </div>
+
+                <table class="contacts-table">
+                    <thead>
+                        <tr>
+                            <th width="3%">
+                                <label class="checkbox-container">
+                                    <input type="checkbox" id="selectAll">
+                                    <span class="checkmark"></span>
+                                </label>
+                            </th>
+                            <th width="30%">NAME</th>
+                            <th width="30%">CONTACT INFO</th>
+                            <th width="20%">ROLE</th>
+                            <th width="17%">LAST CONTACT</th>
+                        </tr>
+                    </thead>
+                    <tbody id="contactsTableBody">
+                        <!-- Table body will be populated via JavaScript -->
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+
+    <!-- Add Contact Modal -->
+    <div id="addContactModal" class="modal">
+        <div class="modal-content">
+            <span class="modal-close" id="closeAddContactModal">&times;</span>
+            <h3 class="modal-title">Add New Contact</h3>
+            <form id="addContactForm">
+                <div class="form-group">
+                    <label for="contactName">Full Name</label>
+                    <input type="text" id="contactName" name="contactName" required>
+                </div>
+                <div class="form-group">
+                    <label for="contactAddress">Address</label>
+                    <input type="text" id="contactAddress" name="contactAddress" required>
+                </div>
+                <div class="form-group">
+                    <label for="contactEmail">Email</label>
+                    <input type="email" id="contactEmail" name="contactEmail" required>
+                </div>
+                <div class="form-group">
+                    <label for="contactPhone">Phone</label>
+                    <input type="text" id="contactPhone" name="contactPhone" required>
+                </div>
+                <div class="form-group">
+                    <label for="contactRole">Role</label>
+                    <select id="contactRole" name="contactRole" required>
+                        <option value="homeowner">Homeowner</option>
+                        <option value="officer">Officer</option>
+                        <option value="administrator">Administrator</option>
+                    </select>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" id="cancelAddContact">Cancel</button>
+                    <button type="submit" class="btn btn-primary">Save Contact</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <!-- Delete Confirmation Modal -->
+    <div id="deleteModal" class="modal">
+        <div class="modal-content">
+            <span class="modal-close" id="closeDeleteModal">&times;</span>
+            <h3 class="modal-title">Delete Contacts</h3>
+            <p>Are you sure you want to delete the selected contacts? This action cannot be undone.</p>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" id="cancelDelete">Cancel</button>
+                <button type="button" class="btn btn-primary" id="confirmDelete">Delete</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Email Modal -->
+    <div id="emailModal" class="modal email-modal">
+        <div class="modal-content">
+            <span class="modal-close" id="closeEmailModal">&times;</span>
+            <h3 class="modal-title">Send Email</h3>
+            <form id="emailForm">
+                <div class="form-group">
+                    <label>To:</label>
+                    <div class="email-recipients" id="emailRecipients">
+                        <!-- Recipients will be added here -->
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="emailSubject">Subject</label>
+                    <input type="text" id="emailSubject" name="emailSubject" required>
+                </div>
+                <div class="form-group">
+                    <label for="emailMessage">Message</label>
+                    <textarea id="emailMessage" name="emailMessage" required></textarea>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" id="cancelEmail">Cancel</button>
+                    <button type="submit" class="btn btn-primary">Send</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <!-- Toast notification -->
+    <div id="toast" class="toast"></div>
+   <script>
+               // Contact data
+        const contacts = [
+            {
+                id: 1,
+                name: "John Smith",
+                address: "123 Oak Lane",
+                email: "john.smith@email.com",
+                phone: "0978 256 2130",
+                role: "homeowner",
+                lastContact: "4/1/2025",
+                checked: false
+            },
+            {
+                id: 2,
+                name: "Ramona Flowers",
+                address: "123 Oak Lane",
+                email: "ramonaflowers@email.com",
+                phone: "0978 256 2130",
+                role: "officer",
+                lastContact: "4/1/2025",
+                checked: false
+            },
+            {
+                id: 3,
+                name: "Scott Pilgrim",
+                address: "123 Oak Lane",
+                email: "pilgrim123@email.com",
+                phone: "0978 256 2130",
+                role: "homeowner",
+                lastContact: "4/1/2025",
+                checked: false
+            },
+            {
+                id: 4,
+                name: "Raymond Kennedy",
+                address: "123 Oak Lane",
+                email: "t-bone@email.com",
+                phone: "0978 256 2130",
+                role: "administrator",
+                lastContact: "4/1/2025",
+                checked: false
+            },
+            {
+                id: 5,
+                name: "True Penny",
+                address: "123 Oak Lane",
+                email: "trueet@email.com",
+                phone: "0978 256 2130",
+                role: "homeowner",
+                lastContact: "4/1/2025",
+                checked: false
+            }
+        ];
+
+        // DOM elements
+        const contactsTableBody = document.getElementById('contactsTableBody');
+        const searchInput = document.getElementById('searchInput');
+        const roleFilter = document.getElementById('roleFilter');
+        const selectAllCheckbox = document.getElementById('selectAll');
+        const selectedCountElement = document.getElementById('selectedCount');
+        const addContactBtn = document.getElementById('addContactBtn');
+        const addContactModal = document.getElementById('addContactModal');
+        const closeAddContactModal = document.getElementById('closeAddContactModal');
+        const cancelAddContact = document.getElementById('cancelAddContact');
+        const addContactForm = document.getElementById('addContactForm');
+        const deleteBtn = document.getElementById('deleteBtn');
+        const deleteModal = document.getElementById('deleteModal');
+        const closeDeleteModal = document.getElementById('closeDeleteModal');
+        const cancelDelete = document.getElementById('cancelDelete');
+        const confirmDelete = document.getElementById('confirmDelete');
+        const emailBtn = document.getElementById('emailBtn');
+        const emailModal = document.getElementById('emailModal');
+        const closeEmailModal = document.getElementById('closeEmailModal');
+        const cancelEmail = document.getElementById('cancelEmail');
+        const emailForm = document.getElementById('emailForm');
+        const emailRecipients = document.getElementById('emailRecipients');
+        const toast = document.getElementById('toast');
+
+        // Initialize
+        function init() {
+            renderContacts();
+            updateSelectedCount();
+            setupEventListeners();
+        }
+
+        // Render contacts table
+        function renderContacts(filtered = contacts) {
+            contactsTableBody.innerHTML = '';
+
+            if (filtered.length === 0) {
+                const emptyRow = document.createElement('tr');
+                emptyRow.innerHTML = `<td colspan="5" style="text-align: center; padding: 30px;">No contacts found</td>`;
+                contactsTableBody.appendChild(emptyRow);
+                return;
+            }
+
+            filtered.forEach(contact => {
+                const row = document.createElement('tr');
+                row.dataset.id = contact.id;
+                row.dataset.role = contact.role;
+
+                let roleBadgeClass = '';
+                let roleName = '';
+
+                switch(contact.role) {
+                    case 'homeowner':
+                        roleBadgeClass = 'homeowner';
+                        roleName = 'Homeowner';
+                        break;
+                    case 'officer':
+                        roleBadgeClass = 'officer';
+                        roleName = 'Officer';
+                        break;
+                    case 'administrator':
+                        roleBadgeClass = 'administrator';
+                        roleName = 'Administrator';
+                        break;
+                }
+
+                row.innerHTML = `
+                    <td>
+                        <label class="checkbox-container">
+                            <input type="checkbox" class="contact-checkbox" ${contact.checked ? 'checked' : ''}>
+                            <span class="checkmark"></span>
+                        </label>
+                    </td>
+                    <td>
+                        <div class="contact-info">
+                            <img src="/api/placeholder/40/40" alt="${contact.name}" class="contact-avatar">
+                            <div>
+                                <div class="contact-name">${contact.name}</div>
+                                <div class="contact-address">${contact.address}</div>
+                            </div>
+                        </div>
+                    </td>
+                    <td>
+                        <div class="contact-email">${contact.email}</div>
+                        <div class="contact-phone">${contact.phone}</div>
+                    </td>
+                    <td>
+                        <span class="role-badge ${roleBadgeClass}">${roleName}</span>
+                    </td>
+                    <td>${contact.lastContact}</td>
+                `;
+
+                contactsTableBody.appendChild(row);
+            });
+
+            // Add event listeners to checkboxes
+            document.querySelectorAll('.contact-checkbox').forEach(checkbox => {
+                checkbox.addEventListener('change', function() {
+                    const contactId = parseInt(this.closest('tr').dataset.id);
+                    const contact = contacts.find(c => c.id === contactId);
+                    if (contact) {
+                        contact.checked = this.checked;
+                        updateSelectedCount();
+                    }
+                });
+            });
+        }
+
+        // Filter contacts
+        function filterContacts() {
+            const searchTerm = searchInput.value.toLowerCase();
+            const roleValue = roleFilter.value;
+
+            let filtered = contacts;
+
+            // Filter by search term
+            if (searchTerm) {
+                filtered = filtered.filter(contact =>
+                    contact.name.toLowerCase().includes(searchTerm) ||
+                    contact.email.toLowerCase().includes(searchTerm) ||
+                    contact.phone.toLowerCase().includes(searchTerm) ||
+                    contact.address.toLowerCase().includes(searchTerm)
+                );
+            }
+
+            // Filter by role
+            if (roleValue !== 'all') {
+                filtered = filtered.filter(contact => contact.role === roleValue);
+            }
+
+            renderContacts(filtered);
+        }
+
+        // Update selected count
+        function updateSelectedCount() {
+            const checkedCount = contacts.filter(contact => contact.checked).length;
+            selectedCountElement.textContent = `${checkedCount} contact${checkedCount !== 1 ? 's' : ''} selected`;
+
+            // Check if all contacts are selected
+            selectAllCheckbox.checked = checkedCount === contacts.length;
+            selectAllCheckbox.indeterminate = checkedCount > 0 && checkedCount < contacts.length;
+        }
+
+        // Show toast notification
+        function showToast(message, type = '') {
+            toast.textContent = message;
+            toast.className = 'toast';
+
+            if (type) {
+                toast.classList.add(`toast-${type}`);
+            }
+
+            toast.style.display = 'block';
+
+            // Hide toast after 3 seconds
+            setTimeout(() => {
+                toast.style.display = 'none';
+            }, 3000);
+        }
+
+        // Setup event listeners
+        function setupEventListeners() {
+            // Search and filter
+            searchInput.addEventListener('input', filterContacts);
+            roleFilter.addEventListener('change', filterContacts);
+
+            // Select all checkbox
+            selectAllCheckbox.addEventListener('change', function() {
+                contacts.forEach(contact => contact.checked = this.checked);
+                renderContacts();
+                updateSelectedCount();
+            });
+
+            // Add contact modal
+            addContactBtn.addEventListener('click', () => {
+                addContactModal.style.display = 'flex';
+            });
+
+            closeAddContactModal.addEventListener('click', () => {
+                addContactModal.style.display = 'none';
+            });
+
+            cancelAddContact.addEventListener('click', () => {
+                addContactModal.style.display = 'none';
+            });
+
+            // Submit add contact form
+            addContactForm.addEventListener('submit', function(e) {
+                e.preventDefault();
+
+                const newContact = {
+                    id: contacts.length > 0 ? Math.max(...contacts.map(c => c.id)) + 1 : 1,
+                    name: document.getElementById('contactName').value,
+                    address: document.getElementById('contactAddress').value,
+                    email: document.getElementById('contactEmail').value,
+                    phone: document.getElementById('contactPhone').value,
+                    role: document.getElementById('contactRole').value,
+                    lastContact: new Date().toLocaleDateString('en-US', { month: 'numeric', day: 'numeric', year: 'numeric' }),
+                    checked: false
+                };
+
+                contacts.push(newContact);
+                renderContacts();
+
+                // Reset form and close modal
+                addContactForm.reset();
+                addContactModal.style.display = 'none';
+
+                showToast('Contact added successfully', 'success');
+            });
+
+            // Delete modal
+            deleteBtn.addEventListener('click', () => {
+                const selectedCount = contacts.filter(c => c.checked).length;
+
+                if (selectedCount === 0) {
+                    showToast('Please select contacts to delete', 'error');
+                    return;
+                }
+
+                deleteModal.style.display = 'flex';
+            });
+
+            closeDeleteModal.addEventListener('click', () => {
+                deleteModal.style.display = 'none';
+            });
+
+            cancelDelete.addEventListener('click', () => {
+                deleteModal.style.display = 'none';
+            });
+
+            // Confirm delete
+            confirmDelete.addEventListener('click', () => {
+                const selectedIds = contacts.filter(c => c.checked).map(c => c.id);
+                const countBefore = contacts.length;
+
+                // Remove selected contacts
+                for (let i = contacts.length - 1; i >= 0; i--) {
+                    if (selectedIds.includes(contacts[i].id)) {
+                        contacts.splice(i, 1);
+                    }
+                }
+
+                // Update UI
+                renderContacts();
+                updateSelectedCount();
+                deleteModal.style.display = 'none';
+
+                const deletedCount = countBefore - contacts.length;
+                showToast(`${deletedCount} contact${deletedCount !== 1 ? 's' : ''} deleted successfully`, 'success');
+            });
+
+            // Email modal
+            emailBtn.addEventListener('click', () => {
+                const selectedContacts = contacts.filter(c => c.checked);
+
+                if (selectedContacts.length === 0) {
+                    showToast('Please select contacts to email', 'error');
+                    return;
+                }
+
+                // Populate recipients
+                emailRecipients.innerHTML = '';
+                selectedContacts.forEach(contact => {
+                    const recipientEl = document.createElement('span');
+                    recipientEl.className = 'email-recipient';
+                    recipientEl.textContent = contact.email;
+                    emailRecipients.appendChild(recipientEl);
+                });
+
+                emailModal.style.display = 'flex';
+            });
+
+            closeEmailModal.addEventListener('click', () => {
+                emailModal.style.display = 'none';
+            });
+
+            cancelEmail.addEventListener('click', () => {
+                emailModal.style.display = 'none';
+            });
+
+            // Submit email form
+            emailForm.addEventListener('submit', function(e) {
+                e.preventDefault();
+
+                const subject = document.getElementById('emailSubject').value;
+                const message = document.getElementById('emailMessage').value;
+
+                // In a real application, you would send the email here
+                console.log('Sending email:', {
+                    to: contacts.filter(c => c.checked).map(c => c.email),
+                    subject: subject,
+                    message: message
+                });
+
+                // Reset form and close modal
+                emailForm.reset();
+                emailModal.style.display = 'none';
+
+                showToast('Email sent successfully', 'success');
+            });
+
+            // Close modals when clicking outside
+            window.addEventListener('click', function(e) {
+                if (e.target === addContactModal) {
+                    addContactModal.style.display = 'none';
+                }
+                if (e.target === deleteModal) {
+                    deleteModal.style.display = 'none';
+                }
+                if (e.target === emailModal) {
+                    emailModal.style.display = 'none';
+                }
+            });
+        }
+
+        // Initialize when DOM is loaded
+        document.addEventListener('DOMContentLoaded', init);
+   </script>
+</body>
+</html>

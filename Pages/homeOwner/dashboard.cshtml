@@ -101,24 +101,24 @@
                     <div class="officer-profile-card">
                         <div class="profile-content">
                             <div class="profile-avatar">
-                                <img src="@Model.LoggedInUser.ProfileImage" alt="@Model.LoggedInUser.FirstName">
+                                <img src="~/Images/jean.png" alt="Profile">
                             </div>
                             <div class="profile-info">
-                                <h3>@Model.LoggedInUser.FirstName @Model.LoggedInUser.LastName</h3>
+                                <h3>Jean</h3>
                                 <p>Homeowner</p>
-                                <p>@Model.Properties.CityMunicipality</p>
+                                <p>Talisay</p>
 
                                 <div class="contact-details">
                                     <div class="contact-item">
                                         <h4>Phone</h4>
                                         <a href="#">
-                                            <i class="fas fa-phone"></i>@Model.LoggedInUser.PhoneNumber
+                                            <i class="fas fa-phone"></i>0912345578
                                         </a>
                                     </div>
                                     <div class="contact-item">
                                         <h4>Email</h4>
                                         <a href="#">
-                                            <i class="fas fa-envelope"></i>@Model.LoggedInUser.Email
+                                            <i class="fas fa-envelope"></i>Jean@email.com
                                         </a>
                                     </div>
                                 </div>
@@ -132,7 +132,7 @@
                         <div class="contacts-section">
                             <div class="section-header">
                                 <h3>Contacts</h3>
-                                <p>You have <span class="highlight">@Model.ContactCount</span> contacts</p>
+                                <p>You have <span class="highlight">3</span> contacts</p>
                             </div>
 
                             <div class="search-bar">
@@ -141,22 +141,7 @@
                             </div>
 
                             <div class="contacts-list">
-                                @foreach (var user in Model.Contacts)
-                                {
-                                    <div class="contact-item">
-                                        <div class="contact-avatar">
-                                            <img src="@(string.IsNullOrEmpty(user.ProfileImage) ? "/Images/default-avatar.png" : user.ProfileImage)"
-                                                 alt="@($"{user.FirstName} {user.LastName}")">
-                                        </div>
-                                        <div class="contact-name">
-                                            <p class="name">@($"{user.FirstName} {user.LastName}")</p>
-                                            <p class="role">@user.Role</p>
-                                        </div>
-                                        <button class="message-btn">
-                                            <i class="fas fa-comment"></i>
-                                        </button>
-                                    </div>
-                                }
+                                
                             </div>
                         </div>
 
@@ -228,10 +213,10 @@
                 <i class="fas fa-bell"></i>
                 <i class="fas fa-gear"></i>
                 <div class="name">
-                    <h5 class="fullname">@Model.LoggedInUser.LastName @Model.LoggedInUser.FirstName</h5>
+                    <h5 class="fullname">Jean</h5>
                     <h6 class="role">Homeowner</h6>
                 </div>
-                <img src="@Model.LoggedInUser.ProfileImage" alt="Admin Profile" class="profilepic">
+                <img src="~/Images/jean.png" alt="Admin Profile" class="profilepic">
             </div>
             <div class="activity-section">
                 <h3>Latest Activity</h3>

@@ -1,0 +1,530 @@
+﻿@page
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Service Requests - Vista</title>
+    <link rel="stylesheet" href="~/css/adminsidebar.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        /* Account Privileges Panel Styles */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+
+        }
+
+        body {
+            background-color: #f8f9fa;
+        }
+
+        .dashboard-wrapper {
+            display: flex;
+            min-height: 100vh;
+        }
+
+        .main-content {
+            flex: 1;
+            padding: 25px;
+            background-color: #f8f9fa;
+        }
+
+        .panel-container {
+            background-color: #fff;
+            border-radius: 15px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+            margin: 10px;
+            overflow: hidden;
+            transition: all 0.3s ease;
+            border: 1px solid rgba(0, 0, 0, 0.04);
+        }
+
+        .panel-header {
+            padding: 25px 30px;
+            border-bottom: 1px solid #f0f0f0;
+            background: linear-gradient(135deg, #f8f9fa, #ffffff);
+        }
+
+            .panel-header h1 {
+                font-size: 26px;
+                font-weight: 600;
+                color: #2c3e50;
+                letter-spacing: 0.3px;
+            }
+
+        .panel-body {
+            display: flex;
+        }
+
+        .users-list {
+            width: 280px;
+            border-right: 1px solid #f0f0f0;
+            background-color: #fafbfc;
+            overflow-y: auto;
+            max-height: 80vh;
+        }
+
+        .users-header {
+            padding: 25px 20px 15px;
+            font-weight: 600;
+            font-size: 18px;
+            color: #3a4a5a;
+            letter-spacing: 0.5px;
+        }
+
+        .search-box {
+            padding: 0 20px 20px;
+        }
+
+            .search-box input {
+                width: 100%;
+                padding: 12px 15px;
+                border: 1px solid #e1e5e9;
+                border-radius: 8px;
+                font-size: 14px;
+                background-color: #ffffff;
+                box-shadow: 0 2px 5px rgba(0, 0, 0, 0.02);
+                transition: all 0.3s;
+            }
+
+                .search-box input:focus {
+                    outline: none;
+                    border-color: #d3b78d;
+                    box-shadow: 0 0 0 3px rgba(211, 183, 141, 0.2);
+                }
+
+        .user-item {
+            padding: 16px 20px;
+            border-bottom: 1px solid #f0f0f0;
+            cursor: pointer;
+            transition: all 0.2s ease;
+            position: relative;
+        }
+
+            .user-item:hover {
+                background-color: rgba(211, 183, 141, 0.1);
+            }
+
+            .user-item.active {
+                background-color: rgba(211, 183, 141, 0.2);
+                border-left: 4px solid #d3b78d;
+            }
+
+            .user-item h3 {
+                font-size: 16px;
+                margin-bottom: 5px;
+                color: #3a4a5a;
+                font-weight: 500;
+            }
+
+            .user-item p {
+                font-size: 13px;
+                color: #6c757d;
+            }
+
+        .user-details {
+            flex: 1;
+            padding: 30px;
+            background: linear-gradient(145deg, #ffffff, #fcfcfc);
+        }
+
+        .user-header {
+            margin-bottom: 30px;
+            padding-bottom: 20px;
+            border-bottom: 1px solid #f2f2f2;
+        }
+
+            .user-header h2 {
+                font-size: 28px;
+                margin-bottom: 8px;
+                color: #2c3e50;
+                font-weight: 600;
+            }
+
+            .user-header p {
+                font-size: 15px;
+                color: #6c757d;
+                letter-spacing: 0.3px;
+            }
+
+        .privilege-options {
+            margin-top: 25px;
+        }
+
+        .privilege-option {
+            padding: 20px 25px;
+            border: 1px solid #e9ecef;
+            border-radius: 10px;
+            margin-bottom: 20px;
+            background-color: #ffffff;
+            transition: all 0.3s ease;
+            box-shadow: 0 3px 10px rgba(0, 0, 0, 0.03);
+        }
+
+            .privilege-option:hover {
+                transform: translateY(-2px);
+                box-shadow: 0 8px 15px rgba(0, 0, 0, 0.05);
+                border-color: #d3b78d;
+            }
+
+            .privilege-option label {
+                display: flex;
+                align-items: center;
+                font-size: 16px;
+                color: #3a4a5a;
+                font-weight: 500;
+                cursor: pointer;
+            }
+
+            .privilege-option input[type="checkbox"] {
+                -webkit-appearance: none;
+                appearance: none;
+                width: 22px;
+                height: 22px;
+                border: 2px solid #d3b78d;
+                border-radius: 5px;
+                margin-right: 12px;
+                display: grid;
+                place-content: center;
+                cursor: pointer;
+                transition: all 0.2s ease;
+            }
+
+                .privilege-option input[type="checkbox"]::before {
+                    content: "";
+                    width: 12px;
+                    height: 12px;
+                    transform: scale(0);
+                    transition: 120ms transform ease-in-out;
+                    background-color: #d3b78d;
+                    transform-origin: center;
+                    border-radius: 2px;
+                    clip-path: polygon(14% 44%, 0 65%, 50% 100%, 100% 16%, 80% 0%, 43% 62%);
+                }
+
+                .privilege-option input[type="checkbox"]:checked::before {
+                    transform: scale(1);
+                }
+
+                .privilege-option input[type="checkbox"]:focus {
+                    outline: 2px solid rgba(211, 183, 141, 0.3);
+                }
+
+        .action-buttons {
+            display: flex;
+            justify-content: flex-end;
+            margin-top: 40px;
+        }
+
+        .btn {
+            padding: 12px 28px;
+            border-radius: 8px;
+            font-size: 16px;
+            font-weight: 500;
+            cursor: pointer;
+            border: none;
+            transition: all 0.3s ease;
+            letter-spacing: 0.5px;
+        }
+
+        .btn-cancel {
+            background-color: #e9ecef;
+            color: #495057;
+            margin-right: 15px;
+        }
+
+            .btn-cancel:hover {
+                background-color: #dee2e6;
+                transform: translateY(-2px);
+            }
+
+        .btn-save {
+            background: linear-gradient(135deg, #d3b78d, #c9a97c);
+            color: #fff;
+            box-shadow: 0 4px 10px rgba(211, 183, 141, 0.3);
+        }
+
+            .btn-save:hover {
+                background: linear-gradient(135deg, #c9a97c, #bf9d69);
+                transform: translateY(-2px);
+                box-shadow: 0 6px 15px rgba(211, 183, 141, 0.4);
+            }
+
+     
+        
+    </style>
+</head>
+<body>
+    <div class="dashboard-wrapper">
+        <!-- Sidebar -->
+        <aside class="sidebar">
+            <div class="logo">
+                <img src="~/Images/logo 1.png" alt="Vista Logo">
+                <span>vista.</span>
+            </div>
+            <nav class="nav-menu">
+                <ul>
+                    <li>
+                        <a href="/Admin/AdminDashboard">
+                            <i class="fas fa-th-large"></i>
+                            <span>Dashboard</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="/Admin/AdminAnnouncements">
+                            <i class="fas fa-bullhorn"></i>
+                            <span>Announcements</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="/Admin/AdminBillingPayments">
+                            <i class="fas fa-file-invoice-dollar"></i>
+                            <span>Billing & Payments</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="/Admin/AdminFacilityReservation">
+                            <i class="fas fa-calendar-check"></i>
+                            <span>Facility Reservation</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="~/Admin/AdminServiceRequests">
+                            <i class="fas fa-hands-helping"></i>
+                            <span>Service Requests</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="/Admin/AdminDocuments">
+                            <i class="fas fa-file-alt"></i>
+                            <span>Documents</span>
+                        </a>
+                    </li>
+                    <li class="active">
+                        <a href="/Admin/AdminAccountPrivileges">
+                            <i class="fas fa-user-shield"></i>
+                            <span>Account Privilege</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="/Admin/AdminEventCalendar">
+                            <i class="fas fa-calendar-alt"></i>
+                            <span>Events Calendar</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="/Admin/AdminEditProfile">
+                            <i class="fas fa-user-circle"></i>
+                            <span>Edit Profile</span>
+                        </a>
+                    </li>
+                </ul>
+            </nav>
+        </aside>
+
+        <!-- Main content -->
+        <div class="main-content">
+            <div class="panel-container">
+                <div class="panel-header">
+                    <h1>Account Privileges Panel</h1>
+                </div>
+                <div class="panel-body">
+                    <div class="users-list">
+                        <div class="users-header">Users</div>
+                        <div class="search-box">
+                            <input type="text" placeholder="Search user">
+                        </div>
+                        <div class="user-item active">
+                            <h3>Jane Smith</h3>
+                            <p>janesmith@company</p>
+                        </div>
+                        <div class="user-item">
+                            <h3>John Doe</h3>
+                            <p>johndoe@company</p>
+                        </div>
+                        <div class="user-item">
+                            <h3>Alex Johnson</h3>
+                            <p>alexjohnson@company</p>
+                        </div>
+                        <div class="user-item">
+                            <h3>Sarah Williams</h3>
+                            <p>sarahwilliams@company</p>
+                        </div>
+                        <div class="user-item">
+                            <h3>Anthony Cruz</h3>
+                            <p>anthonycruz@company</p>
+                        </div>
+                        <div class="user-item">
+                            <h3>Chris Smirk</h3>
+                            <p>chrissmirk@company</p>
+                        </div>
+                    </div>
+                    <div class="user-details">
+                        <div class="user-header">
+                            <h2>Jane Smith</h2>
+                            <p>janesmith@company</p>
+                        </div>
+                        <div class="privilege-options">
+                            <div class="privilege-option">
+                                <label>
+                                    <input type="checkbox" name="role" value="admin">
+                                    Administrator
+                                </label>
+                            </div>
+                            <div class="privilege-option">
+                                <label>
+                                    <input type="checkbox" name="role" value="staff">
+                                    Staff
+                                </label>
+                            </div>
+                            <div class="privilege-option">
+                                <label>
+                                    <input type="checkbox" name="role" value="homeowner">
+                                    Homeowner
+                                </label>
+                            </div>
+                        </div>
+                        <div class="action-buttons">
+                            <button class="btn btn-cancel">Cancel</button>
+                            <button class="btn btn-save" id="saveChangesBtn">Save Changes</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // Save Changes button functionality
+            const saveChangesBtn = document.getElementById('saveChangesBtn');
+            saveChangesBtn.addEventListener('click', function() {
+                // Get the selected user name
+                const userName = document.querySelector('.user-header h2').textContent;
+
+                // Get selected privileges
+                const selectedPrivileges = [];
+                const checkboxes = document.querySelectorAll('input[name="role"]:checked');
+                checkboxes.forEach(checkbox => {
+                    selectedPrivileges.push(checkbox.value);
+                });
+
+                // Show SweetAlert with confirmation
+                Swal.fire({
+                    title: 'Success!',
+                    text: `Privileges for ${userName} have been updated successfully.`,
+                    icon: 'success',
+                    confirmButtonText: 'OK',
+                    confirmButtonColor: '#d3b78d',
+                    background: '#ffffff',
+                    iconColor: '#d3b78d',
+                    showClass: {
+                        popup: 'animate__animated animate__fadeInDown'
+                    },
+                    hideClass: {
+                        popup: 'animate__animated animate__fadeOutUp'
+                    },
+                    customClass: {
+                        confirmButton: 'swal-confirm-button',
+                        title: 'swal-title',
+                        popup: 'swal-popup'
+                    }
+                });
+            });
+
+            // Make user selection functional
+            const userItems = document.querySelectorAll('.user-item');
+            userItems.forEach(item => {
+                item.addEventListener('click', function() {
+                    // Remove active class from all items
+                    userItems.forEach(u => u.classList.remove('active'));
+
+                    // Add active class to clicked item
+                    this.classList.add('active');
+
+                    // Update user details with animation
+                    const userName = this.querySelector('h3').textContent;
+                    const userEmail = this.querySelector('p').textContent;
+
+                    const userHeader = document.querySelector('.user-header');
+                    userHeader.style.opacity = '0';
+
+                    setTimeout(() => {
+                        document.querySelector('.user-header h2').textContent = userName;
+                        document.querySelector('.user-header p').textContent = userEmail;
+                        userHeader.style.opacity = '1';
+                    }, 300);
+
+                    // Reset checkboxes (simulating loading different user data)
+                    document.querySelectorAll('input[name="role"]').forEach(cb => {
+                        cb.checked = false;
+                    });
+                });
+            });
+
+            // Make search functional
+            const searchInput = document.querySelector('.search-box input');
+            searchInput.addEventListener('input', function() {
+                const searchTerm = this.value.toLowerCase();
+
+                userItems.forEach(item => {
+                    const userName = item.querySelector('h3').textContent.toLowerCase();
+                    const userEmail = item.querySelector('p').textContent.toLowerCase();
+
+                    if (userName.includes(searchTerm) || userEmail.includes(searchTerm)) {
+                        item.style.display = 'block';
+                    } else {
+                        item.style.display = 'none';
+                    }
+                });
+            });
+
+            // Cancel button functionality
+            const cancelBtn = document.querySelector('.btn-cancel');
+            cancelBtn.addEventListener('click', function() {
+                // Reset all checkboxes
+                document.querySelectorAll('input[name="role"]').forEach(cb => {
+                    cb.checked = false;
+                });
+
+                Swal.fire({
+                    title: 'Changes Discarded',
+                    text: 'No changes were saved.',
+                    icon: 'info',
+                    confirmButtonText: 'OK',
+                    confirmButtonColor: '#d3b78d',
+                    background: '#ffffff',
+                    iconColor: '#6c757d',
+                    showClass: {
+                        popup: 'animate__animated animate__fadeInDown'
+                    },
+                    hideClass: {
+                        popup: 'animate__animated animate__fadeOutUp'
+                    },
+                    customClass: {
+                        confirmButton: 'swal-confirm-button',
+                        title: 'swal-title',
+                        popup: 'swal-popup'
+                    }
+                });
+            });
+
+            // Add pulse animation to save button
+            const saveBtn = document.querySelector('.btn-save');
+            saveBtn.addEventListener('mouseover', function() {
+                this.classList.add('pulse');
+            });
+            saveBtn.addEventListener('mouseout', function() {
+                this.classList.remove('pulse');
+            });
+        });
+    </script>
+</body>
+</html>

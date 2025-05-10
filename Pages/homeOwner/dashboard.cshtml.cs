@@ -21,7 +21,7 @@ namespace Vista_Subdivision.Pages.homeOwner
         public List<User> Contacts { get; set; }
         public User LoggedInUser { get; set; }
         public Property Properties { get; set; }
-        public async Task<IActionResult> OnGetAsync()
+        /*public async Task<IActionResult> OnGetAsync()
         {
             string userId = HttpContext.Session.GetString("Id");
 
@@ -50,6 +50,6 @@ namespace Vista_Subdivision.Pages.homeOwner
                 .ToListAsync();
 
             return Page();
-        }
+        }*/
     }
 }
